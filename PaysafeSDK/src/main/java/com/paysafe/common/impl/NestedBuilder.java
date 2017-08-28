@@ -27,8 +27,7 @@ package com.paysafe.common.impl;
  * @param <RTNT>  The type returned by build()
  * @param <BLDRT> the builder returned by done()
  */
-public abstract class NestedBuilder<
-        RTNT extends DomainObject, BLDRT extends GenericBuilder>
+public abstract class NestedBuilder<RTNT extends DomainObject, BLDRT extends GenericBuilder>
         extends BaseBuilder<RTNT> {
 
     /**

@@ -58,8 +58,8 @@ public class Id<T extends BaseDomainObject> {
      * @param classType the class type
      * @return Id< U >
      */
-    public static final <U extends BaseDomainObject> Id<U> create(String id, Class<U> classType) {
-        return new Id<U>(id, classType);
+    public static <U extends BaseDomainObject> Id<U> create(String id, Class<U> classType) {
+        return new Id<>(id, classType);
     }
 
     /**

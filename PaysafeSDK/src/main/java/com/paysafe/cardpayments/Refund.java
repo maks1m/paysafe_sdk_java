@@ -103,7 +103,7 @@ public class Refund implements BaseDomainObject {
      *
      * @return RefundBuilder
      */
-    public static final RefundBuilder builder() {
+    public static RefundBuilder builder() {
         return new RefundBuilder();
     }
 

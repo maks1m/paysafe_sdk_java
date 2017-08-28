@@ -151,7 +151,7 @@ public class Verification implements BaseDomainObject {
      *
      * @return VerificationBuilder
      */
-    public static final VerificationBuilder builder() {
+    public static VerificationBuilder builder() {
         return new VerificationBuilder();
     }
 
@@ -611,7 +611,7 @@ public class Verification implements BaseDomainObject {
          */
         public final Card.CardBuilder<VerificationBuilder> card() {
             if (null == cardBuilder) {
-                cardBuilder = new Card.CardBuilder<VerificationBuilder>(this);
+                cardBuilder = new Card.CardBuilder<>(this);
             }
             return cardBuilder;
         }
@@ -623,7 +623,7 @@ public class Verification implements BaseDomainObject {
          * @return AuthorizationBuilder
          */
         public final VerificationBuilder card(final com.paysafe.customervault.Card c) {
-            cardBuilder = new Card.CardBuilder<VerificationBuilder>(this, c);
+            cardBuilder = new Card.CardBuilder<>(this, c);
             return this;
         }
 
@@ -634,7 +634,7 @@ public class Verification implements BaseDomainObject {
          */
         public final Profile.ProfileBuilder<VerificationBuilder> profile() {
             if (null == profileBuilder) {
-                profileBuilder = new Profile.ProfileBuilder<VerificationBuilder>(this);
+                profileBuilder = new Profile.ProfileBuilder<>(this);
             }
             return profileBuilder;
         }
@@ -647,8 +647,7 @@ public class Verification implements BaseDomainObject {
          */
         public final VerificationBuilder profile(
                 final com.paysafe.customervault.Profile p) {
-            profileBuilder = new Profile.ProfileBuilder<
-                    VerificationBuilder>(this, p);
+            profileBuilder = new Profile.ProfileBuilder<>(this, p);
             return this;
         }
 
@@ -659,8 +658,7 @@ public class Verification implements BaseDomainObject {
          */
         public final BillingDetails.BillingDetailsBuilder<VerificationBuilder> billingDetails() {
             if (null == billingDetailsBuilder) {
-                billingDetailsBuilder = new BillingDetails.BillingDetailsBuilder<
-                        VerificationBuilder>(this);
+                billingDetailsBuilder = new BillingDetails.BillingDetailsBuilder<>(this);
             }
             return billingDetailsBuilder;
         }
@@ -673,8 +671,7 @@ public class Verification implements BaseDomainObject {
          */
         public final VerificationBuilder billingDetails(
                 final com.paysafe.customervault.Address a) {
-            billingDetailsBuilder = new BillingDetails.BillingDetailsBuilder<
-                    VerificationBuilder>(this, a);
+            billingDetailsBuilder = new BillingDetails.BillingDetailsBuilder<>(this, a);
             return this;
         }
 
@@ -710,8 +707,7 @@ public class Verification implements BaseDomainObject {
         merchantDescriptor() {
             if (null == merchantDescriptorBuilder) {
                 merchantDescriptorBuilder
-                        = new MerchantDescriptor.MerchantDescriptorBuilder<
-                        VerificationBuilder>(this);
+                        = new MerchantDescriptor.MerchantDescriptorBuilder<>(this);
             }
             return merchantDescriptorBuilder;
         }

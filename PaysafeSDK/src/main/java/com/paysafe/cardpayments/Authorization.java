@@ -208,7 +208,7 @@ public class Authorization implements BaseDomainObject {
      *
      * @return AuthorizationBuilder
      */
-    public static final AuthorizationBuilder builder() {
+    public static AuthorizationBuilder builder() {
         return new AuthorizationBuilder();
     }
 
@@ -810,22 +810,22 @@ public class Authorization implements BaseDomainObject {
          */
         @Override
         public final Authorization build() {
-            if (null != cardBuilder) {
+            if (cardBuilder != null) {
                 authorization.setCard(cardBuilder.build());
             }
-            if (null != authenticationBuilder) {
+            if (authenticationBuilder != null) {
                 authorization.setAuthentication(authenticationBuilder.build());
             }
-            if (null != billingDetailsBuilder) {
+            if (billingDetailsBuilder != null) {
                 authorization.setBillingDetails(billingDetailsBuilder.build());
             }
-            if (null != shippingDetailsBuilder) {
+            if (shippingDetailsBuilder != null) {
                 authorization.setShippingDetails(shippingDetailsBuilder.build());
             }
-            if (null != merchantDescriptorBuilder) {
+            if (merchantDescriptorBuilder != null) {
                 authorization.setMerchantDescriptor(merchantDescriptorBuilder.build());
             }
-            if (null != accordDBuilder) {
+            if (accordDBuilder != null) {
                 authorization.setAccordD(accordDBuilder.build());
             }
             return authorization;
@@ -882,7 +882,7 @@ public class Authorization implements BaseDomainObject {
          */
         public final Card.CardBuilder<AuthorizationBuilder> card() {
             if (null == cardBuilder) {
-                cardBuilder = new Card.CardBuilder<AuthorizationBuilder>(this);
+                cardBuilder = new Card.CardBuilder<>(this);
             }
             return cardBuilder;
         }
@@ -894,7 +894,7 @@ public class Authorization implements BaseDomainObject {
          * @return AuthorizationBuilder
          */
         public final AuthorizationBuilder card(final com.paysafe.customervault.Card c) {
-            cardBuilder = new Card.CardBuilder<AuthorizationBuilder>(this, c);
+            cardBuilder = new Card.CardBuilder<>(this, c);
             return this;
         }
 
@@ -905,8 +905,7 @@ public class Authorization implements BaseDomainObject {
          */
         public final Authentication.AuthenticationBuilder<AuthorizationBuilder> authentication() {
             if (null == authenticationBuilder) {
-                authenticationBuilder = new Authentication.AuthenticationBuilder<
-                        AuthorizationBuilder>(this);
+                authenticationBuilder = new Authentication.AuthenticationBuilder<>(this);
             }
             return authenticationBuilder;
         }
@@ -918,8 +917,7 @@ public class Authorization implements BaseDomainObject {
          */
         public final BillingDetails.BillingDetailsBuilder<AuthorizationBuilder> billingDetails() {
             if (null == billingDetailsBuilder) {
-                billingDetailsBuilder = new BillingDetails.BillingDetailsBuilder<
-                        AuthorizationBuilder>(this);
+                billingDetailsBuilder = new BillingDetails.BillingDetailsBuilder<>(this);
             }
             return billingDetailsBuilder;
         }
@@ -932,8 +930,7 @@ public class Authorization implements BaseDomainObject {
          */
         public final AuthorizationBuilder billingDetails(
                 final com.paysafe.customervault.Address a) {
-            billingDetailsBuilder = new BillingDetails.BillingDetailsBuilder<
-                    AuthorizationBuilder>(this, a);
+            billingDetailsBuilder = new BillingDetails.BillingDetailsBuilder<>(this, a);
             return this;
         }
 
@@ -944,8 +941,7 @@ public class Authorization implements BaseDomainObject {
          */
         public final ShippingDetails.ShippingDetailsBuilder<AuthorizationBuilder> shippingDetails() {
             if (null == shippingDetailsBuilder) {
-                shippingDetailsBuilder = new ShippingDetails.ShippingDetailsBuilder<
-                        AuthorizationBuilder>(this);
+                shippingDetailsBuilder = new ShippingDetails.ShippingDetailsBuilder<>(this);
             }
             return shippingDetailsBuilder;
         }
@@ -958,8 +954,7 @@ public class Authorization implements BaseDomainObject {
          */
         public final AuthorizationBuilder shippingDetails(
                 final com.paysafe.customervault.Address a) {
-            shippingDetailsBuilder = new ShippingDetails.ShippingDetailsBuilder<
-                    AuthorizationBuilder>(this, a);
+            shippingDetailsBuilder = new ShippingDetails.ShippingDetailsBuilder<>(this, a);
             return this;
         }
 
@@ -1005,8 +1000,7 @@ public class Authorization implements BaseDomainObject {
         public final MerchantDescriptor.MerchantDescriptorBuilder<AuthorizationBuilder>
         merchantDescriptor() {
             if (null == merchantDescriptorBuilder) {
-                merchantDescriptorBuilder = new MerchantDescriptor.MerchantDescriptorBuilder<
-                        AuthorizationBuilder>(this);
+                merchantDescriptorBuilder = new MerchantDescriptor.MerchantDescriptorBuilder<>(this);
             }
             return merchantDescriptorBuilder;
         }
@@ -1018,7 +1012,7 @@ public class Authorization implements BaseDomainObject {
          */
         public final AccordD.AccordDBuilder<AuthorizationBuilder> accordD() {
             if (null == accordDBuilder) {
-                accordDBuilder = new AccordD.AccordDBuilder<AuthorizationBuilder>(this);
+                accordDBuilder = new AccordD.AccordDBuilder<>(this);
             }
             return accordDBuilder;
         }

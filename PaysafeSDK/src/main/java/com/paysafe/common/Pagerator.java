@@ -96,9 +96,7 @@ public abstract class Pagerator<T extends BaseDomainObject>
                     setNextPageUrl(pgrtr.getNextPageUrl());
                     getResults().addAll(pgrtr.getResults());
                     //addResults(pgrtr.getResults());
-                } catch (PaysafeException e) {
-                    throw new RuntimeException(e.getMessage(), e);
-                } catch (IOException e) {
+                } catch (PaysafeException | IOException e) {
                     throw new RuntimeException(e.getMessage(), e);
                 }
             } else {
@@ -147,7 +145,7 @@ public abstract class Pagerator<T extends BaseDomainObject>
      */
     @Override
     public final PageratorIterator<T> iterator() {
-        return new PageratorIterator<T>(this);
+        return new PageratorIterator<>(this);
     }
 
     /**

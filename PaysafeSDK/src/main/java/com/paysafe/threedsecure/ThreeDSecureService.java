@@ -194,7 +194,7 @@ public class ThreeDSecureService {
     public final Authentications get(final Authentications authentications, final boolean includeEnrollments)
     throws IOException, PaysafeException {
 
-        final HashMap<String, String> queryStr = new HashMap<String, String>();
+        final HashMap<String, String> queryStr = new HashMap<>();
 
         final StringBuilder toInclude = new StringBuilder();
         if (includeEnrollments) {

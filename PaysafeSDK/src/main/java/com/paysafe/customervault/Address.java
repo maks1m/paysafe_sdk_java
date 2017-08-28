@@ -82,7 +82,7 @@ public class Address extends AddressContainer implements BaseDomainObject {
      *
      * @return AddressBuilder
      */
-    public static final AddressBuilder builder() {
+    public static AddressBuilder builder() {
         return new AddressBuilder();
     }
 

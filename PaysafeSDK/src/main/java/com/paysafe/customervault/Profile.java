@@ -173,7 +173,7 @@ public class Profile implements BaseDomainObject {
      *
      * @return ProfileBuilder
      */
-    public static final ProfileBuilder builder() {
+    public static ProfileBuilder builder() {
         return new ProfileBuilder();
     }
 
@@ -700,7 +700,7 @@ public class Profile implements BaseDomainObject {
          */
         public final DateOfBirth.DateOfBirthBuilder<ProfileBuilder> dateOfBirth() {
             if (null == dateOfBirthBuilder) {
-                dateOfBirthBuilder = new DateOfBirth.DateOfBirthBuilder<ProfileBuilder>(this);
+                dateOfBirthBuilder = new DateOfBirth.DateOfBirthBuilder<>(this);
             }
             return dateOfBirthBuilder;
         }
@@ -712,7 +712,7 @@ public class Profile implements BaseDomainObject {
          */
         public final Card.CardBuilderSingleUse<ProfileBuilder> card() {
             if (null == cardBuilderSingleUse) {
-                cardBuilderSingleUse = new Card.CardBuilderSingleUse<ProfileBuilder>(this);
+                cardBuilderSingleUse = new Card.CardBuilderSingleUse<>(this);
             }
             return cardBuilderSingleUse;
         }

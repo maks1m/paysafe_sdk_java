@@ -130,8 +130,7 @@ public class CustomerVaultService {
      * @return the String
      * @throws PaysafeException the paysafe exception
      */
-    private String prepareUri(final String path)
-    throws PaysafeException {
+    private String prepareUri(final String path) {
         return URI + path;
     }
 
@@ -153,7 +152,7 @@ public class CustomerVaultService {
                 .method(Request.RequestType.POST)
                 .body(achBankAccounts)
                 .build();
-        ACHBankAccounts returnVal = (ACHBankAccounts) this.client.processRequest(request, ACHBankAccounts.class);
+        ACHBankAccounts returnVal = this.client.processRequest(request, ACHBankAccounts.class);
         returnVal.setProfileId(achBankAccounts.getProfileId());
         return returnVal;
     }
@@ -176,7 +175,7 @@ public class CustomerVaultService {
                 .method(Request.RequestType.POST)
                 .body(bacsBankAccounts)
                 .build();
-        BACSBankAccounts returnVal = (BACSBankAccounts) this.client.processRequest(request, BACSBankAccounts.class);
+        BACSBankAccounts returnVal = this.client.processRequest(request, BACSBankAccounts.class);
         returnVal.setProfileId(bacsBankAccounts.getProfileId());
         return returnVal;
     }
@@ -199,7 +198,7 @@ public class CustomerVaultService {
                 .method(Request.RequestType.POST)
                 .body(eftBankAccounts)
                 .build();
-        EFTBankAccounts returnVal = (EFTBankAccounts) this.client.processRequest(request, EFTBankAccounts.class);
+        EFTBankAccounts returnVal = this.client.processRequest(request, EFTBankAccounts.class);
         returnVal.setProfileId(eftBankAccounts.getProfileId());
         return returnVal;
     }
@@ -222,7 +221,7 @@ public class CustomerVaultService {
                 .method(Request.RequestType.POST)
                 .body(sepaBankAccounts)
                 .build();
-        SEPABankAccounts returnVal = (SEPABankAccounts) this.client.processRequest(request, SEPABankAccounts.class);
+        SEPABankAccounts returnVal = this.client.processRequest(request, SEPABankAccounts.class);
         returnVal.setProfileId(sepaBankAccounts.getProfileId());
         return returnVal;
     }
@@ -294,7 +293,7 @@ public class CustomerVaultService {
                 .method(Request.RequestType.POST)
                 .body(mandates)
                 .build();
-        Mandates returnVal = (Mandates) this.client.processRequest(request, Mandates.class);
+        Mandates returnVal = this.client.processRequest(request, Mandates.class);
         returnVal.setProfileId(mandates.getProfileId());
         return returnVal;
     }
@@ -668,7 +667,7 @@ public class CustomerVaultService {
     lookup(final Profile profile, final boolean includeAddresses, final boolean includeCards, final boolean includeACHbankAccounts, final boolean includeBACSbankAccounts, final boolean includeEFTbankAccounts, final boolean includeSEPAbankAccounts)
     throws IOException, PaysafeException {
 
-        final HashMap<String, String> queryStr = new HashMap<String, String>();
+        final HashMap<String, String> queryStr = new HashMap<>();
         final StringBuilder toInclude = new StringBuilder();
         if (includeAddresses) {
             toInclude.append("addresses");
@@ -746,7 +745,7 @@ public class CustomerVaultService {
     lookup(final Profile profile, final boolean includeAddresses, final boolean includeCards)
     throws IOException, PaysafeException {
 
-        final HashMap<String, String> queryStr = new HashMap<String, String>();
+        final HashMap<String, String> queryStr = new HashMap<>();
         final StringBuilder toInclude = new StringBuilder();
         if (includeAddresses) {
             toInclude.append("addresses");
@@ -767,8 +766,7 @@ public class CustomerVaultService {
                 .queryStr(queryStr)
                 .build();
 
-        Profile returnval = client.processRequest(request, Profile.class);
-        return returnval;
+        return client.processRequest(request, Profile.class);
     }
 
     /**
@@ -843,8 +841,7 @@ public class CustomerVaultService {
                 .method(Request.RequestType.GET)
                 .build();
 
-        final ACHBankAccounts returnVal = client.processRequest(request, ACHBankAccounts.class);
-        return returnVal;
+        return client.processRequest(request, ACHBankAccounts.class);
     }
 
     /**
@@ -863,8 +860,7 @@ public class CustomerVaultService {
                 .method(Request.RequestType.GET)
                 .build();
 
-        final EFTBankAccounts returnVal = client.processRequest(request, EFTBankAccounts.class);
-        return returnVal;
+        return client.processRequest(request, EFTBankAccounts.class);
     }
 
     /**
@@ -883,8 +879,7 @@ public class CustomerVaultService {
                 .method(Request.RequestType.GET)
                 .build();
 
-        final BACSBankAccounts returnVal = client.processRequest(request, BACSBankAccounts.class);
-        return returnVal;
+        return client.processRequest(request, BACSBankAccounts.class);
     }
 
     /**
@@ -903,8 +898,7 @@ public class CustomerVaultService {
                 .method(Request.RequestType.GET)
                 .build();
 
-        final SEPABankAccounts returnVal = client.processRequest(request, SEPABankAccounts.class);
-        return returnVal;
+        return client.processRequest(request, SEPABankAccounts.class);
     }
 
     /**
@@ -924,8 +918,7 @@ public class CustomerVaultService {
                 .method(Request.RequestType.GET)
                 .body(mandates)
                 .build();
-        Mandates returnVal = (Mandates) this.client.processRequest(request, Mandates.class);
-        return returnVal;
+        return (Mandates) this.client.processRequest(request, Mandates.class);
     }
 
 }

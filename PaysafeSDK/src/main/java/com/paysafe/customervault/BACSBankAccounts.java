@@ -124,7 +124,7 @@ public class BACSBankAccounts implements BaseDomainObject {
      *
      * @return BACSBankAccountBuilder
      */
-    public static final BACSBankAccountBuilder builder() {
+    public static BACSBankAccountBuilder builder() {
         return new BACSBankAccountBuilder();
     }
 

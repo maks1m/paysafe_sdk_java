@@ -32,5 +32,5 @@ public interface BaseDomainObject extends DomainObject {
      *
      * @return the error
      */
-    public Error getError();
+    Error getError();
 }

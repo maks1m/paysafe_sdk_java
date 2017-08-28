@@ -121,7 +121,7 @@ public class EFTBankAccounts implements BaseDomainObject {
      *
      * @return EFTBankAccountBuilder
      */
-    public static final EFTBankAccountBuilder builder() {
+    public static EFTBankAccountBuilder builder() {
         return new EFTBankAccountBuilder();
     }
 

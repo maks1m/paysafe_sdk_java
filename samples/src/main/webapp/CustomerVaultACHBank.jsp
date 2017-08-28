@@ -10,20 +10,20 @@
 
                 <div>
                     <label>NickName</label>
-                    <input type="text" name="nickName" value="John's RBC Business Bank Account"><br>
+                    <input name="nickName" value="John's RBC Business Bank Account"><br>
                 </div>
                 <div>
                     <label>Account Number</label>
-                    <input type="text" name="accountNumber"
+                    <input name="accountNumber"
                            value="<%=new CustomerVaultACHBank().sixDigitRandomNumber()%>"><br>
                 </div>
                 <div>
                     <label>Routing Number</label>
-                    <input type="text" name="routingNumber" value="123456789"><br>
+                    <input name="routingNumber" value="123456789"><br>
                 </div>
                 <div>
                     <label>Account HolderName</label>
-                    <input type="text" name="accountHolderName" value="XYZ Business"><br>
+                    <input name="accountHolderName" value="XYZ Business"><br>
                 </div>
 
 

@@ -124,7 +124,7 @@ public class SEPABankAccounts implements BaseDomainObject {
      *
      * @return SEPABankAccountBuilder
      */
-    public static final SEPABankAccountBuilder builder() {
+    public static SEPABankAccountBuilder builder() {
         return new SEPABankAccountBuilder();
     }
 

@@ -6,9 +6,9 @@
     <title>Paysafe SDK </title>
 </head>
 <body>
-<% if (request.getParameter("payment") != null && request.getParameter("payment").toString().equals("error")) { %>
+<% if (request.getParameter("payment") != null && request.getParameter("payment").equals("error")) { %>
 <h2>Error Processing Payment</h2>
-<% } else if ((request.getParameter("payment") != null && request.getParameter("payment").toString().equals("success")) ||
+<% } else if ((request.getParameter("payment") != null && request.getParameter("payment").equals("success")) ||
         request.getAttribute("payment") != null && request.getAttribute("payment").toString().equals("success")) { %>
 <h2>Successfully completed payment.</h2>
 

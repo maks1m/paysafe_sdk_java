@@ -9,19 +9,19 @@
 
                 <div>
                     <label>NickName</label>
-                    <input type="text" name="nickName" value="John's RBC Business Bank Account"><br>
+                    <input name="nickName" value="John's RBC Business Bank Account"><br>
                 </div>
                 <div>
                     <label>Account Holder Name</label>
-                    <input type="text" name="accountHolderName" value="XYZ Business"><br>
+                    <input name="accountHolderName" value="XYZ Business"><br>
                 </div>
                 <div>
                     <label>IBAN</label>
-                    <input type="text" name="iban"><br>
+                    <input name="iban"><br>
                 </div>
                 <div>
                     <label>BIC</label>
-                    <input type="text" name="bic" value="HANDFIHH"><br>
+                    <input name="bic" value="HANDFIHH"><br>
                 </div>
 
 

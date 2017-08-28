@@ -132,7 +132,7 @@ public class Card implements BaseDomainObject {
      *
      * @return CardBuilder
      */
-    public static final CardBuilder builder() {
+    public static CardBuilder builder() {
         return new CardBuilder();
     }
 
@@ -514,7 +514,7 @@ public class Card implements BaseDomainObject {
          */
         public final CardExpiry.CardExpiryBuilder<CardBuilder> cardExpiry() {
             if (null == cardExpiryBuilder) {
-                cardExpiryBuilder = new CardExpiry.CardExpiryBuilder<CardBuilder>(this);
+                cardExpiryBuilder = new CardExpiry.CardExpiryBuilder<>(this);
             }
             return cardExpiryBuilder;
         }

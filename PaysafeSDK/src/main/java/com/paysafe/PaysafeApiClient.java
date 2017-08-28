@@ -285,21 +285,15 @@ public class PaysafeApiClient {
     private <T extends BaseDomainObject> T getReturnObject(HttpsURLConnection connection, Class<T> returnType)
     throws IOException, PaysafeException {
         try {
-            InputStream is = connection.getInputStream();
 
-            try {
+            try (InputStream is = connection.getInputStream()) {
                 return deserializeStream(is, returnType);
-            } finally {
-                is.close();
             }
         } catch (IOException cause) {
             // store the cause so we know to throw an exception after parsing
             // the response
-            InputStream is = connection.getErrorStream();
-            try {
+            try (InputStream is = connection.getErrorStream()) {
                 throw getException(connection.getResponseCode(), deserializeStream(is, returnType), cause);
-            } finally {
-                is.close();
             }
         }
     }
@@ -317,11 +311,8 @@ public class PaysafeApiClient {
             InputStream is,
             Class<T> returnType)
     throws IOException {
-        final InputStreamReader isr = new InputStreamReader(is, "UTF-8");
-        try {
+        try (InputStreamReader isr = new InputStreamReader(is, "UTF-8")) {
             return gsonDeserializer.fromJson(isr, returnType);
-        } finally {
-            isr.close();
         }
     }
 

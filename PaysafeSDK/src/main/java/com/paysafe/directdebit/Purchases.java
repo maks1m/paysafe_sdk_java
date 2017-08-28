@@ -127,7 +127,7 @@ public class Purchases implements BaseDomainObject {
      *
      * @return PurchaseBuilder
      */
-    public static final PurchaseBuilder builder() {
+    public static PurchaseBuilder builder() {
         return new PurchaseBuilder();
     }
 
@@ -505,7 +505,7 @@ public class Purchases implements BaseDomainObject {
          */
         public final BillingDetails.BillingDetailsBuilder<PurchaseBuilder> billingDetails() {
             if (null == billingDetailsBuilder) {
-                billingDetailsBuilder = new BillingDetails.BillingDetailsBuilder<PurchaseBuilder>(this);
+                billingDetailsBuilder = new BillingDetails.BillingDetailsBuilder<>(this);
             }
             return billingDetailsBuilder;
         }
@@ -518,7 +518,7 @@ public class Purchases implements BaseDomainObject {
          * //TODO
          */
         public final PurchaseBuilder billingDetails(final com.paysafe.customervault.Address address) {
-            billingDetailsBuilder = new BillingDetails.BillingDetailsBuilder<PurchaseBuilder>(this, address);
+            billingDetailsBuilder = new BillingDetails.BillingDetailsBuilder<>(this, address);
             return this;
         }
 
@@ -551,7 +551,7 @@ public class Purchases implements BaseDomainObject {
          */
         public final ACH.ACHBuilder<PurchaseBuilder> ach() {
             if (null == achBuilder) {
-                achBuilder = new ACH.ACHBuilder<PurchaseBuilder>(this);
+                achBuilder = new ACH.ACHBuilder<>(this);
             }
             return achBuilder;
         }
@@ -563,7 +563,7 @@ public class Purchases implements BaseDomainObject {
          */
         public final Profile.ProfileBuilder<PurchaseBuilder> profile() {
             if (null == profileBuilder) {
-                profileBuilder = new Profile.ProfileBuilder<PurchaseBuilder>(this);
+                profileBuilder = new Profile.ProfileBuilder<>(this);
             }
             return profileBuilder;
         }
@@ -575,7 +575,7 @@ public class Purchases implements BaseDomainObject {
          */
         public final EFT.EFTBuilder<PurchaseBuilder> eft() {
             if (null == eftBuilder) {
-                eftBuilder = new EFT.EFTBuilder<PurchaseBuilder>(this);
+                eftBuilder = new EFT.EFTBuilder<>(this);
             }
             return eftBuilder;
         }
@@ -587,7 +587,7 @@ public class Purchases implements BaseDomainObject {
          */
         public final BACS.BACSBuilder<PurchaseBuilder> bacs() {
             if (null == bacsBuilder) {
-                bacsBuilder = new BACS.BACSBuilder<PurchaseBuilder>(this);
+                bacsBuilder = new BACS.BACSBuilder<>(this);
             }
             return bacsBuilder;
         }
@@ -600,7 +600,7 @@ public class Purchases implements BaseDomainObject {
 
         public final SEPA.SEPABuilder<PurchaseBuilder> sepa() {
             if (null == sepaBuilder) {
-                sepaBuilder = new SEPA.SEPABuilder<PurchaseBuilder>(this);
+                sepaBuilder = new SEPA.SEPABuilder<>(this);
             }
             return sepaBuilder;
         }

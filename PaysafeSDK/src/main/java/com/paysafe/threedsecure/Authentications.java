@@ -127,7 +127,7 @@ public class Authentications implements BaseDomainObject {
      *
      * @return AuthenticationBuilder
      */
-    public static final AuthenticationsBuilder builder() {
+    public static AuthenticationsBuilder builder() {
         return new AuthenticationsBuilder();
     }
 

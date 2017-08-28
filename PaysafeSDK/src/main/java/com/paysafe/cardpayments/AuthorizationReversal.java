@@ -104,7 +104,7 @@ public class AuthorizationReversal implements BaseDomainObject {
      *
      * @return AuthorizationReversalBuilder
      */
-    public static final AuthorizationReversalBuilder builder() {
+    public static AuthorizationReversalBuilder builder() {
         return new AuthorizationReversalBuilder();
     }
 

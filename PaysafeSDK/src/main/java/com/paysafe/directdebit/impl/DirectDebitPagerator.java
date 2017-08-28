@@ -37,7 +37,7 @@ public abstract class DirectDebitPagerator<T extends BaseDomainObject> extends P
     /**
      * The links.
      */
-    private ArrayList<Link> links = new ArrayList<Link>();
+    private ArrayList<Link> links = new ArrayList<>();
 
     /**
      * The next url.

@@ -114,8 +114,7 @@ public class Error implements DomainObject {
      * @return the field errors
      * @throws PaysafeException the optimal exception
      */
-    public final ArrayList<FieldError> getFieldErrors()
-    throws PaysafeException {
+    public final ArrayList<FieldError> getFieldErrors() {
         return fieldErrors;
     }
 

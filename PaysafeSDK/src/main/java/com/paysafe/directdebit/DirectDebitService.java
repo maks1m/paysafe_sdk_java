@@ -103,8 +103,7 @@ public class DirectDebitService {
                 .method(Request.RequestType.POST)
                 .body(purchases)
                 .build();
-        Purchases returnVal = (Purchases) this.client.processRequest(request, Purchases.class);
-        return returnVal;
+        return this.client.processRequest(request, Purchases.class);
     }
 
     /**
@@ -114,8 +113,7 @@ public class DirectDebitService {
      * @return the string
      * @throws PaysafeException the paysafe exception
      */
-    private String prepareUri(String path)
-    throws PaysafeException {
+    private String prepareUri(String path) {
         return "directdebit/v1" + path;
     }
 
@@ -135,7 +133,7 @@ public class DirectDebitService {
                 .method(Request.RequestType.PUT)
                 .body(purchases)
                 .build();
-        Purchases returnVal = (Purchases) this.client.processRequest(request, Purchases.class);
+        Purchases returnVal = this.client.processRequest(request, Purchases.class);
         returnVal.setId(purchases.getId());
         return returnVal;
     }
@@ -156,7 +154,7 @@ public class DirectDebitService {
                 .body(purchases)
                 .build();
 
-        Purchases returnVal = (Purchases) this.client.processRequest(request, Purchases.class);
+        Purchases returnVal = this.client.processRequest(request, Purchases.class);
         returnVal.setId(purchases.getId());
         return returnVal;
     }
@@ -173,7 +171,7 @@ public class DirectDebitService {
     public final Pagerator<Purchases> getPurchases(final Purchases purchases, final Filter filter)
     throws IOException, PaysafeException {
 
-        final HashMap<String, String> queryStr = new HashMap<String, String>();
+        final HashMap<String, String> queryStr = new HashMap<>();
         if (null != purchases) {
             if (null != purchases.getMerchantRefNum() && !purchases.getMerchantRefNum().isEmpty()) {
                 queryStr.put(MERCHANT_REF_NUMBER, purchases.getMerchantRefNum());
@@ -221,8 +219,7 @@ public class DirectDebitService {
                 .method(Request.RequestType.POST)
                 .body(standalonecredits)
                 .build();
-        StandaloneCredits returnVal = (StandaloneCredits) this.client.processRequest(request, StandaloneCredits.class);
-        return returnVal;
+        return this.client.processRequest(request, StandaloneCredits.class);
     }
 
     /**
@@ -241,7 +238,7 @@ public class DirectDebitService {
                 .method(Request.RequestType.PUT)
                 .body(standalonecredits)
                 .build();
-        StandaloneCredits returnVal = (StandaloneCredits) this.client.processRequest(request, StandaloneCredits.class);
+        StandaloneCredits returnVal = this.client.processRequest(request, StandaloneCredits.class);
         returnVal.setId(standalonecredits.getId());
         return returnVal;
     }
@@ -262,7 +259,7 @@ public class DirectDebitService {
                 .body(standalonecredits)
                 .build();
 
-        StandaloneCredits returnVal = (StandaloneCredits) this.client.processRequest(request, StandaloneCredits.class);
+        StandaloneCredits returnVal = this.client.processRequest(request, StandaloneCredits.class);
         returnVal.setId(standalonecredits.getId());
         return returnVal;
     }
@@ -278,7 +275,7 @@ public class DirectDebitService {
      */
     public final Pagerator<StandaloneCredits> getStandaloneCredits(final StandaloneCredits standalonecredits, final Filter filter)
     throws IOException, PaysafeException {
-        final HashMap<String, String> queryStr = new HashMap<String, String>();
+        final HashMap<String, String> queryStr = new HashMap<>();
         if (null != standalonecredits) {
             if (null != standalonecredits.getMerchantRefNum() && !standalonecredits.getMerchantRefNum().isEmpty()) {
                 queryStr.put(MERCHANT_REF_NUMBER, standalonecredits.getMerchantRefNum());

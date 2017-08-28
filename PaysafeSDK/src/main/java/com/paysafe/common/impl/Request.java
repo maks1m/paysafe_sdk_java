@@ -67,7 +67,7 @@ public class Request {
      *
      * @return RequestBuilder
      */
-    public static final RequestBuilder builder() {
+    public static RequestBuilder builder() {
         return new RequestBuilder();
     }
 
@@ -173,7 +173,7 @@ public class Request {
         /**
          * The put.
          */
-        PUT;
+        PUT
 
     }
 

@@ -44,7 +44,7 @@ public class BooleanAdapter implements JsonDeserializer<Boolean> {
     @Override
     public Boolean deserialize(JsonElement el, Type typeOfT, JsonDeserializationContext context)
     throws JsonParseException {
-        if (((Class<?>) typeOfT).equals(Boolean.class)) {
+        if (typeOfT.equals(Boolean.class)) {
             return el.getAsBoolean();
         } else if (((Class<?>) typeOfT).isInstance(Integer.class)) {
             final int elAsInt = el.getAsInt();

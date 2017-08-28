@@ -370,7 +370,7 @@ public class CardPaymentsService {
     public final Pagerator<Authorization> getAuths(final Authorization auth, final Filter filter)
     throws IOException, PaysafeException {
 
-        final HashMap<String, String> queryStr = new HashMap<String, String>();
+        final HashMap<String, String> queryStr = new HashMap<>();
         if (null != auth) {
             if (null != auth.getMerchantRefNum() && !auth.getMerchantRefNum().isEmpty()) {
                 queryStr.put(MERCHANT_REF_NUM, auth.getMerchantRefNum());
@@ -461,7 +461,7 @@ public class CardPaymentsService {
     getAuthReversals(final AuthorizationReversal authReversal, final Filter filter)
     throws IOException, PaysafeException {
 
-        final HashMap<String, String> queryStr = new HashMap<String, String>();
+        final HashMap<String, String> queryStr = new HashMap<>();
         if (null != authReversal) {
             if (null != authReversal.getMerchantRefNum() && !authReversal.getMerchantRefNum().isEmpty()) {
                 queryStr.put(MERCHANT_REF_NUM, authReversal.getMerchantRefNum());
@@ -552,7 +552,7 @@ public class CardPaymentsService {
     getSettlements(final Settlement settlement, final Filter filter)
     throws IOException, PaysafeException {
 
-        final HashMap<String, String> queryStr = new HashMap<String, String>();
+        final HashMap<String, String> queryStr = new HashMap<>();
         if (null != settlement) {
             if (null != settlement.getMerchantRefNum() && !settlement.getMerchantRefNum().isEmpty()) {
                 queryStr.put(MERCHANT_REF_NUM, settlement.getMerchantRefNum());
@@ -642,7 +642,7 @@ public class CardPaymentsService {
     getRefunds(final Refund refund, final Filter filter)
     throws IOException, PaysafeException {
 
-        final HashMap<String, String> queryStr = new HashMap<String, String>();
+        final HashMap<String, String> queryStr = new HashMap<>();
         if (null != refund) {
             if (null != refund.getMerchantRefNum() && !refund.getMerchantRefNum().isEmpty()) {
                 queryStr.put(MERCHANT_REF_NUM, refund.getMerchantRefNum());
@@ -732,7 +732,7 @@ public class CardPaymentsService {
     getVerifications(final Verification verification, final Filter filter)
     throws IOException, PaysafeException {
 
-        final HashMap<String, String> queryStr = new HashMap<String, String>();
+        final HashMap<String, String> queryStr = new HashMap<>();
         if (null != verification) {
             if (null != verification.getMerchantRefNum() && !verification.getMerchantRefNum().isEmpty()) {
                 queryStr.put(MERCHANT_REF_NUM, verification.getMerchantRefNum());

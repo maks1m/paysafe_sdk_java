@@ -108,7 +108,7 @@ public class Mandates implements BaseDomainObject {
      *
      * @return MandatesBuilder
      */
-    public static final MandatesBuilder builder() {
+    public static MandatesBuilder builder() {
         return new MandatesBuilder();
     }
 

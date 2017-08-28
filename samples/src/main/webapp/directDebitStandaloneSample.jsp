@@ -11,10 +11,10 @@
         </div>
         <div>
 
-            <label>MerchantRefNo</label><input type="text" name="merchantRefNum"
+            <label>MerchantRefNo</label><input name="merchantRefNum"
                                                value="<%=java.util.UUID.randomUUID().toString()%>"><br>
-            <label>Amount</label><input type="text" name="amount" value="10098"><br>
-            <label>Payment Token</label><input type="text" name="paymentToken"><br>
+            <label>Amount</label><input name="amount" value="10098"><br>
+            <label>Payment Token</label><input name="paymentToken"><br>
         </div>
 
         <input type="submit" value="Submit">

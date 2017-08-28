@@ -160,7 +160,7 @@ public class StandaloneCredits implements BaseDomainObject {
      *
      * @return StandaloneCreditsBuilder
      */
-    public static final StandaloneCreditsBuilder builder() {
+    public static StandaloneCreditsBuilder builder() {
         return new StandaloneCreditsBuilder();
     }
 
@@ -591,7 +591,7 @@ public class StandaloneCredits implements BaseDomainObject {
          */
         public final BillingDetails.BillingDetailsBuilder<StandaloneCreditsBuilder> billingDetails() {
             if (null == billingDetailsBuilder) {
-                billingDetailsBuilder = new BillingDetails.BillingDetailsBuilder<StandaloneCreditsBuilder>(this);
+                billingDetailsBuilder = new BillingDetails.BillingDetailsBuilder<>(this);
             }
             return billingDetailsBuilder;
         }
@@ -604,7 +604,7 @@ public class StandaloneCredits implements BaseDomainObject {
          * //TODO
          */
         public final StandaloneCreditsBuilder billingDetails(final com.paysafe.customervault.Address a) {
-            billingDetailsBuilder = new BillingDetails.BillingDetailsBuilder<StandaloneCreditsBuilder>(this, a);
+            billingDetailsBuilder = new BillingDetails.BillingDetailsBuilder<>(this, a);
             return this;
         }
 
@@ -615,7 +615,7 @@ public class StandaloneCredits implements BaseDomainObject {
          */
         public final ShippingDetails.ShippingDetailsBuilder<StandaloneCreditsBuilder> shippingDetails() {
             if (null == shippingDetailsBuilder) {
-                shippingDetailsBuilder = new ShippingDetails.ShippingDetailsBuilder<StandaloneCreditsBuilder>(this);
+                shippingDetailsBuilder = new ShippingDetails.ShippingDetailsBuilder<>(this);
             }
             return shippingDetailsBuilder;
         }
@@ -628,7 +628,7 @@ public class StandaloneCredits implements BaseDomainObject {
          * //TODO
          */
         public final StandaloneCreditsBuilder shippingDetails(final com.paysafe.customervault.Address a) {
-            shippingDetailsBuilder = new ShippingDetails.ShippingDetailsBuilder<StandaloneCreditsBuilder>(this, a);
+            shippingDetailsBuilder = new ShippingDetails.ShippingDetailsBuilder<>(this, a);
             return this;
         }
 
@@ -661,7 +661,7 @@ public class StandaloneCredits implements BaseDomainObject {
          */
         public final ACH.ACHBuilder<StandaloneCreditsBuilder> ach() {
             if (null == achBuilder) {
-                achBuilder = new ACH.ACHBuilder<StandaloneCreditsBuilder>(this);
+                achBuilder = new ACH.ACHBuilder<>(this);
             }
             return achBuilder;
         }
@@ -673,7 +673,7 @@ public class StandaloneCredits implements BaseDomainObject {
          */
         public final Profile.ProfileBuilder<StandaloneCreditsBuilder> profile() {
             if (null == profileBuilder) {
-                profileBuilder = new Profile.ProfileBuilder<StandaloneCreditsBuilder>(this);
+                profileBuilder = new Profile.ProfileBuilder<>(this);
             }
             return profileBuilder;
         }
@@ -685,7 +685,7 @@ public class StandaloneCredits implements BaseDomainObject {
          */
         public final EFT.EFTBuilder<StandaloneCreditsBuilder> eft() {
             if (null == eftBuilder) {
-                eftBuilder = new EFT.EFTBuilder<StandaloneCreditsBuilder>(this);
+                eftBuilder = new EFT.EFTBuilder<>(this);
             }
             return eftBuilder;
         }
@@ -697,7 +697,7 @@ public class StandaloneCredits implements BaseDomainObject {
          */
         public final BACS.BACSBuilder<StandaloneCreditsBuilder> bacs() {
             if (null == bacsBuilder) {
-                bacsBuilder = new BACS.BACSBuilder<StandaloneCreditsBuilder>(this);
+                bacsBuilder = new BACS.BACSBuilder<>(this);
             }
             return bacsBuilder;
         }

@@ -14,11 +14,11 @@
 
                 <div>
                     <label>Reference</label>
-                    <input type="text" name="reference"><br>
+                    <input name="reference"><br>
                 </div>
                 <div>
                     <label>IBAN</label>
-                    <input type="text" name="iban"><br>
+                    <input name="iban"><br>
                 </div>
 
             </div>

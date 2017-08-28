@@ -121,7 +121,7 @@ public class ACHBankAccounts implements BaseDomainObject {
      *
      * @return ACHBankAccountBuilder
      */
-    public static final ACHBankAccountBuilder builder() {
+    public static ACHBankAccountBuilder builder() {
         return new ACHBankAccountBuilder();
     }
 

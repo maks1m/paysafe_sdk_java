@@ -307,7 +307,7 @@ public class Card implements DomainObject {
          */
         public final CardExpiry.CardExpiryBuilder<CardBuilder<BLDRT>> cardExpiry() {
             if (null == cardExpiryBuilder) {
-                cardExpiryBuilder = new CardExpiry.CardExpiryBuilder<CardBuilder<BLDRT>>(this);
+                cardExpiryBuilder = new CardExpiry.CardExpiryBuilder<>(this);
             }
             return cardExpiryBuilder;
         }

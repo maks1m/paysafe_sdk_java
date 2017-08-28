@@ -108,7 +108,7 @@ public class Settlement implements BaseDomainObject {
      *
      * @return SettlementBuilder
      */
-    public static final SettlementBuilder builder() {
+    public static SettlementBuilder builder() {
         return new SettlementBuilder();
     }
 

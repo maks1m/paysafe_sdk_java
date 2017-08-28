@@ -28,7 +28,8 @@ import com.paysafe.common.impl.NestedBuilder;
 /**
  * The Class AccordD.
  */
-public class AccordD implements DomainObject {
+public class AccordD
+        implements DomainObject {
 
     /**
      * The financing type.

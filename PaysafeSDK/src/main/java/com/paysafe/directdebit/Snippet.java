@@ -26,13 +26,5 @@ package com.paysafe.directdebit;
  */
 public class Snippet {
 
-    /**
-     * The main method.
-     *
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
-
-    }
 }
 

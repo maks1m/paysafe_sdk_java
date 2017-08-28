@@ -145,7 +145,7 @@ public class EnrollmentChecks implements BaseDomainObject {
      *
      * @return ProfileBuilder
      */
-    public static final EnrollmentCheckBuilder builder() {
+    public static EnrollmentCheckBuilder builder() {
         return new EnrollmentCheckBuilder();
     }
 
@@ -632,7 +632,7 @@ public class EnrollmentChecks implements BaseDomainObject {
          */
         public final Card.CardBuilder<EnrollmentCheckBuilder> card() {
             if (null == cardBuilder)
-                cardBuilder = new Card.CardBuilder<EnrollmentCheckBuilder>(this);
+                cardBuilder = new Card.CardBuilder<>(this);
             return cardBuilder;
         }
 

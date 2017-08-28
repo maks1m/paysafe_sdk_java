@@ -25,7 +25,8 @@ package com.paysafe.common.impl;
  *
  * @param <RTNT> The return type that will be retrieved from build()
  */
-public abstract class BaseBuilder<RTNT extends DomainObject> extends GenericBuilder {
+public abstract class BaseBuilder<RTNT extends DomainObject>
+        extends GenericBuilder {
 
     /**
      * Builds the.

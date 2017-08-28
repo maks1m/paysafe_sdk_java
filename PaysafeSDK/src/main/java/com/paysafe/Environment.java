@@ -45,7 +45,7 @@ public enum Environment {
      *
      * @param url the url
      */
-    private Environment(String url) {
+    Environment(String url) {
         this.url = url;
     }
 

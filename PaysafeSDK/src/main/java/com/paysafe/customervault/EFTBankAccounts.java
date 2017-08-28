@@ -117,6 +117,15 @@ public class EFTBankAccounts implements BaseDomainObject {
     private Id<Profile> profileId;
 
     /**
+     * Get a EFTBankAccount builder.
+     *
+     * @return EFTBankAccountBuilder
+     */
+    public static final EFTBankAccountBuilder builder() {
+        return new EFTBankAccountBuilder();
+    }
+
+    /**
      * Gets the id.
      *
      * @return the id
@@ -365,16 +374,6 @@ public class EFTBankAccounts implements BaseDomainObject {
      */
     public void setProfileId(final Id<Profile> profileId) {
         this.profileId = profileId;
-    }
-
-
-    /**
-     * Get a EFTBankAccount builder.
-     *
-     * @return EFTBankAccountBuilder
-     */
-    public static final EFTBankAccountBuilder builder() {
-        return new EFTBankAccountBuilder();
     }
 
     /**

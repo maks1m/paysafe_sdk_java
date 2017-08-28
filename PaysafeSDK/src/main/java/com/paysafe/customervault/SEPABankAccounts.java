@@ -119,6 +119,14 @@ public class SEPABankAccounts implements BaseDomainObject {
     @Expose
     private List<Mandates> mandates;
 
+    /**
+     * Get a SEPABankAccount builder.
+     *
+     * @return SEPABankAccountBuilder
+     */
+    public static final SEPABankAccountBuilder builder() {
+        return new SEPABankAccountBuilder();
+    }
 
     /**
      * Gets the id.
@@ -369,15 +377,6 @@ public class SEPABankAccounts implements BaseDomainObject {
      */
     public void setMandates(List<Mandates> mandates) {
         this.mandates = mandates;
-    }
-
-    /**
-     * Get a SEPABankAccount builder.
-     *
-     * @return SEPABankAccountBuilder
-     */
-    public static final SEPABankAccountBuilder builder() {
-        return new SEPABankAccountBuilder();
     }
 
     /**

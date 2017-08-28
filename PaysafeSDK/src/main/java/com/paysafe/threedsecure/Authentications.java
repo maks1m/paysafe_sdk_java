@@ -122,6 +122,14 @@ public class Authentications implements BaseDomainObject {
      */
     private ArrayList<EnrollmentChecks> enrollmentchecks;
 
+    /**
+     * Get an Authentication builder.
+     *
+     * @return AuthenticationBuilder
+     */
+    public static final AuthenticationsBuilder builder() {
+        return new AuthenticationsBuilder();
+    }
 
     /**
      * Gets the id.
@@ -357,7 +365,6 @@ public class Authentications implements BaseDomainObject {
         this.enrollmentchecks = enrollmentchecks;
     }
 
-
     /**
      * Gets the enrollment id.
      *
@@ -391,15 +398,6 @@ public class Authentications implements BaseDomainObject {
      */
     public final void setError(final Error error) {
         this.error = error;
-    }
-
-    /**
-     * Get an Authentication builder.
-     *
-     * @return AuthenticationBuilder
-     */
-    public static final AuthenticationsBuilder builder() {
-        return new AuthenticationsBuilder();
     }
 
     /**

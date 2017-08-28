@@ -42,29 +42,6 @@ public abstract class Pagerator<T extends BaseDomainObject>
     protected PaysafeApiClient client;
 
     /**
-     * Set the client.
-     *
-     * @param client the new client
-     */
-    public final void setClient(final PaysafeApiClient client) {
-        this.client = client;
-    }
-
-    /**
-     * Get the OptimalApiClient.
-     *
-     * @return OptimalApiClient
-     * @throws PaysafeException the optimal exception
-     */
-    private PaysafeApiClient getClient()
-    throws PaysafeException {
-        if (null == client) {
-            throw new PaysafeException("You must set the client before attempting any requests.");
-        }
-        return client;
-    }
-
-    /**
      * Used by iterator to ensure that there is a next element.
      *
      * @param position the position
@@ -74,6 +51,27 @@ public abstract class Pagerator<T extends BaseDomainObject>
     protected final Boolean hasElementAfterPosition(final Integer position) {
         return position + 1 < getResults().size() || null != getNextPageUrl();
     }
+
+    /**
+     * Get the current set of elements.
+     *
+     * @return ArrayList< T >
+     */
+    protected abstract ArrayList<T> getResults();
+
+    /**
+     * Get the url of the next page to be loaded.
+     *
+     * @return String
+     */
+    protected abstract String getNextPageUrl();
+
+    /**
+     * Set the next page url.
+     *
+     * @param nextUrl the new next page url
+     */
+    protected abstract void setNextPageUrl(String nextUrl);
 
     /**
      * Used by iterator to ensure the requested position is loaded before returning it.
@@ -110,6 +108,29 @@ public abstract class Pagerator<T extends BaseDomainObject>
     }
 
     /**
+     * Get the OptimalApiClient.
+     *
+     * @return OptimalApiClient
+     * @throws PaysafeException the optimal exception
+     */
+    private PaysafeApiClient getClient()
+    throws PaysafeException {
+        if (null == client) {
+            throw new PaysafeException("You must set the client before attempting any requests.");
+        }
+        return client;
+    }
+
+    /**
+     * Set the client.
+     *
+     * @param client the new client
+     */
+    public final void setClient(final PaysafeApiClient client) {
+        this.client = client;
+    }
+
+    /**
      * Used by the iterator to get a specific element.
      *
      * @param index the index
@@ -140,43 +161,12 @@ public abstract class Pagerator<T extends BaseDomainObject>
     }
 
     /**
-     * Get the current set of elements.
-     *
-     * @return ArrayList< T >
-     */
-    protected abstract ArrayList<T> getResults();
-
-    /**
-     * Get the url of the next page to be loaded.
-     *
-     * @return String
-     */
-    protected abstract String getNextPageUrl();
-
-    /**
-     * Set the next page url.
-     *
-     * @param nextUrl the new next page url
-     */
-    protected abstract void setNextPageUrl(String nextUrl);
-
-    /**
      * Class to iterate over the result set, and request additional pages as needed.
      *
      * @param <T> the type to be returned by iterator
      */
     @SuppressWarnings("hiding")
     public class PageratorIterator<T extends BaseDomainObject> implements ListIterator<T> {
-
-        /**
-         * Instantiates a new pagerator iterator.
-         *
-         * @param parent the parent
-         */
-        public PageratorIterator(final Pagerator<T> parent) {
-            this.parent = parent;
-            position = -1;
-        }
 
         /**
          * The parent.
@@ -186,6 +176,15 @@ public abstract class Pagerator<T extends BaseDomainObject>
          * Tracks the current position in the result set.
          */
         private int position = -1;
+        /**
+         * Instantiates a new pagerator iterator.
+         *
+         * @param parent the parent
+         */
+        public PageratorIterator(final Pagerator<T> parent) {
+            this.parent = parent;
+            position = -1;
+        }
 
         /**
          * Implementation for ListIterator.

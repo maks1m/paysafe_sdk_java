@@ -116,6 +116,14 @@ public class ACHBankAccounts implements BaseDomainObject {
     @Expose
     private Id<Profile> profileId;
 
+    /**
+     * Get a ACHBankAccount builder.
+     *
+     * @return ACHBankAccountBuilder
+     */
+    public static final ACHBankAccountBuilder builder() {
+        return new ACHBankAccountBuilder();
+    }
 
     /**
      * Gets the id.
@@ -366,15 +374,6 @@ public class ACHBankAccounts implements BaseDomainObject {
      */
     public void setProfileId(Id<Profile> profileId) {
         this.profileId = profileId;
-    }
-
-    /**
-     * Get a ACHBankAccount builder.
-     *
-     * @return ACHBankAccountBuilder
-     */
-    public static final ACHBankAccountBuilder builder() {
-        return new ACHBankAccountBuilder();
     }
 
     /**

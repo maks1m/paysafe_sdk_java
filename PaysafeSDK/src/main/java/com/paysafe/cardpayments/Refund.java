@@ -99,6 +99,15 @@ public class Refund implements BaseDomainObject {
     private Id<Settlement> settlementId;
 
     /**
+     * Get a Refund builder.
+     *
+     * @return RefundBuilder
+     */
+    public static final RefundBuilder builder() {
+        return new RefundBuilder();
+    }
+
+    /**
      * Gets the id.
      *
      * @return the id
@@ -311,15 +320,6 @@ public class Refund implements BaseDomainObject {
      */
     public final void setSettlementId(final Id<Settlement> settlementId) {
         this.settlementId = settlementId;
-    }
-
-    /**
-     * Get a Refund builder.
-     *
-     * @return RefundBuilder
-     */
-    public static final RefundBuilder builder() {
-        return new RefundBuilder();
     }
 
     /**

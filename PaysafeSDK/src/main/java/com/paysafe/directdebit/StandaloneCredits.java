@@ -146,6 +146,23 @@ public class StandaloneCredits implements BaseDomainObject {
      */
     private Error error;
 
+    /**
+     * Gets the pageable array key.
+     *
+     * @return the pageable array key
+     */
+    public static String getPageableArrayKey() {
+        return "standaloneCredits";
+    }
+
+    /**
+     * Get an StandaloneCredits builder.
+     *
+     * @return StandaloneCreditsBuilder
+     */
+    public static final StandaloneCreditsBuilder builder() {
+        return new StandaloneCreditsBuilder();
+    }
 
     /**
      * Gets the id.
@@ -154,15 +171,6 @@ public class StandaloneCredits implements BaseDomainObject {
      */
     public Id<StandaloneCredits> getId() {
         return id;
-    }
-
-    /**
-     * Gets the pageable array key.
-     *
-     * @return the pageable array key
-     */
-    public static String getPageableArrayKey() {
-        return "standaloneCredits";
     }
 
     /**
@@ -354,7 +362,6 @@ public class StandaloneCredits implements BaseDomainObject {
         this.txnTime = txnTime;
     }
 
-
     /**
      * Gets the currency code.
      *
@@ -480,55 +487,39 @@ public class StandaloneCredits implements BaseDomainObject {
         this.bacss = bacss;
     }
 
-
-    /**
-     * Get an StandaloneCredits builder.
-     *
-     * @return StandaloneCreditsBuilder
-     */
-    public static final StandaloneCreditsBuilder builder() {
-        return new StandaloneCreditsBuilder();
-    }
-
     /**
      * The builder class for StandaloneCredits.
      */
     public static class StandaloneCreditsBuilder extends BaseBuilder<StandaloneCredits> {
 
         /**
+         * The standalonecredits.
+         */
+        private final StandaloneCredits standalonecredits = new StandaloneCredits();
+        /**
          * The profile builder.
          */
         private Profile.ProfileBuilder<StandaloneCreditsBuilder> profileBuilder;
-
         /**
          * The billing details builder.
          */
         private BillingDetails.BillingDetailsBuilder<StandaloneCreditsBuilder> billingDetailsBuilder;
-
         /**
          * The shipping details builder.
          */
         private ShippingDetails.ShippingDetailsBuilder<StandaloneCreditsBuilder> shippingDetailsBuilder;
-
         /**
          * The ach builder.
          */
         private ACH.ACHBuilder<StandaloneCreditsBuilder> achBuilder;
-
         /**
          * The eft builder.
          */
         private EFT.EFTBuilder<StandaloneCreditsBuilder> eftBuilder;
-
         /**
          * The bacs builder.
          */
         private BACS.BACSBuilder<StandaloneCreditsBuilder> bacsBuilder;
-
-        /**
-         * The standalonecredits.
-         */
-        private final StandaloneCredits standalonecredits = new StandaloneCredits();
 
         /**
          * Build this StandaloneCredits object.

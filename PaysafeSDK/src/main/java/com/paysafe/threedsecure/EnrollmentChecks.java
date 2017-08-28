@@ -140,6 +140,14 @@ public class EnrollmentChecks implements BaseDomainObject {
      */
     private ArrayList<Link> links;
 
+    /**
+     * Get a EnrollmentChecks builder.
+     *
+     * @return ProfileBuilder
+     */
+    public static final EnrollmentCheckBuilder builder() {
+        return new EnrollmentCheckBuilder();
+    }
 
     /**
      * Gets the id.
@@ -176,7 +184,6 @@ public class EnrollmentChecks implements BaseDomainObject {
     public final void setMerchantRefNum(final String merchantRefNum) {
         this.merchantRefNum = merchantRefNum;
     }
-
 
     /**
      * Gets the amount.
@@ -338,7 +345,6 @@ public class EnrollmentChecks implements BaseDomainObject {
         this.status = status;
     }
 
-
     /**
      * Gets the acs url.
      *
@@ -445,15 +451,6 @@ public class EnrollmentChecks implements BaseDomainObject {
      */
     public final void setLinks(final ArrayList<Link> links) {
         this.links = links;
-    }
-
-    /**
-     * Get a EnrollmentChecks builder.
-     *
-     * @return ProfileBuilder
-     */
-    public static final EnrollmentCheckBuilder builder() {
-        return new EnrollmentCheckBuilder();
     }
 
     /**

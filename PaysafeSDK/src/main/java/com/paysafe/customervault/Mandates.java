@@ -103,6 +103,14 @@ public class Mandates implements BaseDomainObject {
     @Expose
     private Id<SEPABankAccounts> sepaBankAccountId;
 
+    /**
+     * Get a MandatesBuilder builder.
+     *
+     * @return MandatesBuilder
+     */
+    public static final MandatesBuilder builder() {
+        return new MandatesBuilder();
+    }
 
     /**
      * Gets the id.
@@ -302,7 +310,6 @@ public class Mandates implements BaseDomainObject {
         this.sepaBankAccountId = sepaBankAccountId;
     }
 
-
     /* (non-Javadoc)
      * @see com.optimalpayments.common.impl.BaseDomainObject#getError()
      */
@@ -310,15 +317,6 @@ public class Mandates implements BaseDomainObject {
     public Error getError() {
         // TODO Auto-generated method stub
         return null;
-    }
-
-    /**
-     * Get a MandatesBuilder builder.
-     *
-     * @return MandatesBuilder
-     */
-    public static final MandatesBuilder builder() {
-        return new MandatesBuilder();
     }
 
     /**

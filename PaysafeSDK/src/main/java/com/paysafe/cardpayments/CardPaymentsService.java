@@ -41,64 +41,53 @@ import java.util.HashMap;
 public class CardPaymentsService {
 
     /**
-     * The client.
-     */
-    private final PaysafeApiClient client;
-
-    /**
      * The paths to different features in the API.
      */
     private static final String URI = "cardpayments/v1";
-
     /**
      * The Constant AUTH_PATH.
      */
     private static final String AUTH_PATH = "/auths/";
-
     /**
      * The Constant AUTH_REVERSAL_PATH.
      */
     private static final String AUTH_REVERSAL_PATH = "/voidauths/";
-
     /**
      * The Constant SETTLEMENT_PATH.
      */
     private static final String SETTLEMENT_PATH = "/settlements/";
-
     /**
      * The Constant REFUND_PATH.
      */
     private static final String REFUND_PATH = "/refunds/";
-
     /**
      * The Constant VERIFY_PATH.
      */
     private static final String VERIFY_PATH = "/verifications/";
-
     /**
      * The Constant MERCHANT_REF_NUM.
      */
     private static final String MERCHANT_REF_NUM = "merchantRefNum";
-
     /**
      * The Constant LIMIT.
      */
     private static final String LIMIT = "limit";
-
     /**
      * The Constant OFFSET.
      */
     private static final String OFFSET = "offset";
-
     /**
      * The Constant START_DATE.
      */
     private static final String START_DATE = "startDate";
-
     /**
      * The Constant END_DATE.
      */
     private static final String END_DATE = "endDate";
+    /**
+     * The client.
+     */
+    private final PaysafeApiClient client;
 
     /**
      * Instantiates a new card payment service.
@@ -145,6 +134,22 @@ public class CardPaymentsService {
                 .build();
 
         return client.processRequest(request, Authorization.class);
+    }
+
+    /**
+     * Prepare uri.
+     *
+     * @param path the path
+     * @return the string
+     * @throws PaysafeException the paysafe exception
+     */
+    private String prepareUri(final String path)
+    throws PaysafeException {
+        if (null == client.getAccount()) {
+            throw new PaysafeException("Missing or invalid account.");
+        }
+
+        return URI + "/accounts/" + client.getAccount() + path;
     }
 
     /**
@@ -356,19 +361,6 @@ public class CardPaymentsService {
     /**
      * Get matching authorizations.
      *
-     * @param auth the auth
-     * @return Pagerator< Authorization >
-     * @throws IOException      Signals that an I/O exception has occurred.
-     * @throws PaysafeException the paysafe exception
-     */
-    public final Pagerator<Authorization> getAuths(final Authorization auth)
-    throws IOException, PaysafeException {
-        return getAuths(auth, null);
-    }
-
-    /**
-     * Get matching authorizations.
-     *
      * @param auth   the auth
      * @param filter the filter
      * @return Pagerator< Authorization >
@@ -412,6 +404,19 @@ public class CardPaymentsService {
     }
 
     /**
+     * Get matching authorizations.
+     *
+     * @param auth the auth
+     * @return Pagerator< Authorization >
+     * @throws IOException      Signals that an I/O exception has occurred.
+     * @throws PaysafeException the paysafe exception
+     */
+    public final Pagerator<Authorization> getAuths(final Authorization auth)
+    throws IOException, PaysafeException {
+        return getAuths(auth, null);
+    }
+
+    /**
      * Get an auth reversal by id.
      *
      * @param id the id
@@ -441,20 +446,6 @@ public class CardPaymentsService {
     public final Pagerator<AuthorizationReversal> getAuthReversals()
     throws IOException, PaysafeException {
         return getAuthReversals(null, null);
-    }
-
-    /**
-     * Get matching authorization reversals.
-     *
-     * @param authReversal the auth reversal
-     * @return Pagerator< AuthorizationReversal >
-     * @throws IOException      Signals that an I/O exception has occurred.
-     * @throws PaysafeException the paysafe exception
-     */
-    public final Pagerator<AuthorizationReversal>
-    getAuthReversals(final AuthorizationReversal authReversal)
-    throws IOException, PaysafeException {
-        return getAuthReversals(authReversal, null);
     }
 
     /**
@@ -504,6 +495,20 @@ public class CardPaymentsService {
     }
 
     /**
+     * Get matching authorization reversals.
+     *
+     * @param authReversal the auth reversal
+     * @return Pagerator< AuthorizationReversal >
+     * @throws IOException      Signals that an I/O exception has occurred.
+     * @throws PaysafeException the paysafe exception
+     */
+    public final Pagerator<AuthorizationReversal>
+    getAuthReversals(final AuthorizationReversal authReversal)
+    throws IOException, PaysafeException {
+        return getAuthReversals(authReversal, null);
+    }
+
+    /**
      * Get an settlement by id.
      *
      * @param id the id
@@ -532,19 +537,6 @@ public class CardPaymentsService {
     public final Pagerator<Settlement> getSettlements()
     throws IOException, PaysafeException {
         return getSettlements(null, null);
-    }
-
-    /**
-     * Get matching settlements.
-     *
-     * @param settlement the settlement
-     * @return Pagerator< Settlement >
-     * @throws IOException      Signals that an I/O exception has occurred.
-     * @throws PaysafeException the paysafe exception
-     */
-    public final Pagerator<Settlement> getSettlements(final Settlement settlement)
-    throws IOException, PaysafeException {
-        return getSettlements(settlement, null);
     }
 
     /**
@@ -594,6 +586,19 @@ public class CardPaymentsService {
     }
 
     /**
+     * Get matching settlements.
+     *
+     * @param settlement the settlement
+     * @return Pagerator< Settlement >
+     * @throws IOException      Signals that an I/O exception has occurred.
+     * @throws PaysafeException the paysafe exception
+     */
+    public final Pagerator<Settlement> getSettlements(final Settlement settlement)
+    throws IOException, PaysafeException {
+        return getSettlements(settlement, null);
+    }
+
+    /**
      * Get an refund by id.
      *
      * @param id the id
@@ -622,19 +627,6 @@ public class CardPaymentsService {
     public final Pagerator<Refund> getRefunds()
     throws IOException, PaysafeException {
         return getRefunds(null, null);
-    }
-
-    /**
-     * Get matching refunds.
-     *
-     * @param refund the refund
-     * @return Pagerator< Refund >
-     * @throws IOException      Signals that an I/O exception has occurred.
-     * @throws PaysafeException the paysafe exception
-     */
-    public final Pagerator<Refund> getRefunds(final Refund refund)
-    throws IOException, PaysafeException {
-        return getRefunds(refund, null);
     }
 
     /**
@@ -684,6 +676,19 @@ public class CardPaymentsService {
     }
 
     /**
+     * Get matching refunds.
+     *
+     * @param refund the refund
+     * @return Pagerator< Refund >
+     * @throws IOException      Signals that an I/O exception has occurred.
+     * @throws PaysafeException the paysafe exception
+     */
+    public final Pagerator<Refund> getRefunds(final Refund refund)
+    throws IOException, PaysafeException {
+        return getRefunds(refund, null);
+    }
+
+    /**
      * Get an verification by id.
      *
      * @param id the id
@@ -712,19 +717,6 @@ public class CardPaymentsService {
     public final Pagerator<Verification> getVerifications()
     throws IOException, PaysafeException {
         return getVerifications(null, null);
-    }
-
-    /**
-     * Get matching verifications.
-     *
-     * @param verification the verification
-     * @return Pagerator< Verification >
-     * @throws IOException      Signals that an I/O exception has occurred.
-     * @throws PaysafeException the paysafe exception
-     */
-    public final Pagerator<Verification> getVerifications(final Verification verification)
-    throws IOException, PaysafeException {
-        return getVerifications(verification, null);
     }
 
     /**
@@ -774,18 +766,15 @@ public class CardPaymentsService {
     }
 
     /**
-     * Prepare uri.
+     * Get matching verifications.
      *
-     * @param path the path
-     * @return the string
+     * @param verification the verification
+     * @return Pagerator< Verification >
+     * @throws IOException      Signals that an I/O exception has occurred.
      * @throws PaysafeException the paysafe exception
      */
-    private String prepareUri(final String path)
-    throws PaysafeException {
-        if (null == client.getAccount()) {
-            throw new PaysafeException("Missing or invalid account.");
-        }
-
-        return URI + "/accounts/" + client.getAccount() + path;
+    public final Pagerator<Verification> getVerifications(final Verification verification)
+    throws IOException, PaysafeException {
+        return getVerifications(verification, null);
     }
 }

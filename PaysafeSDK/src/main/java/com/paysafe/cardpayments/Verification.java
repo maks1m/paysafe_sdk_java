@@ -147,6 +147,15 @@ public class Verification implements BaseDomainObject {
     private ArrayList<Link> links;
 
     /**
+     * Get a Verification builder.
+     *
+     * @return VerificationBuilder
+     */
+    public static final VerificationBuilder builder() {
+        return new VerificationBuilder();
+    }
+
+    /**
      * Gets the id.
      *
      * @return the id
@@ -521,15 +530,6 @@ public class Verification implements BaseDomainObject {
      */
     public final void setLinks(final ArrayList<Link> links) {
         this.links = links;
-    }
-
-    /**
-     * Get a Verification builder.
-     *
-     * @return VerificationBuilder
-     */
-    public static final VerificationBuilder builder() {
-        return new VerificationBuilder();
     }
 
     /**

@@ -120,6 +120,15 @@ public class BACSBankAccounts implements BaseDomainObject {
     private Id<Profile> profileId;
 
     /**
+     * Get a BACS Bank Account builder.
+     *
+     * @return BACSBankAccountBuilder
+     */
+    public static final BACSBankAccountBuilder builder() {
+        return new BACSBankAccountBuilder();
+    }
+
+    /**
      * Gets the id.
      *
      * @return the id
@@ -368,15 +377,6 @@ public class BACSBankAccounts implements BaseDomainObject {
      */
     public void setProfileId(final Id<Profile> profileId) {
         this.profileId = profileId;
-    }
-
-    /**
-     * Get a BACS Bank Account builder.
-     *
-     * @return BACSBankAccountBuilder
-     */
-    public static final BACSBankAccountBuilder builder() {
-        return new BACSBankAccountBuilder();
     }
 
     /**

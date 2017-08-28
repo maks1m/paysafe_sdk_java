@@ -38,29 +38,25 @@ import java.util.HashMap;
 public class ThreeDSecureService {
 
     /**
-     * The client.
-     */
-    private final PaysafeApiClient client;
-
-    /**
      * The paths to different features in the API.
      */
     private static final String URI = "threedsecure/v1";
-
     /**
      * The Constant AUTH_PATH.
      */
     private static final String AUTH_PATH = "/authentications";
-
     /**
      * The Constant URI_SEPARATOR.
      */
     private static final String URI_SEPARATOR = "/";
-
     /**
      * The Constant ENROLLMENT_CHECKS.
      */
     private static final String ENROLLMENT_CHECKS = "/enrollmentchecks/";
+    /**
+     * The client.
+     */
+    private final PaysafeApiClient client;
 
     /**
      * Instantiates a new 3D Secure service.
@@ -70,23 +66,6 @@ public class ThreeDSecureService {
     public ThreeDSecureService(final PaysafeApiClient client) {
         this.client = client;
     }
-
-
-    /**
-     * Prepare uri.
-     *
-     * @param path the path
-     * @return the string
-     * @throws PaysafeException the paysafe exception
-     */
-    private String prepareUri(final String path)
-    throws PaysafeException {
-        if (null == client.getAccount()) {
-            throw new PaysafeException("Missing or invalid account.");
-        }
-        return URI + "/accounts/" + client.getAccount() + path;
-    } // end of prepareUri()
-
 
     /**
      * Monitor.
@@ -128,6 +107,20 @@ public class ThreeDSecureService {
         return client.processRequest(request, EnrollmentChecks.class);
     } // end of submitRequest()
 
+    /**
+     * Prepare uri.
+     *
+     * @param path the path
+     * @return the string
+     * @throws PaysafeException the paysafe exception
+     */
+    private String prepareUri(final String path)
+    throws PaysafeException {
+        if (null == client.getAccount()) {
+            throw new PaysafeException("Missing or invalid account.");
+        }
+        return URI + "/accounts/" + client.getAccount() + path;
+    } // end of prepareUri()
 
     /**
      * Look Up an Enrollment Lookup Using an ID.

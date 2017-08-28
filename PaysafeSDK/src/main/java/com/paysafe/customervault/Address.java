@@ -78,6 +78,15 @@ public class Address extends AddressContainer implements BaseDomainObject {
     private Id<Profile> profileId;
 
     /**
+     * Get an address builder.
+     *
+     * @return AddressBuilder
+     */
+    public static final AddressBuilder builder() {
+        return new AddressBuilder();
+    }
+
+    /**
      * Gets the id.
      *
      * @return the id
@@ -201,15 +210,6 @@ public class Address extends AddressContainer implements BaseDomainObject {
      */
     public final void setProfileId(final Id<Profile> profileId) {
         this.profileId = profileId;
-    }
-
-    /**
-     * Get an address builder.
-     *
-     * @return AddressBuilder
-     */
-    public static final AddressBuilder builder() {
-        return new AddressBuilder();
     }
 
     /**

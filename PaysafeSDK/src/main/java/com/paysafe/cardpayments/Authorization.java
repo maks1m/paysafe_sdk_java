@@ -204,6 +204,15 @@ public class Authorization implements BaseDomainObject {
     private ArrayList<Link> links;
 
     /**
+     * Get an authorization builder.
+     *
+     * @return AuthorizationBuilder
+     */
+    public static final AuthorizationBuilder builder() {
+        return new AuthorizationBuilder();
+    }
+
+    /**
      * Gets the id.
      *
      * @return the id
@@ -760,54 +769,39 @@ public class Authorization implements BaseDomainObject {
     }
 
     /**
-     * Get an authorization builder.
-     *
-     * @return AuthorizationBuilder
-     */
-    public static final AuthorizationBuilder builder() {
-        return new AuthorizationBuilder();
-    }
-
-    /**
      * The builder class for Authorization.
      */
     public static class AuthorizationBuilder extends BaseBuilder<Authorization> {
 
         /**
+         * The authorization.
+         */
+        private final Authorization authorization = new Authorization();
+        /**
          * The card builder.
          */
         private Card.CardBuilder<AuthorizationBuilder> cardBuilder;
-
         /**
          * The authentication builder.
          */
         private Authentication.AuthenticationBuilder<AuthorizationBuilder> authenticationBuilder;
-
         /**
          * The billing details builder.
          */
         private BillingDetails.BillingDetailsBuilder<AuthorizationBuilder> billingDetailsBuilder;
-
         /**
          * The shipping details builder.
          */
         private ShippingDetails.ShippingDetailsBuilder<AuthorizationBuilder> shippingDetailsBuilder;
-
         /**
          * The merchant descriptor builder.
          */
         private MerchantDescriptor.MerchantDescriptorBuilder<
                 AuthorizationBuilder> merchantDescriptorBuilder;
-
         /**
          * The accord d builder.
          */
         private AccordD.AccordDBuilder<AuthorizationBuilder> accordDBuilder;
-
-        /**
-         * The authorization.
-         */
-        private final Authorization authorization = new Authorization();
 
         /**
          * Build this authorization object.

@@ -122,6 +122,14 @@ public class Purchases implements BaseDomainObject {
      */
     private Error error;
 
+    /**
+     * Get an Purchase builder.
+     *
+     * @return PurchaseBuilder
+     */
+    public static final PurchaseBuilder builder() {
+        return new PurchaseBuilder();
+    }
 
     /**
      * Gets the id.
@@ -285,7 +293,6 @@ public class Purchases implements BaseDomainObject {
         this.txnTime = txnTime;
     }
 
-
     /**
      * Gets the currency code.
      *
@@ -394,53 +401,38 @@ public class Purchases implements BaseDomainObject {
     }
 
     /**
-     * Get an Purchase builder.
-     *
-     * @return PurchaseBuilder
-     */
-    public static final PurchaseBuilder builder() {
-        return new PurchaseBuilder();
-    }
-
-    /**
      * The builder class for Purchase.
      */
     public static class PurchaseBuilder extends BaseBuilder<Purchases> {
 
         /**
+         * The purchases.
+         */
+        private final Purchases purchases = new Purchases();
+        /**
          * The profile builder.
          */
         private Profile.ProfileBuilder<PurchaseBuilder> profileBuilder;
-
         /**
          * The billing details builder.
          */
         private BillingDetails.BillingDetailsBuilder<PurchaseBuilder> billingDetailsBuilder;
-
         /**
          * The ach builder.
          */
         private ACH.ACHBuilder<PurchaseBuilder> achBuilder;
-
         /**
          * The eft builder.
          */
         private EFT.EFTBuilder<PurchaseBuilder> eftBuilder;
-
         /**
          * The bacs builder.
          */
         private BACS.BACSBuilder<PurchaseBuilder> bacsBuilder;
-
         /**
          * The sepa builder.
          */
         private SEPA.SEPABuilder<PurchaseBuilder> sepaBuilder;
-
-        /**
-         * The purchases.
-         */
-        private final Purchases purchases = new Purchases();
 
         /**
          * Build this Purchase object.

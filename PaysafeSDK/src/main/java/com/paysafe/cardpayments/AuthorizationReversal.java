@@ -100,6 +100,15 @@ public class AuthorizationReversal implements BaseDomainObject {
     private Id<Authorization> authorizationId;
 
     /**
+     * Get an AuthorizationReversal builder.
+     *
+     * @return AuthorizationReversalBuilder
+     */
+    public static final AuthorizationReversalBuilder builder() {
+        return new AuthorizationReversalBuilder();
+    }
+
+    /**
      * Gets the id.
      *
      * @return the id
@@ -312,15 +321,6 @@ public class AuthorizationReversal implements BaseDomainObject {
      */
     public final void setAuthorizationId(final Id<Authorization> authorizationId) {
         this.authorizationId = authorizationId;
-    }
-
-    /**
-     * Get an AuthorizationReversal builder.
-     *
-     * @return AuthorizationReversalBuilder
-     */
-    public static final AuthorizationReversalBuilder builder() {
-        return new AuthorizationReversalBuilder();
     }
 
     /**

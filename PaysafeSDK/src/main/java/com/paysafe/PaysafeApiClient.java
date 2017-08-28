@@ -74,37 +74,47 @@ public class PaysafeApiClient {
      * The key password.
      */
     private final String keyPassword;
-
+    /**
+     * The gson object used to deserialize the api response.
+     */
+    private final Gson gsonDeserializer;
     /**
      * The account number.
      */
     private String accountNumber;
-
     /**
      * The CardPaymentsService.
      */
     private CardPaymentsService cardPaymentService;
-
     /**
      * The CustomerVaultService.
      */
     private CustomerVaultService customerVaultService;
-
     /**
      * The DirectDebitService.
      */
     private DirectDebitService directDebitService;
-
     /**
      * The ThreeDSecureService.
      */
     private ThreeDSecureService threeDSecureService;
 
-
     /**
-     * The gson object used to deserialize the api response.
+     * Instantiates a new paysafe API client.
+     *
+     * @param keyId       the key id
+     * @param keyPassword the key password
+     * @param environment the environment
+     * @param account     the account number
      */
-    private final Gson gsonDeserializer;
+    public PaysafeApiClient(
+            final String keyId,
+            final String keyPassword,
+            final Environment environment,
+            final String account) {
+        this(keyId, keyPassword, environment);
+        this.setAccount(account);
+    }
 
     /**
      * Instantiates a new paysafe API client.
@@ -132,23 +142,6 @@ public class PaysafeApiClient {
                 Id.class,
                 new IdAdapter());
         gsonDeserializer = gsonBuilder.create();
-    }
-
-    /**
-     * Instantiates a new paysafe API client.
-     *
-     * @param keyId       the key id
-     * @param keyPassword the key password
-     * @param environment the environment
-     * @param account     the account number
-     */
-    public PaysafeApiClient(
-            final String keyId,
-            final String keyPassword,
-            final Environment environment,
-            final String account) {
-        this(keyId, keyPassword, environment);
-        this.setAccount(account);
     }
 
     /**
@@ -201,38 +194,6 @@ public class PaysafeApiClient {
     }
 
     /**
-     * Process error.
-     *
-     * @param code  the response code
-     * @param obj   the obj
-     * @param cause the original exception
-     * @return the exception
-     */
-    private PaysafeException getException(
-            final int code,
-            final BaseDomainObject obj,
-            final IOException cause) {
-        switch (code) {
-            case 400:
-                return new InvalidRequestException(obj, cause);
-            case 401:
-                return new InvalidCredentialsException(obj, cause);
-            case 402:
-                return new RequestDeclinedException(obj, cause);
-            case 403:
-                return new PermissionException(obj, cause);
-            case 404:
-                return new EntityNotFoundException(obj, cause);
-            case 409:
-                return new RequestConflictException(obj, cause);
-            case 406:
-            case 415:
-            default:
-                return new ApiException(obj, cause);
-        }
-    }
-
-    /**
      * Create a connection from a request and return a specified type.
      *
      * @param <T>        an extension of BaseDomainObject
@@ -274,6 +235,41 @@ public class PaysafeApiClient {
         } finally {
             connection.disconnect();
         }
+    }
+
+    /**
+     * Gets the base 64 encoded authenticated string.
+     *
+     * @return the authenticated string
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    private String getAuthenticatedString()
+    throws IOException {
+        return javax.xml.bind.DatatypeConverter.printBase64Binary(
+                (keyId + ':' + keyPassword).getBytes("UTF-8"));
+    }
+
+    /**
+     * Take a domain object, and json serialize it.
+     *
+     * @param request    the request
+     * @param returnType the return type
+     * @return json encoding of the request object
+     */
+    private String serializeObject(Request request, Class<?> returnType) {
+        final GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.excludeFieldsWithoutExposeAnnotation();
+        gsonBuilder.registerTypeHierarchyAdapter(
+                AddressContainer.class,
+                new AddressContainerAdapter());
+        gsonBuilder.registerTypeHierarchyAdapter(
+                Id.class,
+                new IdAdapter());
+        if (null != request.getSerializer()) {
+            gsonBuilder.registerTypeAdapter(returnType, request.getSerializer());
+        }
+        final Gson gson = gsonBuilder.create();
+        return gson.toJson(request.getBody());
     }
 
     /**
@@ -330,35 +326,35 @@ public class PaysafeApiClient {
     }
 
     /**
-     * Take a domain object, and json serialize it.
+     * Process error.
      *
-     * @param request    the request
-     * @param returnType the return type
-     * @return json encoding of the request object
+     * @param code  the response code
+     * @param obj   the obj
+     * @param cause the original exception
+     * @return the exception
      */
-    private String serializeObject(Request request, Class<?> returnType) {
-        final GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.excludeFieldsWithoutExposeAnnotation();
-        gsonBuilder.registerTypeHierarchyAdapter(
-                AddressContainer.class,
-                new AddressContainerAdapter());
-        gsonBuilder.registerTypeHierarchyAdapter(
-                Id.class,
-                new IdAdapter());
-        if (null != request.getSerializer()) {
-            gsonBuilder.registerTypeAdapter(returnType, request.getSerializer());
+    private PaysafeException getException(
+            final int code,
+            final BaseDomainObject obj,
+            final IOException cause) {
+        switch (code) {
+            case 400:
+                return new InvalidRequestException(obj, cause);
+            case 401:
+                return new InvalidCredentialsException(obj, cause);
+            case 402:
+                return new RequestDeclinedException(obj, cause);
+            case 403:
+                return new PermissionException(obj, cause);
+            case 404:
+                return new EntityNotFoundException(obj, cause);
+            case 409:
+                return new RequestConflictException(obj, cause);
+            case 406:
+            case 415:
+            default:
+                return new ApiException(obj, cause);
         }
-        final Gson gson = gsonBuilder.create();
-        return gson.toJson(request.getBody());
-    }
-
-    /**
-     * Sets the account.
-     *
-     * @param accountNumber the new account
-     */
-    public final void setAccount(String accountNumber) {
-        this.accountNumber = accountNumber;
     }
 
     /**
@@ -371,14 +367,11 @@ public class PaysafeApiClient {
     }
 
     /**
-     * Gets the base 64 encoded authenticated string.
+     * Sets the account.
      *
-     * @return the authenticated string
-     * @throws IOException Signals that an I/O exception has occurred.
+     * @param accountNumber the new account
      */
-    private String getAuthenticatedString()
-    throws IOException {
-        return javax.xml.bind.DatatypeConverter.printBase64Binary(
-                (keyId + ':' + keyPassword).getBytes("UTF-8"));
+    public final void setAccount(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
 }

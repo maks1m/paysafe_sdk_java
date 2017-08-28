@@ -51,20 +51,24 @@ public class Id<T extends BaseDomainObject> {
     }
 
     /**
+     * Instantiate a new id object.
+     *
+     * @param <U>       the generic type
+     * @param id        the id
+     * @param classType the class type
+     * @return Id< U >
+     */
+    public static final <U extends BaseDomainObject> Id<U> create(String id, Class<U> classType) {
+        return new Id<U>(id, classType);
+    }
+
+    /**
      * Get the generic type associated with this object.
      *
      * @return Class< T >
      */
     public Class<T> getType() {
         return type;
-    }
-
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return id;
     }
 
     /* (non-Javadoc)
@@ -114,15 +118,11 @@ public class Id<T extends BaseDomainObject> {
         return true;
     }
 
-    /**
-     * Instantiate a new id object.
-     *
-     * @param <U>       the generic type
-     * @param id        the id
-     * @param classType the class type
-     * @return Id< U >
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
      */
-    public static final <U extends BaseDomainObject> Id<U> create(String id, Class<U> classType) {
-        return new Id<U>(id, classType);
+    @Override
+    public String toString() {
+        return id;
     }
 }

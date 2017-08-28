@@ -24,49 +24,41 @@ import java.util.HashMap;
 public class DirectDebitService {
 
     /**
-     * The client.
-     */
-    private final PaysafeApiClient client;
-
-    /**
      * The Constant PURCHASE_PATH.
      */
     private static final String PURCHASE_PATH = "/purchases/";
-
     /**
      * The Constant MERCHANT_REF_NUMBER.
      */
     private static final String MERCHANT_REF_NUMBER = "merchantRefNum";
-
     /**
      * The Constant ACCOUNTS.
      */
     private static final String ACCOUNTS = "/accounts/";
-
     /**
      * The Constant CREDIT_REQUEST_PATH.
      */
     private static final String CREDIT_REQUEST_PATH = "/standalonecredits/";
-
     /**
      * The Constant LIMIT.
      */
     private static final String LIMIT = "limit";
-
     /**
      * The Constant OFFSET.
      */
     private static final String OFFSET = "offset";
-
     /**
      * The Constant START_DATE.
      */
     private static final String START_DATE = "startDate";
-
     /**
      * The Constant END_DATE.
      */
     private static final String END_DATE = "endDate";
+    /**
+     * The client.
+     */
+    private final PaysafeApiClient client;
 
 
     /**
@@ -116,6 +108,18 @@ public class DirectDebitService {
     }
 
     /**
+     * Prepare uri.
+     *
+     * @param path the path
+     * @return the string
+     * @throws PaysafeException the paysafe exception
+     */
+    private String prepareUri(String path)
+    throws PaysafeException {
+        return "directdebit/v1" + path;
+    }
+
+    /**
      * Cancel Purchase.
      *
      * @param purchases the purchases
@@ -156,7 +160,6 @@ public class DirectDebitService {
         returnVal.setId(purchases.getId());
         return returnVal;
     }
-
 
     /**
      * Get Purchases using merchant reference number.
@@ -222,7 +225,6 @@ public class DirectDebitService {
         return returnVal;
     }
 
-
     /**
      * Cancel StandaloneCredits.
      *
@@ -244,7 +246,6 @@ public class DirectDebitService {
         return returnVal;
     }
 
-
     /**
      * Get StandaloneCredit.
      *
@@ -265,7 +266,6 @@ public class DirectDebitService {
         returnVal.setId(standalonecredits.getId());
         return returnVal;
     }
-
 
     /**
      * Get StandaloneCredits using merchant reference number.
@@ -309,18 +309,6 @@ public class DirectDebitService {
                 = client.processRequest(request, StandaloneCreditsPagerator.class);
         response.setClient(client);
         return response;
-    }
-
-    /**
-     * Prepare uri.
-     *
-     * @param path the path
-     * @return the string
-     * @throws PaysafeException the paysafe exception
-     */
-    private String prepareUri(String path)
-    throws PaysafeException {
-        return "directdebit/v1" + path;
     }
 }
 

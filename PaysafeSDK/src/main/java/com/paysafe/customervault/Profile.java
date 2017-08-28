@@ -169,6 +169,15 @@ public class Profile implements BaseDomainObject {
     private Error error;
 
     /**
+     * Get a profile builder.
+     *
+     * @return ProfileBuilder
+     */
+    public static final ProfileBuilder builder() {
+        return new ProfileBuilder();
+    }
+
+    /**
      * Gets the id.
      *
      * @return the id
@@ -579,16 +588,6 @@ public class Profile implements BaseDomainObject {
      */
     public void setSepaBankAccounts(ArrayList<SEPABankAccounts> sepaBankAccounts) {
         this.sepaBankAccounts = sepaBankAccounts;
-    }
-
-
-    /**
-     * Get a profile builder.
-     *
-     * @return ProfileBuilder
-     */
-    public static final ProfileBuilder builder() {
-        return new ProfileBuilder();
     }
 
     /**

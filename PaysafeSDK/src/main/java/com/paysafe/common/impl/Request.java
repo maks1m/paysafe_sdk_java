@@ -33,6 +33,29 @@ import java.util.HashMap;
 public class Request {
 
     /**
+     * The body.
+     */
+    private BaseDomainObject body;
+    /**
+     * The method.
+     */
+    private RequestType method;
+    /**
+     * The query str.
+     */
+    private HashMap<String, String> queryStr;
+    /**
+     * The uri.
+     */
+    private String uri;
+    /**
+     * The serializer.
+     */
+
+    @SuppressWarnings("rawtypes")
+    private JsonSerializer serializer;
+
+    /**
      * Instantiates a new request.
      */
     private Request() {
@@ -40,31 +63,13 @@ public class Request {
     }
 
     /**
-     * The body.
+     * Allow easy building of request objects.
+     *
+     * @return RequestBuilder
      */
-    private BaseDomainObject body;
-
-    /**
-     * The method.
-     */
-    private RequestType method;
-
-    /**
-     * The query str.
-     */
-    private HashMap<String, String> queryStr;
-
-    /**
-     * The uri.
-     */
-    private String uri;
-
-    /**
-     * The serializer.
-     */
-
-    @SuppressWarnings("rawtypes")
-    private JsonSerializer serializer;
+    public static final RequestBuilder builder() {
+        return new RequestBuilder();
+    }
 
     /**
      * Get the body to be serialized.
@@ -109,16 +114,6 @@ public class Request {
     }
 
     /**
-     * Gets the serializer.
-     *
-     * @return the serializer
-     */
-    @SuppressWarnings("rawtypes")
-    public JsonSerializer getSerializer() {
-        return serializer;
-    }
-
-    /**
      * Builds the query string.
      *
      * @return the string
@@ -149,12 +144,37 @@ public class Request {
     }
 
     /**
-     * Allow easy building of request objects.
+     * Gets the serializer.
      *
-     * @return RequestBuilder
+     * @return the serializer
      */
-    public static final RequestBuilder builder() {
-        return new RequestBuilder();
+    @SuppressWarnings("rawtypes")
+    public JsonSerializer getSerializer() {
+        return serializer;
+    }
+
+    /**
+     * The Enum RequestType.
+     */
+    public enum RequestType {
+
+        /**
+         * The delete.
+         */
+        DELETE,
+        /**
+         * The get.
+         */
+        GET,
+        /**
+         * The post.
+         */
+        POST,
+        /**
+         * The put.
+         */
+        PUT;
+
     }
 
     /**
@@ -231,30 +251,6 @@ public class Request {
             request.queryStr = queryStr;
             return this;
         }
-    }
-
-    /**
-     * The Enum RequestType.
-     */
-    public enum RequestType {
-
-        /**
-         * The delete.
-         */
-        DELETE,
-        /**
-         * The get.
-         */
-        GET,
-        /**
-         * The post.
-         */
-        POST,
-        /**
-         * The put.
-         */
-        PUT;
-
     }
 
 }

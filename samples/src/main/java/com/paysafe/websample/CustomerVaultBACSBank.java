@@ -45,6 +45,14 @@ public class CustomerVaultBACSBank extends PaysafeServletBase {
      */
     private static final long serialVersionUID = 1L;
 
+    public static String sixDigitRandomNumber() {
+        Random rand = new Random();
+
+        int num = rand.nextInt(900000) + 100000;
+        return "" + num;
+
+    }
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
     throws IOException, ServletException {
@@ -139,14 +147,6 @@ public class CustomerVaultBACSBank extends PaysafeServletBase {
             RequestDispatcher view = request.getRequestDispatcher("CustomerVaultBACSBank.jsp");
             view.forward(request, response);
         }
-
-    }
-
-    public static String sixDigitRandomNumber() {
-        Random rand = new Random();
-
-        int num = rand.nextInt(900000) + 100000;
-        return "" + num;
 
     }
 

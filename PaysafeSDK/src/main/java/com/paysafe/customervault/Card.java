@@ -128,6 +128,15 @@ public class Card implements BaseDomainObject {
     private Id<Profile> profileId;
 
     /**
+     * Get a card builder.
+     *
+     * @return CardBuilder
+     */
+    public static final CardBuilder builder() {
+        return new CardBuilder();
+    }
+
+    /**
      * Gets the id.
      *
      * @return the id
@@ -415,15 +424,6 @@ public class Card implements BaseDomainObject {
     }
 
     /**
-     * Get a card builder.
-     *
-     * @return CardBuilder
-     */
-    public static final CardBuilder builder() {
-        return new CardBuilder();
-    }
-
-    /**
      * The builder class for Card.
      */
     public static class CardBuilder extends BaseBuilder<Card> {
@@ -566,14 +566,6 @@ public class Card implements BaseDomainObject {
             super(parent);
         }
 
-        /* (non-Javadoc)
-         * @see com.optimalpayments.common.impl.BaseBuilder#build()
-         */
-        @Override
-        public Card build() {
-            return card;
-        }
-
         /**
          * Single use token.
          *
@@ -583,7 +575,15 @@ public class Card implements BaseDomainObject {
         public final CardBuilderSingleUse<BLDRT> singleUseToken(final String singleUseToken) {
             card.setSingleUseToken(singleUseToken);
             return this;
+        }        /* (non-Javadoc)
+         * @see com.optimalpayments.common.impl.BaseBuilder#build()
+         */
+        @Override
+        public Card build() {
+            return card;
         }
+
+
 
     }
 }

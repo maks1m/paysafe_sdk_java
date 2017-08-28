@@ -37,20 +37,20 @@ public abstract class NestedBuilder<
     protected BLDRT parent;
 
     /**
-     * Done.
-     *
-     * @return the bldrt
-     */
-    public final BLDRT done() {
-        return parent;
-    }
-
-    /**
      * Instantiates a new nested builder.
      *
      * @param parent the parent
      */
     public NestedBuilder(final BLDRT parent) {
         this.parent = parent;
+    }
+
+    /**
+     * Done.
+     *
+     * @return the bldrt
+     */
+    public final BLDRT done() {
+        return parent;
     }
 }

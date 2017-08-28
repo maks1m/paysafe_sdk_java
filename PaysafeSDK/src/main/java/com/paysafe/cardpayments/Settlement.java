@@ -104,6 +104,15 @@ public class Settlement implements BaseDomainObject {
     private Id<Authorization> authorizationId;
 
     /**
+     * Get a Settlement builder.
+     *
+     * @return SettlementBuilder
+     */
+    public static final SettlementBuilder builder() {
+        return new SettlementBuilder();
+    }
+
+    /**
      * Gets the id.
      *
      * @return the id
@@ -334,15 +343,6 @@ public class Settlement implements BaseDomainObject {
      */
     public final void setAuthorizationId(final Id<Authorization> authorizationId) {
         this.authorizationId = authorizationId;
-    }
-
-    /**
-     * Get a Settlement builder.
-     *
-     * @return SettlementBuilder
-     */
-    public static final SettlementBuilder builder() {
-        return new SettlementBuilder();
     }
 
     /**

@@ -35,54 +35,45 @@ import java.util.HashMap;
 public class CustomerVaultService {
 
     /**
-     * The client.
-     */
-    private final PaysafeApiClient client;
-
-    /**
      * The paths to different features in the API.
      */
     private static final String URI = "customervault/v1";
-
     /**
      * The Constant PROFILE_PATH.
      */
     private static final String PROFILE_PATH = "/profiles/";
-
     /**
      * The Constant ADDRESS_PATH.
      */
     private static final String ADDRESS_PATH = "/addresses/";
-
     /**
      * The Constant CARD_PATH.
      */
     private static final String CARD_PATH = "/cards/";
-
     /**
      * The Constant ACHBANKACCOUNTS_PATH.
      */
     private static final String ACHBANKACCOUNTS_PATH = "/achbankaccounts/";
-
     /**
      * The Constant BACSBANKACCOUNTS_PATH.
      */
     private static final String BACSBANKACCOUNTS_PATH = "/bacsbankaccounts/";
-
     /**
      * The Constant EFTBANKACCOUNTS_PATH.
      */
     private static final String EFTBANKACCOUNTS_PATH = "/eftbankaccounts/";
-
     /**
      * The Constant SEPABANKACCOUNTS_PATH.
      */
     private static final String SEPABANKACCOUNTS_PATH = "/sepabankaccounts/";
-
     /**
      * The Constant MANDATES.
      */
     private static final String MANDATES = "/mandates/";
+    /**
+     * The client.
+     */
+    private final PaysafeApiClient client;
 
     /**
      * Instantiates a new customer vault service.
@@ -130,6 +121,18 @@ public class CustomerVaultService {
                 .build();
 
         return client.processRequest(request, Profile.class);
+    }
+
+    /**
+     * Prepare uri.
+     *
+     * @param path the path
+     * @return the String
+     * @throws PaysafeException the paysafe exception
+     */
+    private String prepareUri(final String path)
+    throws PaysafeException {
+        return URI + path;
     }
 
     /**
@@ -268,7 +271,6 @@ public class CustomerVaultService {
         return returnVal;
     }
 
-
     /**
      * Create a Mandates.
      *
@@ -361,7 +363,6 @@ public class CustomerVaultService {
         returnVal.setProfileId(card.getProfileId());
         return returnVal;
     }
-
 
     /**
      * Update ACHBankAccounts.
@@ -477,7 +478,6 @@ public class CustomerVaultService {
         return returnVal;
 
     }
-
 
     /**
      * Delete a Profile.
@@ -649,45 +649,6 @@ public class CustomerVaultService {
     }
 
     /**
-     * Get a Profile.
-     *
-     * @param profile          the profile
-     * @param includeAddresses indicate whether to include addresses in response
-     * @param includeCards     indicate whether to include cards in response
-     * @return Profile
-     * @throws IOException      Signals that an I/O exception has occurred.
-     * @throws PaysafeException the paysafe exception
-     */
-    public final Profile
-    lookup(final Profile profile, final boolean includeAddresses, final boolean includeCards)
-    throws IOException, PaysafeException {
-
-        final HashMap<String, String> queryStr = new HashMap<String, String>();
-        final StringBuilder toInclude = new StringBuilder();
-        if (includeAddresses) {
-            toInclude.append("addresses");
-        }
-        if (includeCards) {
-            if (toInclude.length() > 0) {
-                toInclude.append(",");
-            }
-            toInclude.append("cards");
-        }
-        if (toInclude.length() > 0) {
-            queryStr.put("fields", toInclude.toString());
-        }
-
-        final Request request = Request.builder()
-                .uri(prepareUri(PROFILE_PATH + profile.getId()))
-                .method(Request.RequestType.GET)
-                .queryStr(queryStr)
-                .build();
-
-        Profile returnval = client.processRequest(request, Profile.class);
-        return returnval;
-    }
-
-    /**
      * Get a Profile using subcomponent.
      *
      * @param profile                 the profile
@@ -769,6 +730,45 @@ public class CustomerVaultService {
     public final Profile lookup(final Profile profile, final boolean includeAddresses)
     throws IOException, PaysafeException {
         return lookup(profile, includeAddresses, false);
+    }
+
+    /**
+     * Get a Profile.
+     *
+     * @param profile          the profile
+     * @param includeAddresses indicate whether to include addresses in response
+     * @param includeCards     indicate whether to include cards in response
+     * @return Profile
+     * @throws IOException      Signals that an I/O exception has occurred.
+     * @throws PaysafeException the paysafe exception
+     */
+    public final Profile
+    lookup(final Profile profile, final boolean includeAddresses, final boolean includeCards)
+    throws IOException, PaysafeException {
+
+        final HashMap<String, String> queryStr = new HashMap<String, String>();
+        final StringBuilder toInclude = new StringBuilder();
+        if (includeAddresses) {
+            toInclude.append("addresses");
+        }
+        if (includeCards) {
+            if (toInclude.length() > 0) {
+                toInclude.append(",");
+            }
+            toInclude.append("cards");
+        }
+        if (toInclude.length() > 0) {
+            queryStr.put("fields", toInclude.toString());
+        }
+
+        final Request request = Request.builder()
+                .uri(prepareUri(PROFILE_PATH + profile.getId()))
+                .method(Request.RequestType.GET)
+                .queryStr(queryStr)
+                .build();
+
+        Profile returnval = client.processRequest(request, Profile.class);
+        return returnval;
     }
 
     /**
@@ -926,19 +926,6 @@ public class CustomerVaultService {
                 .build();
         Mandates returnVal = (Mandates) this.client.processRequest(request, Mandates.class);
         return returnVal;
-    }
-
-
-    /**
-     * Prepare uri.
-     *
-     * @param path the path
-     * @return the String
-     * @throws PaysafeException the paysafe exception
-     */
-    private String prepareUri(final String path)
-    throws PaysafeException {
-        return URI + path;
     }
 
 }

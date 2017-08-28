@@ -33,86 +33,91 @@ import java.lang.reflect.Type;
 import java.util.Map;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * AddressContainerAdapter class used to properly serialize addressDetails node.
  */
 public class AddressContainerAdapter implements
         JsonSerializer<AddressContainer>, JsonDeserializer<AddressContainer> {
-  
-  /** The gson serializer. */
-  private final Gson gsonSerializer;
-  
-  /** The gson deserializer. */
-  private final Gson gsonDeserializer;
-  
-  /**
-   * Instantiates a new address container adapter.
-   */
-  public AddressContainerAdapter() {
-    final GsonBuilder gsonSerializerBuilder = new GsonBuilder();
-    gsonSerializerBuilder.excludeFieldsWithoutExposeAnnotation();
-    gsonSerializerBuilder.registerTypeHierarchyAdapter(
-            Id.class,
-            new IdAdapter());
-    gsonSerializerBuilder.registerTypeHierarchyAdapter(
-            Boolean.class,
-            new BooleanAdapter());
-    gsonSerializer = gsonSerializerBuilder.create();
-    
-    final GsonBuilder gsonDeserializerBuilder = new GsonBuilder();
-    gsonDeserializerBuilder.registerTypeHierarchyAdapter(
-            Id.class,
-            new IdAdapter());
-    gsonDeserializer = gsonDeserializerBuilder.create();
-  }
 
-  /**
-   * Serialize the object with all addressDetails properties within the base object.
-   *
-   * @param addressContainer the address container
-   * @param typeOfSrc the type of src
-   * @param context the context
-   * @return the json element
-   */
-  @Override
-  public JsonElement serialize(
-          final AddressContainer addressContainer,
-          final Type typeOfSrc,
-          final JsonSerializationContext context) {
+    /**
+     * The gson serializer.
+     */
+    private final Gson gsonSerializer;
 
-    
-    final JsonElement base = gsonSerializer.toJsonTree(addressContainer);
-    if (base.isJsonObject()) {
-      final JsonObject baseObj = base.getAsJsonObject();
-      if (baseObj.has("addressDetails")) {
-        final JsonElement details = baseObj.get("addressDetails");
-        baseObj.remove("addressDetails");
-        for (Map.Entry<String, JsonElement> entry : details.getAsJsonObject().entrySet()) {
-          baseObj.add(entry.getKey(), entry.getValue());
-        }
-      }
+    /**
+     * The gson deserializer.
+     */
+    private final Gson gsonDeserializer;
+
+    /**
+     * Instantiates a new address container adapter.
+     */
+    public AddressContainerAdapter() {
+        final GsonBuilder gsonSerializerBuilder = new GsonBuilder();
+        gsonSerializerBuilder.excludeFieldsWithoutExposeAnnotation();
+        gsonSerializerBuilder.registerTypeHierarchyAdapter(
+                Id.class,
+                new IdAdapter());
+        gsonSerializerBuilder.registerTypeHierarchyAdapter(
+                Boolean.class,
+                new BooleanAdapter());
+        gsonSerializer = gsonSerializerBuilder.create();
+
+        final GsonBuilder gsonDeserializerBuilder = new GsonBuilder();
+        gsonDeserializerBuilder.registerTypeHierarchyAdapter(
+                Id.class,
+                new IdAdapter());
+        gsonDeserializer = gsonDeserializerBuilder.create();
     }
-    return base;
-  }
 
-  /**
-   * Deserialize with all properties correctly set within the addressDetails node.
-   *
-   * @param json the json
-   * @param typeOfT the type of t
-   * @param context the context
-   * @return the address container
-   */
-  @Override
-  public AddressContainer deserialize(
-          JsonElement json,
-          Type typeOfT,
-          JsonDeserializationContext context) {
-    AddressDetails addressDetails = gsonDeserializer.fromJson(json, AddressDetails.class);
-    AddressContainer address = gsonDeserializer.fromJson(json, typeOfT);
+    /**
+     * Serialize the object with all addressDetails properties within the base object.
+     *
+     * @param addressContainer the address container
+     * @param typeOfSrc        the type of src
+     * @param context          the context
+     * @return the json element
+     */
+    @Override
+    public JsonElement serialize(
+            final AddressContainer addressContainer,
+            final Type typeOfSrc,
+            final JsonSerializationContext context) {
 
-    address.setAddressDetails(addressDetails);
 
-    return address;
-  }
+        final JsonElement base = gsonSerializer.toJsonTree(addressContainer);
+        if (base.isJsonObject()) {
+            final JsonObject baseObj = base.getAsJsonObject();
+            if (baseObj.has("addressDetails")) {
+                final JsonElement details = baseObj.get("addressDetails");
+                baseObj.remove("addressDetails");
+                for (Map.Entry<String, JsonElement> entry : details.getAsJsonObject().entrySet()) {
+                    baseObj.add(entry.getKey(), entry.getValue());
+                }
+            }
+        }
+        return base;
+    }
+
+    /**
+     * Deserialize with all properties correctly set within the addressDetails node.
+     *
+     * @param json    the json
+     * @param typeOfT the type of t
+     * @param context the context
+     * @return the address container
+     */
+    @Override
+    public AddressContainer deserialize(
+            JsonElement json,
+            Type typeOfT,
+            JsonDeserializationContext context) {
+        AddressDetails addressDetails = gsonDeserializer.fromJson(json, AddressDetails.class);
+        AddressContainer address = gsonDeserializer.fromJson(json, typeOfT);
+
+        address.setAddressDetails(addressDetails);
+
+        return address;
+    }
 }

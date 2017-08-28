@@ -24,238 +24,253 @@ import com.paysafe.common.impl.GenericBuilder;
 import com.paysafe.common.impl.NestedBuilder;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class Authentication.
  */
 public class Authentication implements DomainObject {
 
-  /** The eci. */
-  @Expose
-  private Integer eci;
-  
-  /** The cavv. */
-  @Expose
-  private String cavv;
-  
-  /** The xid. */
-  @Expose
-  private String xid;
-  
-  /** The three d enrollment. */
-  @Expose
-  private String threeDEnrollment;
-  
-  /** The three d result. */
-  @Expose
-  private String threeDResult;
-  
-  /** The signature status. */
-  @Expose
-  private String signatureStatus;
-
-  /**
-   * Gets the eci.
-   *
-   * @return the eci
-   */
-  public final Integer getEci() {
-    return eci;
-  }
-
-  /**
-   * Sets the eci.
-   *
-   * @param eci the new eci
-   */
-  public final void setEci(final Integer eci) {
-    this.eci = eci;
-  }
-
-  /**
-   * Gets the cavv.
-   *
-   * @return the cavv
-   */
-  public final String getCavv() {
-    return cavv;
-  }
-
-  /**
-   * Sets the cavv.
-   *
-   * @param cavv the new cavv
-   */
-  public final void setCavv(final String cavv) {
-    this.cavv = cavv;
-  }
-
-  /**
-   * Gets the xid.
-   *
-   * @return the xid
-   */
-  public final String getXid() {
-    return xid;
-  }
-
-  /**
-   * Sets the xid.
-   *
-   * @param xid the new xid
-   */
-  public final void setXid(final String xid) {
-    this.xid = xid;
-  }
-
-  /**
-   * Gets the three d enrollment.
-   *
-   * @return the three d enrollment
-   */
-  public final String getThreeDEnrollment() {
-    return threeDEnrollment;
-  }
-
-  /**
-   * Sets the three d enrollment.
-   *
-   * @param threeDEnrollment the new three d enrollment
-   */
-  public final void setThreeDEnrollment(final String threeDEnrollment) {
-    this.threeDEnrollment = threeDEnrollment;
-  }
-
-  /**
-   * Gets the three d result.
-   *
-   * @return the three d result
-   */
-  public final String getThreeDResult() {
-    return threeDResult;
-  }
-
-  /**
-   * Sets the three d result.
-   *
-   * @param threeDResult the new three d result
-   */
-  public final void setThreeDResult(final String threeDResult) {
-    this.threeDResult = threeDResult;
-  }
-
-  /**
-   * Gets the signature status.
-   *
-   * @return the signature status
-   */
-  public final String getSignatureStatus() {
-    return signatureStatus;
-  }
-
-  /**
-   * Sets the signature status.
-   *
-   * @param signatureStatus the new signature status
-   */
-  public final void setSignatureStatus(final String signatureStatus) {
-    this.signatureStatus = signatureStatus;
-  }
-
-  /**
-   * The sub-builder class for Authentication.
-   *
-   * @param <BLDRT> the parent builder
-   */
-  public static class AuthenticationBuilder<BLDRT extends GenericBuilder>
-          extends NestedBuilder<Authentication, BLDRT> {
-
-    /** The authentication. */
-    private final Authentication authentication = new Authentication();
+    /**
+     * The eci.
+     */
+    @Expose
+    private Integer eci;
 
     /**
-     * Instantiates a new authentication builder.
-     *
-     * @param parent the parent
+     * The cavv.
      */
-    public AuthenticationBuilder(final BLDRT parent) {
-      super(parent);
+    @Expose
+    private String cavv;
+
+    /**
+     * The xid.
+     */
+    @Expose
+    private String xid;
+
+    /**
+     * The three d enrollment.
+     */
+    @Expose
+    private String threeDEnrollment;
+
+    /**
+     * The three d result.
+     */
+    @Expose
+    private String threeDResult;
+
+    /**
+     * The signature status.
+     */
+    @Expose
+    private String signatureStatus;
+
+    /**
+     * Gets the eci.
+     *
+     * @return the eci
+     */
+    public final Integer getEci() {
+        return eci;
     }
 
     /**
-     * Build this authentication object.
+     * Sets the eci.
      *
-     * @return Authentication
+     * @param eci the new eci
      */
-    @Override
-    public final Authentication build() {
-      return authentication;
+    public final void setEci(final Integer eci) {
+        this.eci = eci;
     }
 
     /**
-     * Set the eci property.
+     * Gets the cavv.
      *
-     * @param eci the eci
-     * @return AuthenticationBuilder< BLDRT >
+     * @return the cavv
      */
-    public final AuthenticationBuilder<BLDRT> eci(final Integer eci) {
-      authentication.setEci(eci);
-      return this;
+    public final String getCavv() {
+        return cavv;
     }
 
     /**
-     * Set the cavv property.
+     * Sets the cavv.
      *
-     * @param cavv the cavv
-     * @return AuthenticationBuilder< BLDRT >
+     * @param cavv the new cavv
      */
-    public final AuthenticationBuilder<BLDRT> cavv(final String cavv) {
-      authentication.setCavv(cavv);
-      return this;
+    public final void setCavv(final String cavv) {
+        this.cavv = cavv;
     }
 
     /**
-     * Set the xid property.
+     * Gets the xid.
      *
-     * @param xid the xid
-     * @return AuthenticationBuilder< BLDRT >
+     * @return the xid
      */
-    public final AuthenticationBuilder<BLDRT> xid(
-            final String xid) {
-      authentication.setXid(xid);
-      return this;
+    public final String getXid() {
+        return xid;
     }
 
     /**
-     * Set the threeDEnrollment property.
+     * Sets the xid.
      *
-     * @param threeDEnrollment the three d enrollment
-     * @return AuthenticationBuilder< BLDRT >
+     * @param xid the new xid
      */
-    public final AuthenticationBuilder<BLDRT> threeDEnrollment(final String threeDEnrollment) {
-      authentication.setThreeDEnrollment(threeDEnrollment);
-      return this;
+    public final void setXid(final String xid) {
+        this.xid = xid;
     }
 
     /**
-     * Set the threeDResult property.
+     * Gets the three d enrollment.
      *
-     * @param threeDResult the three d result
-     * @return AuthenticationBuilder< BLDRT >
+     * @return the three d enrollment
      */
-    public final AuthenticationBuilder<BLDRT> threeDResult(final String threeDResult) {
-      authentication.setThreeDResult(threeDResult);
-      return this;
+    public final String getThreeDEnrollment() {
+        return threeDEnrollment;
     }
 
     /**
-     * Set the signatureStatus property.
+     * Sets the three d enrollment.
      *
-     * @param signatureStatus the signature status
-     * @return AuthenticationBuilder< BLDRT >
+     * @param threeDEnrollment the new three d enrollment
      */
-    public final AuthenticationBuilder<BLDRT> signatureStatus(final String signatureStatus) {
-      authentication.setSignatureStatus(signatureStatus);
-      return this;
+    public final void setThreeDEnrollment(final String threeDEnrollment) {
+        this.threeDEnrollment = threeDEnrollment;
     }
-  }
+
+    /**
+     * Gets the three d result.
+     *
+     * @return the three d result
+     */
+    public final String getThreeDResult() {
+        return threeDResult;
+    }
+
+    /**
+     * Sets the three d result.
+     *
+     * @param threeDResult the new three d result
+     */
+    public final void setThreeDResult(final String threeDResult) {
+        this.threeDResult = threeDResult;
+    }
+
+    /**
+     * Gets the signature status.
+     *
+     * @return the signature status
+     */
+    public final String getSignatureStatus() {
+        return signatureStatus;
+    }
+
+    /**
+     * Sets the signature status.
+     *
+     * @param signatureStatus the new signature status
+     */
+    public final void setSignatureStatus(final String signatureStatus) {
+        this.signatureStatus = signatureStatus;
+    }
+
+    /**
+     * The sub-builder class for Authentication.
+     *
+     * @param <BLDRT> the parent builder
+     */
+    public static class AuthenticationBuilder<BLDRT extends GenericBuilder>
+            extends NestedBuilder<Authentication, BLDRT> {
+
+        /**
+         * The authentication.
+         */
+        private final Authentication authentication = new Authentication();
+
+        /**
+         * Instantiates a new authentication builder.
+         *
+         * @param parent the parent
+         */
+        public AuthenticationBuilder(final BLDRT parent) {
+            super(parent);
+        }
+
+        /**
+         * Build this authentication object.
+         *
+         * @return Authentication
+         */
+        @Override
+        public final Authentication build() {
+            return authentication;
+        }
+
+        /**
+         * Set the eci property.
+         *
+         * @param eci the eci
+         * @return AuthenticationBuilder< BLDRT >
+         */
+        public final AuthenticationBuilder<BLDRT> eci(final Integer eci) {
+            authentication.setEci(eci);
+            return this;
+        }
+
+        /**
+         * Set the cavv property.
+         *
+         * @param cavv the cavv
+         * @return AuthenticationBuilder< BLDRT >
+         */
+        public final AuthenticationBuilder<BLDRT> cavv(final String cavv) {
+            authentication.setCavv(cavv);
+            return this;
+        }
+
+        /**
+         * Set the xid property.
+         *
+         * @param xid the xid
+         * @return AuthenticationBuilder< BLDRT >
+         */
+        public final AuthenticationBuilder<BLDRT> xid(
+                final String xid) {
+            authentication.setXid(xid);
+            return this;
+        }
+
+        /**
+         * Set the threeDEnrollment property.
+         *
+         * @param threeDEnrollment the three d enrollment
+         * @return AuthenticationBuilder< BLDRT >
+         */
+        public final AuthenticationBuilder<BLDRT> threeDEnrollment(final String threeDEnrollment) {
+            authentication.setThreeDEnrollment(threeDEnrollment);
+            return this;
+        }
+
+        /**
+         * Set the threeDResult property.
+         *
+         * @param threeDResult the three d result
+         * @return AuthenticationBuilder< BLDRT >
+         */
+        public final AuthenticationBuilder<BLDRT> threeDResult(final String threeDResult) {
+            authentication.setThreeDResult(threeDResult);
+            return this;
+        }
+
+        /**
+         * Set the signatureStatus property.
+         *
+         * @param signatureStatus the signature status
+         * @return AuthenticationBuilder< BLDRT >
+         */
+        public final AuthenticationBuilder<BLDRT> signatureStatus(final String signatureStatus) {
+            authentication.setSignatureStatus(signatureStatus);
+            return this;
+        }
+    }
 }

@@ -21,23 +21,24 @@ package com.paysafe.common;
 import com.paysafe.common.impl.BaseDomainObject;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * Exception type thrown by any 409 error from the API.
  */
 public class RequestConflictException extends PaysafeException {
 
-  /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-/**
-   * Instantiates a new request conflict exception.
-   *
-   * @param obj the obj
-   * @param cause the cause
-   */
-  public RequestConflictException(final BaseDomainObject obj, final Throwable cause) {
-    super(obj, cause);
-  }
+    /**
+     * Instantiates a new request conflict exception.
+     *
+     * @param obj   the obj
+     * @param cause the cause
+     */
+    public RequestConflictException(final BaseDomainObject obj, final Throwable cause) {
+        super(obj, cause);
+    }
 }

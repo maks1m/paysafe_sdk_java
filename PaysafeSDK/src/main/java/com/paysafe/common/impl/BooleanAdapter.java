@@ -26,33 +26,34 @@ import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * This class is attempts to correct data inconsistencies between api requests and responses.
  */
 public class BooleanAdapter implements JsonDeserializer<Boolean> {
 
-  /**
-   * Some api transactions will return 0 or 1 instead of the expected true or false.
-   *
-   * @param el the el
-   * @param typeOfT the type of t
-   * @param context the context
-   * @return Boolean
-   * @throws JsonParseException the json parse exception
-   */
-  @Override
-  public Boolean deserialize(JsonElement el, Type typeOfT, JsonDeserializationContext context)
-          throws JsonParseException {
-    if (((Class<?>) typeOfT).equals(Boolean.class)) {
-      return el.getAsBoolean();
-    } else if (((Class<?>) typeOfT).isInstance(Integer.class)) {
-      final int elAsInt = el.getAsInt();
-      if (elAsInt < 0 || elAsInt > 1) {
-        throw new JsonParseException("Boolean out of range: " + elAsInt);
-      }
-      return elAsInt == 1;
-    } else {
-      throw new JsonParseException("Unexpected type: " + typeOfT);
+    /**
+     * Some api transactions will return 0 or 1 instead of the expected true or false.
+     *
+     * @param el      the el
+     * @param typeOfT the type of t
+     * @param context the context
+     * @return Boolean
+     * @throws JsonParseException the json parse exception
+     */
+    @Override
+    public Boolean deserialize(JsonElement el, Type typeOfT, JsonDeserializationContext context)
+    throws JsonParseException {
+        if (((Class<?>) typeOfT).equals(Boolean.class)) {
+            return el.getAsBoolean();
+        } else if (((Class<?>) typeOfT).isInstance(Integer.class)) {
+            final int elAsInt = el.getAsInt();
+            if (elAsInt < 0 || elAsInt > 1) {
+                throw new JsonParseException("Boolean out of range: " + elAsInt);
+            }
+            return elAsInt == 1;
+        } else {
+            throw new JsonParseException("Unexpected type: " + typeOfT);
+        }
     }
-  }
 }

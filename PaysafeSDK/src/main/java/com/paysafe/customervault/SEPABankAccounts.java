@@ -18,85 +18,114 @@
  */
 package com.paysafe.customervault;
 
-import java.util.List;
-
 import com.google.gson.annotations.Expose;
-import com.paysafe.common.Id;
 import com.paysafe.common.Error;
+import com.paysafe.common.Id;
 import com.paysafe.common.impl.BaseBuilder;
 import com.paysafe.common.impl.BaseDomainObject;
 
+import java.util.List;
+
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class SEPABankAccounts.
- * @author manisha.rani  
- * @since
- * 25-02-2016. 
+ *
+ * @author manisha.rani
+ * @since 25-02-2016.
  */
 public class SEPABankAccounts implements BaseDomainObject {
 
-    /** The id. */
+    /**
+     * The id.
+     */
     private Id<SEPABankAccounts> id;
-    
-    /** The nick name. */
+
+    /**
+     * The nick name.
+     */
     @Expose
     private String nickName;
-    
-    /** The merchant ref num. */
+
+    /**
+     * The merchant ref num.
+     */
     @Expose
     private String merchantRefNum;
-    
-    /** The status. */
+
+    /**
+     * The status.
+     */
     @Expose
     private Status status;
-    
-    /** The status reason. */
+
+    /**
+     * The status reason.
+     */
     @Expose
     private String statusReason;
-    
-    /** The iban. */
+
+    /**
+     * The iban.
+     */
     @Expose
     private String iban;
-    
-    /** The bic. */
+
+    /**
+     * The bic.
+     */
     @Expose
     private String bic;
-    
-    /** The account holder name. */
+
+    /**
+     * The account holder name.
+     */
     @Expose
     private String accountHolderName;
-    
-    /** The last digits. */
+
+    /**
+     * The last digits.
+     */
     @Expose
     private String lastDigits;
-    
-    /** The billing address id. */
+
+    /**
+     * The billing address id.
+     */
     @Expose
     private Id<Address> billingAddressId;
-    
-    /** The payment token. */
+
+    /**
+     * The payment token.
+     */
     @Expose
     private String paymentToken;
-    
-    /** The error. */
+
+    /**
+     * The error.
+     */
     @Expose
     private Error error;
-    
-    /** The profile id. */
+
+    /**
+     * The profile id.
+     */
     @Expose
     private Id<Profile> profileId;
-    
-    /** The mandates. */
+
+    /**
+     * The mandates.
+     */
     @Expose
     private List<Mandates> mandates;
-   
 
-	/**
-	 * Gets the id.
-	 *
-	 * @return the id
-	 */
-	public Id<SEPABankAccounts> getId() {
+
+    /**
+     * Gets the id.
+     *
+     * @return the id
+     */
+    public Id<SEPABankAccounts> getId() {
         return id;
     }
 
@@ -323,24 +352,24 @@ public class SEPABankAccounts implements BaseDomainObject {
     public void setProfileId(final Id<Profile> profileId) {
         this.profileId = profileId;
     }
-    
+
     /**
      * Gets the mandates.
      *
      * @return the mandates
      */
     public List<Mandates> getMandates() {
-		return mandates;
-	}
+        return mandates;
+    }
 
-	/**
-	 * Sets the mandates.
-	 *
-	 * @param mandates the new mandates
-	 */
-	public void setMandates(List<Mandates> mandates) {
-		this.mandates = mandates;
-	}
+    /**
+     * Sets the mandates.
+     *
+     * @param mandates the new mandates
+     */
+    public void setMandates(List<Mandates> mandates) {
+        this.mandates = mandates;
+    }
 
     /**
      * Get a SEPABankAccount builder.
@@ -356,7 +385,9 @@ public class SEPABankAccounts implements BaseDomainObject {
      */
     public static class SEPABankAccountBuilder extends BaseBuilder<SEPABankAccounts> {
 
-        /** The sepa bank accounts. */
+        /**
+         * The sepa bank accounts.
+         */
         private final SEPABankAccounts sepaBankAccounts = new SEPABankAccounts();
 
         /**
@@ -368,7 +399,7 @@ public class SEPABankAccounts implements BaseDomainObject {
         public final SEPABankAccounts build() {
             return sepaBankAccounts;
         }
-        
+
         /**
          * Set the id property.
          *
@@ -379,7 +410,7 @@ public class SEPABankAccounts implements BaseDomainObject {
             sepaBankAccounts.setId(id);
             return this;
         }
-        
+
         /**
          * Set the nickName property.
          *
@@ -390,18 +421,18 @@ public class SEPABankAccounts implements BaseDomainObject {
             sepaBankAccounts.setNickName(nickName);
             return this;
         }
-        
+
         /**
          * Set the merchantRefNum property.
          *
          * @param merchantRefNum the merchant ref num
          * @return SEPABankAccountBuilder
          */
-        public final SEPABankAccountBuilder merchantRefNum (final String merchantRefNum) {
+        public final SEPABankAccountBuilder merchantRefNum(final String merchantRefNum) {
             sepaBankAccounts.setMerchantRefNum(merchantRefNum);
             return this;
         }
-        
+
         /**
          * Set the Status property.
          *
@@ -412,7 +443,7 @@ public class SEPABankAccounts implements BaseDomainObject {
             sepaBankAccounts.setStatus(status);
             return this;
         }
-        
+
         /**
          * Set the StatusReason property.
          *
@@ -434,7 +465,7 @@ public class SEPABankAccounts implements BaseDomainObject {
             sepaBankAccounts.setIban(iban);
             return this;
         }
-        
+
         /**
          * Set the bic property.
          *
@@ -445,7 +476,7 @@ public class SEPABankAccounts implements BaseDomainObject {
             sepaBankAccounts.setBic(bic);
             return this;
         }
-        
+
         /**
          * Set the accountHolderName property.
          *
@@ -456,7 +487,7 @@ public class SEPABankAccounts implements BaseDomainObject {
             sepaBankAccounts.setAccountHolderName(accountHolderName);
             return this;
         }
-        
+
         /**
          * Set the lastDigits property.
          *
@@ -489,7 +520,7 @@ public class SEPABankAccounts implements BaseDomainObject {
             sepaBankAccounts.setPaymentToken(paymentToken);
             return this;
         }
-        
+
         /**
          * Set the profileId property.
          *
@@ -500,7 +531,7 @@ public class SEPABankAccounts implements BaseDomainObject {
             sepaBankAccounts.setProfileId(profileId);
             return this;
         }
-        
+
         /**
          * Set the mandates property.
          *

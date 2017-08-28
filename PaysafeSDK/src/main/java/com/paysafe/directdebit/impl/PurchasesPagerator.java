@@ -18,28 +18,33 @@
  */
 package com.paysafe.directdebit.impl;
 
-import java.util.ArrayList;
-
 import com.paysafe.directdebit.Purchases;
 
+import java.util.ArrayList;
+
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class PurchasesPagerator.
  * Used to iterate over pages of results.
+ *
  * @author bhushan.patil
  * @since 01-07-2016.
  */
 public class PurchasesPagerator extends DirectDebitPagerator<Purchases> {
-  
-  /** The purchases. */
-  private ArrayList<Purchases> purchases;
-  
-  /**
-   * Return the results array.
-   * @return ArrayList<Purchases>
-   */
-  @Override
-  protected final ArrayList<Purchases> getResults() {
-    return purchases;
-  }
+
+    /**
+     * The purchases.
+     */
+    private ArrayList<Purchases> purchases;
+
+    /**
+     * Return the results array.
+     *
+     * @return ArrayList<Purchases>
+     */
+    @Override
+    protected final ArrayList<Purchases> getResults() {
+        return purchases;
+    }
 }

@@ -21,23 +21,24 @@ package com.paysafe.common;
 import com.paysafe.common.impl.BaseDomainObject;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * Exception type thrown by any 403 error from the API.
  */
 public class PermissionException extends PaysafeException {
 
-  /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-/**
-   * Instantiates a new permission exception.
-   *
-   * @param obj the obj
-   * @param cause the cause
-   */
-  public PermissionException(final BaseDomainObject obj, final Throwable cause) {
-    super(obj, cause);
-  }
+    /**
+     * Instantiates a new permission exception.
+     *
+     * @param obj   the obj
+     * @param cause the cause
+     */
+    public PermissionException(final BaseDomainObject obj, final Throwable cause) {
+        super(obj, cause);
+    }
 }

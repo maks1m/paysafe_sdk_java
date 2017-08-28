@@ -24,105 +24,112 @@ import com.paysafe.common.impl.GenericBuilder;
 import com.paysafe.common.impl.NestedBuilder;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class CardExpiry.
  */
 public class CardExpiry implements DomainObject {
 
-  /** The month. */
-  @Expose
-  private Integer month;
-  
-  /** The year. */
-  @Expose
-  private Integer year;
-
-  /**
-   * Gets the month.
-   *
-   * @return the month
-   */
-  public final Integer getMonth() {
-    return month;
-  }
-
-  /**
-   * Sets the month.
-   *
-   * @param month the new month
-   */
-  public final void setMonth(final Integer month) {
-    this.month = month;
-  }
-
-  /**
-   * Gets the year.
-   *
-   * @return the year
-   */
-  public final Integer getYear() {
-    return year;
-  }
-
-  /**
-   * Sets the year.
-   *
-   * @param year the new year
-   */
-  public final void setYear(final Integer year) {
-    this.year = year;
-  }
-
-  /**
-   * The sub-builder class for CardExpiry.
-   *
-   * @param <BLDRT> the parent builder
-   */
-  public static class CardExpiryBuilder<BLDRT extends GenericBuilder> extends
-          NestedBuilder<CardExpiry, BLDRT> {
-
-    /** The card expiry. */
-    private final CardExpiry cardExpiry = new CardExpiry();
+    /**
+     * The month.
+     */
+    @Expose
+    private Integer month;
 
     /**
-     * Instantiates a new card expiry builder.
-     *
-     * @param parent the parent
+     * The year.
      */
-    public CardExpiryBuilder(final BLDRT parent) {
-      super(parent);
+    @Expose
+    private Integer year;
+
+    /**
+     * Gets the month.
+     *
+     * @return the month
+     */
+    public final Integer getMonth() {
+        return month;
     }
 
     /**
-     * Build this CardExpiry object.
+     * Sets the month.
      *
-     * @return CardExpiry
+     * @param month the new month
      */
-    @Override
-    public final CardExpiry build() {
-      return cardExpiry;
+    public final void setMonth(final Integer month) {
+        this.month = month;
     }
 
     /**
-     * Set the month property.
+     * Gets the year.
      *
-     * @param month the month
-     * @return CardExpiryBuilder< BLDRT >
+     * @return the year
      */
-    public final CardExpiryBuilder<BLDRT> month(final Integer month) {
-      cardExpiry.setMonth(month);
-      return this;
+    public final Integer getYear() {
+        return year;
     }
 
     /**
-     * Set the year property.
+     * Sets the year.
      *
-     * @param year the year
-     * @return CardExpiryBuilder< BLDRT >
+     * @param year the new year
      */
-    public final CardExpiryBuilder<BLDRT> year(final Integer year) {
-      cardExpiry.setYear(year);
-      return this;
+    public final void setYear(final Integer year) {
+        this.year = year;
     }
-  }
+
+    /**
+     * The sub-builder class for CardExpiry.
+     *
+     * @param <BLDRT> the parent builder
+     */
+    public static class CardExpiryBuilder<BLDRT extends GenericBuilder> extends
+            NestedBuilder<CardExpiry, BLDRT> {
+
+        /**
+         * The card expiry.
+         */
+        private final CardExpiry cardExpiry = new CardExpiry();
+
+        /**
+         * Instantiates a new card expiry builder.
+         *
+         * @param parent the parent
+         */
+        public CardExpiryBuilder(final BLDRT parent) {
+            super(parent);
+        }
+
+        /**
+         * Build this CardExpiry object.
+         *
+         * @return CardExpiry
+         */
+        @Override
+        public final CardExpiry build() {
+            return cardExpiry;
+        }
+
+        /**
+         * Set the month property.
+         *
+         * @param month the month
+         * @return CardExpiryBuilder< BLDRT >
+         */
+        public final CardExpiryBuilder<BLDRT> month(final Integer month) {
+            cardExpiry.setMonth(month);
+            return this;
+        }
+
+        /**
+         * Set the year property.
+         *
+         * @param year the year
+         * @return CardExpiryBuilder< BLDRT >
+         */
+        public final CardExpiryBuilder<BLDRT> year(final Integer year) {
+            cardExpiry.setYear(year);
+            return this;
+        }
+    }
 }

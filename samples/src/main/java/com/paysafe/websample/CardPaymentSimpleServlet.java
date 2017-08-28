@@ -19,89 +19,92 @@
 
 package com.paysafe.websample;
 
-import java.io.IOException;
-
-import javax.servlet.http.*;
-import javax.servlet.*;
-
 import com.paysafe.Environment;
 import com.paysafe.PaysafeApiClient;
 import com.paysafe.cardpayments.Authorization;
 import com.paysafe.common.PaysafeException;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 public class CardPaymentSimpleServlet extends PaysafeServletBase {
 
-  /**
-   *
-   */
-  private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-  @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+    throws IOException, ServletException {
 
-    request.setAttribute("isPost", "false");
-    request.setAttribute("currency", this.currencyCode);
+        request.setAttribute("isPost", "false");
+        request.setAttribute("currency", this.currencyCode);
 
-    RequestDispatcher view = request.getRequestDispatcher("cardPaymentSimple.jsp");
-    view.forward(request, response);
+        RequestDispatcher view = request.getRequestDispatcher("cardPaymentSimple.jsp");
+        view.forward(request, response);
 
-  }
-
-  @Override
-  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
-    //Initialize the PaysafeApiClient 
-    PaysafeApiClient apiClient = new PaysafeApiClient(this.apiKey, this.apiPassword, Environment.TEST, this.accountNumber);
-
-    int totalAmount = (int) (Double.valueOf(request.getParameter("amount")) * this.currencyMultiplier);
-
-    boolean isSuccess = false;
-
-    try {
-      // Build our order object.
-      Authorization auth
-              = Authorization.builder()
-              .merchantRefNum(request.getParameter("merchant_ref_num"))
-              .amount(totalAmount)
-              .settleWithAuth(true)
-              .billingDetails()
-                .street(request.getParameter("street"))
-                .city(request.getParameter("city"))
-                .state(request.getParameter("state"))
-                .country(request.getParameter("country"))
-                .zip(request.getParameter("zip"))
-                .done()
-              .card()
-                .cardNum(request.getParameter("cardNum"))
-                .cvv(request.getParameter("cvdNumber"))
-                .cardExpiry()
-                  .month(Integer.valueOf(request.getParameter("cardExpiryMonth")))
-                  .year(Integer.valueOf(request.getParameter("cardExpiryYear")))
-                  .done()
-                .done()
-              .build();
-
-      Authorization authResponse = apiClient.cardPaymentService().authorize(auth);
-      request.setAttribute("isAuth", true);
-      request.setAttribute("authId", authResponse.getId());
-      request.setAttribute("payment", "success");
-      isSuccess = true;
-
-    } catch (PaysafeException ev) {
-      request.setAttribute("error", ev.getMessage());
     }
 
-    // Create a new card payment request
-    request.setAttribute("isPost", "true");
-    request.setAttribute("currency", this.currencyCode);
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+    throws IOException, ServletException {
 
-    if (isSuccess) {
-      RequestDispatcher view = request.getRequestDispatcher("status.jsp");
-      view.forward(request, response);
-    } else {
-      RequestDispatcher view = request.getRequestDispatcher("cardPaymentSimple.jsp");
-      view.forward(request, response);
+        //Initialize the PaysafeApiClient
+        PaysafeApiClient apiClient = new PaysafeApiClient(this.apiKey, this.apiPassword, Environment.TEST, this.accountNumber);
+
+        int totalAmount = (int) (Double.valueOf(request.getParameter("amount")) * this.currencyMultiplier);
+
+        boolean isSuccess = false;
+
+        try {
+            // Build our order object.
+            Authorization auth
+                    = Authorization.builder()
+                    .merchantRefNum(request.getParameter("merchant_ref_num"))
+                    .amount(totalAmount)
+                    .settleWithAuth(true)
+                    .billingDetails()
+                    .street(request.getParameter("street"))
+                    .city(request.getParameter("city"))
+                    .state(request.getParameter("state"))
+                    .country(request.getParameter("country"))
+                    .zip(request.getParameter("zip"))
+                    .done()
+                    .card()
+                    .cardNum(request.getParameter("cardNum"))
+                    .cvv(request.getParameter("cvdNumber"))
+                    .cardExpiry()
+                    .month(Integer.valueOf(request.getParameter("cardExpiryMonth")))
+                    .year(Integer.valueOf(request.getParameter("cardExpiryYear")))
+                    .done()
+                    .done()
+                    .build();
+
+            Authorization authResponse = apiClient.cardPaymentService().authorize(auth);
+            request.setAttribute("isAuth", true);
+            request.setAttribute("authId", authResponse.getId());
+            request.setAttribute("payment", "success");
+            isSuccess = true;
+
+        } catch (PaysafeException ev) {
+            request.setAttribute("error", ev.getMessage());
+        }
+
+        // Create a new card payment request
+        request.setAttribute("isPost", "true");
+        request.setAttribute("currency", this.currencyCode);
+
+        if (isSuccess) {
+            RequestDispatcher view = request.getRequestDispatcher("status.jsp");
+            view.forward(request, response);
+        } else {
+            RequestDispatcher view = request.getRequestDispatcher("cardPaymentSimple.jsp");
+            view.forward(request, response);
+        }
     }
-  }
 
 }

@@ -19,11 +19,6 @@
 
 package com.paysafe.websample;
 
-import java.io.IOException;
-
-import javax.servlet.http.*;
-import javax.servlet.*;
-
 import com.paysafe.Environment;
 import com.paysafe.PaysafeApiClient;
 import com.paysafe.cardpayments.Authorization;
@@ -33,114 +28,121 @@ import com.paysafe.customervault.Address;
 import com.paysafe.customervault.Card;
 import com.paysafe.customervault.Profile;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 
 public class CardPaymentWithCustomerVaultServlet extends PaysafeServletBase {
 
-  /**
-   * 
-   */
-  private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-  @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+    throws IOException, ServletException {
 
-    request.setAttribute("isPost", "false");
-    request.setAttribute("currency", this.currencyCode);
+        request.setAttribute("isPost", "false");
+        request.setAttribute("currency", this.currencyCode);
 
-    RequestDispatcher view = request.getRequestDispatcher("cardPaymentWithCustomerVault.jsp");
-    view.forward(request, response); 
+        RequestDispatcher view = request.getRequestDispatcher("cardPaymentWithCustomerVault.jsp");
+        view.forward(request, response);
 
-  }
+    }
 
-  @Override
-  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+    throws IOException, ServletException {
 
-    //Initialize the PaysafeApiClient 
-    PaysafeApiClient apiClient = new PaysafeApiClient(this.apiKey, this.apiPassword, Environment.TEST, this.accountNumber);
+        //Initialize the PaysafeApiClient
+        PaysafeApiClient apiClient = new PaysafeApiClient(this.apiKey, this.apiPassword, Environment.TEST, this.accountNumber);
 
-    int totalAmount = (int) (Double.valueOf(request.getParameter("amount"))*this.currencyMultiplier);
+        int totalAmount = (int) (Double.valueOf(request.getParameter("amount")) * this.currencyMultiplier);
 
-    boolean isSuccess = false;
-    
-    try {
-      // Create a profile
-      Profile localProfile =
-        Profile.builder()
-          .merchantCustomerId(request.getParameter("merchant_customer_id"))
-          .locale(Locale.EN_US)
-          .firstName(request.getParameter("first_name"))
-          .lastName(request.getParameter("last_name"))
-          .email(request.getParameter("email"))
-          .build();
+        boolean isSuccess = false;
 
-      Profile profile = apiClient.customerVaultService().create(localProfile);
+        try {
+            // Create a profile
+            Profile localProfile =
+                    Profile.builder()
+                            .merchantCustomerId(request.getParameter("merchant_customer_id"))
+                            .locale(Locale.EN_US)
+                            .firstName(request.getParameter("first_name"))
+                            .lastName(request.getParameter("last_name"))
+                            .email(request.getParameter("email"))
+                            .build();
 
-      Address address =
-        Address.builder()
-          .profileId(profile.getId())
-          .nickName("home")
-          .street(request.getParameter("street"))
-          .city(request.getParameter("city"))
-          .state(request.getParameter("state"))
-          .country(request.getParameter("country"))
-          .zip(request.getParameter("zip"))
-          .build();
+            Profile profile = apiClient.customerVaultService().create(localProfile);
 
-      Address addressResponse = apiClient.customerVaultService().create(address);
+            Address address =
+                    Address.builder()
+                            .profileId(profile.getId())
+                            .nickName("home")
+                            .street(request.getParameter("street"))
+                            .city(request.getParameter("city"))
+                            .state(request.getParameter("state"))
+                            .country(request.getParameter("country"))
+                            .zip(request.getParameter("zip"))
+                            .build();
 
-      // Add card to profile
-      Card card =
-          Card.builder()
-            .profileId(profile.getId())
-            .nickName("Default Card")
-            .holderName(request.getParameter("cardHolderName"))
-            .cardNum(request.getParameter("cardNum"))
-            .billingAddressId(addressResponse.getId())
-            .cardExpiry()
-              .month(Integer.valueOf(request.getParameter("cardExpiryMonth")))
-              .year(Integer.valueOf(request.getParameter("cardExpiryYear")))
-              .done()
-            .build();
+            Address addressResponse = apiClient.customerVaultService().create(address);
 
-      Card cardResponse = apiClient.customerVaultService().create(card);
+            // Add card to profile
+            Card card =
+                    Card.builder()
+                            .profileId(profile.getId())
+                            .nickName("Default Card")
+                            .holderName(request.getParameter("cardHolderName"))
+                            .cardNum(request.getParameter("cardNum"))
+                            .billingAddressId(addressResponse.getId())
+                            .cardExpiry()
+                            .month(Integer.valueOf(request.getParameter("cardExpiryMonth")))
+                            .year(Integer.valueOf(request.getParameter("cardExpiryYear")))
+                            .done()
+                            .build();
 
-      String paymentToken = cardResponse.getPaymentToken();
+            Card cardResponse = apiClient.customerVaultService().create(card);
 
-      // Build our order object.
-      Authorization auth =
-          Authorization.builder()
-            .merchantRefNum(request.getParameter("merchant_ref_num"))
-            .amount(totalAmount)
-            .settleWithAuth(true)
-            .card()
-              .paymentToken( paymentToken )
-              .done()
-            .build();
+            String paymentToken = cardResponse.getPaymentToken();
+
+            // Build our order object.
+            Authorization auth =
+                    Authorization.builder()
+                            .merchantRefNum(request.getParameter("merchant_ref_num"))
+                            .amount(totalAmount)
+                            .settleWithAuth(true)
+                            .card()
+                            .paymentToken(paymentToken)
+                            .done()
+                            .build();
 
 
-      Authorization authResponse = apiClient.cardPaymentService().authorize(auth);
-      
-      request.setAttribute("isAuth", true);
-      request.setAttribute("authId", authResponse.getId());
-      request.setAttribute("payment", "success");
-      isSuccess = true;
-      
-    } catch (PaysafeException ev) { 
-      // We caught errors let's display them to the user.
-      request.setAttribute("error", ev.getMessage());
-    } 
+            Authorization authResponse = apiClient.cardPaymentService().authorize(auth);
 
-    // Create a new Card payment request
-    request.setAttribute("isPost", "true");
-    request.setAttribute("currency", this.currencyCode);
+            request.setAttribute("isAuth", true);
+            request.setAttribute("authId", authResponse.getId());
+            request.setAttribute("payment", "success");
+            isSuccess = true;
 
-     if (isSuccess) {
-       RequestDispatcher view = request.getRequestDispatcher("status.jsp");
-       view.forward(request, response); 
-     }else {
-      RequestDispatcher view = request.getRequestDispatcher("cardPaymentWithCustomerVault.jsp");
-      view.forward(request, response); 
-     }
-  }
+        } catch (PaysafeException ev) {
+            // We caught errors let's display them to the user.
+            request.setAttribute("error", ev.getMessage());
+        }
+
+        // Create a new Card payment request
+        request.setAttribute("isPost", "true");
+        request.setAttribute("currency", this.currencyCode);
+
+        if (isSuccess) {
+            RequestDispatcher view = request.getRequestDispatcher("status.jsp");
+            view.forward(request, response);
+        } else {
+            RequestDispatcher view = request.getRequestDispatcher("cardPaymentWithCustomerVault.jsp");
+            view.forward(request, response);
+        }
+    }
 }

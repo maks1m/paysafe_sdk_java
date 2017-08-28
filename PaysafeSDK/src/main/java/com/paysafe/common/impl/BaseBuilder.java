@@ -19,6 +19,7 @@
 package com.paysafe.common.impl;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * Extend this class for the base object builders.
  *
@@ -26,10 +27,10 @@ package com.paysafe.common.impl;
  */
 public abstract class BaseBuilder<RTNT extends DomainObject> extends GenericBuilder {
 
-  /**
-   * Builds the.
-   *
-   * @return the rtnt
-   */
-  public abstract RTNT build();
+    /**
+     * Builds the.
+     *
+     * @return the rtnt
+     */
+    public abstract RTNT build();
 }

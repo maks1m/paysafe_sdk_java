@@ -19,26 +19,39 @@
 package com.paysafe.cardpayments;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * Used by Authorization, AuthorizationReversal, Refund, Settlement, Verification.
  */
 public enum Status {
 
-  /** The received. */
-  RECEIVED,
-  
-  /** The pending. */
-  PENDING,
-  
-  /** The processing. */
-  PROCESSING,
-  
-  /** The completed. */
-  COMPLETED,
-  
-  /** The failed. */
-  FAILED,
-  
-  /** The cancelled. */
-  CANCELLED
+    /**
+     * The received.
+     */
+    RECEIVED,
+
+    /**
+     * The pending.
+     */
+    PENDING,
+
+    /**
+     * The processing.
+     */
+    PROCESSING,
+
+    /**
+     * The completed.
+     */
+    COMPLETED,
+
+    /**
+     * The failed.
+     */
+    FAILED,
+
+    /**
+     * The cancelled.
+     */
+    CANCELLED
 }

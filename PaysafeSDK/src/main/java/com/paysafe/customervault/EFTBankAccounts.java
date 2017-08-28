@@ -19,71 +19,100 @@
 package com.paysafe.customervault;
 
 import com.google.gson.annotations.Expose;
-import com.paysafe.common.Id;
 import com.paysafe.common.Error;
+import com.paysafe.common.Id;
 import com.paysafe.common.impl.BaseBuilder;
 import com.paysafe.common.impl.BaseDomainObject;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class EFTBankAccounts.
- * @author manisha.rani  
- * @since
- * 25-02-2016. 
+ *
+ * @author manisha.rani
+ * @since 25-02-2016.
  */
 public class EFTBankAccounts implements BaseDomainObject {
 
-    /** The id. */
+    /**
+     * The id.
+     */
     private Id<EFTBankAccounts> id;
-    
-    /** The nick name. */
+
+    /**
+     * The nick name.
+     */
     @Expose
     private String nickName;
-    
-    /** The merchant ref num. */
+
+    /**
+     * The merchant ref num.
+     */
     @Expose
     private String merchantRefNum;
-    
-    /** The status. */
+
+    /**
+     * The status.
+     */
     @Expose
     private Status status;
-    
-    /** The status reason. */
+
+    /**
+     * The status reason.
+     */
     @Expose
     private String statusReason;
-    
-    /** The account number. */
+
+    /**
+     * The account number.
+     */
     @Expose
     private String accountNumber;
-    
-    /** The account holder name. */
+
+    /**
+     * The account holder name.
+     */
     @Expose
     private String accountHolderName;
-    
-    /** The transit number. */
+
+    /**
+     * The transit number.
+     */
     @Expose
     private String transitNumber;
-    
-    /** The institution id. */
+
+    /**
+     * The institution id.
+     */
     @Expose
     private String institutionId;
-    
-    /** The last digits. */
+
+    /**
+     * The last digits.
+     */
     @Expose
     private String lastDigits;
-    
-    /** The billing address id. */
+
+    /**
+     * The billing address id.
+     */
     @Expose
     private Id<Address> billingAddressId;
-    
-    /** The payment token. */
+
+    /**
+     * The payment token.
+     */
     @Expose
     private String paymentToken;
-    
-    /** The error. */
+
+    /**
+     * The error.
+     */
     private Error error;
-    
-    /** The profile id. */
+
+    /**
+     * The profile id.
+     */
     @Expose
     private Id<Profile> profileId;
 
@@ -353,7 +382,9 @@ public class EFTBankAccounts implements BaseDomainObject {
      */
     public static class EFTBankAccountBuilder extends BaseBuilder<EFTBankAccounts> {
 
-        /** The eft bank accounts. */
+        /**
+         * The eft bank accounts.
+         */
         private final EFTBankAccounts eftBankAccounts = new EFTBankAccounts();
 
         /**
@@ -365,7 +396,7 @@ public class EFTBankAccounts implements BaseDomainObject {
         public final EFTBankAccounts build() {
             return eftBankAccounts;
         }
-        
+
         /**
          * Set the id property.
          *
@@ -376,7 +407,7 @@ public class EFTBankAccounts implements BaseDomainObject {
             eftBankAccounts.setId(id);
             return this;
         }
-        
+
         /**
          * Set the nickName property.
          *
@@ -387,18 +418,18 @@ public class EFTBankAccounts implements BaseDomainObject {
             eftBankAccounts.setNickName(nickName);
             return this;
         }
-        
+
         /**
          * Set the merchantRefNum property.
          *
          * @param merchantRefNum the merchant ref num
          * @return EFTBankAccountBuilder
          */
-        public final EFTBankAccountBuilder merchantRefNum (final String merchantRefNum) {
+        public final EFTBankAccountBuilder merchantRefNum(final String merchantRefNum) {
             eftBankAccounts.setMerchantRefNum(merchantRefNum);
             return this;
         }
-        
+
         /**
          * Set the Status property.
          *
@@ -409,7 +440,7 @@ public class EFTBankAccounts implements BaseDomainObject {
             eftBankAccounts.setStatus(status);
             return this;
         }
-        
+
         /**
          * Set the StatusReason property.
          *
@@ -431,7 +462,7 @@ public class EFTBankAccounts implements BaseDomainObject {
             eftBankAccounts.setAccountNumber(accountNumber);
             return this;
         }
-        
+
         /**
          * Set the accountHolderName property.
          *
@@ -460,11 +491,11 @@ public class EFTBankAccounts implements BaseDomainObject {
          * @param institutionId the institution id
          * @return EFTBankAccountBuilder
          */
-        public final EFTBankAccountBuilder institutionId(final String  institutionId) {
+        public final EFTBankAccountBuilder institutionId(final String institutionId) {
             eftBankAccounts.setInstitutionId(institutionId);
             return this;
         }
-        
+
         /**
          * Set the lastDigits property.
          *
@@ -497,7 +528,7 @@ public class EFTBankAccounts implements BaseDomainObject {
             eftBankAccounts.setPaymentToken(paymentToken);
             return this;
         }
-        
+
         /**
          * Set the profileId property.
          *
@@ -509,9 +540,6 @@ public class EFTBankAccounts implements BaseDomainObject {
             return this;
         }
     }
-
-
-
 
 
 }

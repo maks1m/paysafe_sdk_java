@@ -18,15 +18,16 @@
  */
 package com.paysafe.common;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.ListIterator;
-
 import com.paysafe.PaysafeApiClient;
 import com.paysafe.common.impl.BaseDomainObject;
 import com.paysafe.common.impl.Request;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.ListIterator;
+
 // TODO: Auto-generated Javadoc
+
 /**
  * Extend this class to allow iteration of a paged data set.
  *
@@ -35,261 +36,264 @@ import com.paysafe.common.impl.Request;
 public abstract class Pagerator<T extends BaseDomainObject>
         implements Iterable<T>, BaseDomainObject {
 
-  /**
-   * The client.
-   */
-  protected PaysafeApiClient client;
+    /**
+     * The client.
+     */
+    protected PaysafeApiClient client;
 
-  /**
-   * Set the client.
-   *
-   * @param client the new client
-   */
-  public final void setClient(final PaysafeApiClient client) {
-    this.client = client;
-  }
-
-  /**
-   * Get the OptimalApiClient.
-   *
-   * @return OptimalApiClient
-   * @throws PaysafeException the optimal exception
-   */
-  private PaysafeApiClient getClient() throws PaysafeException {
-    if (null == client) {
-      throw new PaysafeException("You must set the client before attempting any requests.");
+    /**
+     * Set the client.
+     *
+     * @param client the new client
+     */
+    public final void setClient(final PaysafeApiClient client) {
+        this.client = client;
     }
-    return client;
-  }
 
-  /**
-   * Used by iterator to ensure that there is a next element.
-   *
-   * @param position the position
-   * @return Boolean
-   */
-
-  protected final Boolean hasElementAfterPosition(final Integer position) {
-	    return position+1 < getResults().size() || null != getNextPageUrl();
-	  }
-
-  /**
-   * Used by iterator to ensure the requested position is loaded before returning it.
-   *
-   * @param position the position
-   */
-  protected final void ensurePositionLoaded(final Integer position) {
-    if (position >= getResults().size()) {
-      if (null != getNextPageUrl()) {
-        final Request request = Request.builder()
-                .uri(getNextPageUrl())
-                .method(Request.RequestType.GET)
-                .build();
-        try {
-          //unchecked type, but safe in practice
-          @SuppressWarnings("unchecked")
-          Pagerator<T> pgrtr = getClient().processRequest(request, getClass());
-          //ensure we don't keep re-requesting the same page.
-          if (pgrtr.getNextPageUrl().equals(getNextPageUrl())) {
-            throw new RuntimeException("Invalid next page returned from API");
-          }
-          setNextPageUrl(pgrtr.getNextPageUrl());
-          getResults().addAll(pgrtr.getResults());
-          //addResults(pgrtr.getResults());
-        } catch (PaysafeException e) {
-          throw new RuntimeException(e.getMessage(), e);
-        } catch (IOException e) {
-          throw new RuntimeException(e.getMessage(), e);
+    /**
+     * Get the OptimalApiClient.
+     *
+     * @return OptimalApiClient
+     * @throws PaysafeException the optimal exception
+     */
+    private PaysafeApiClient getClient()
+    throws PaysafeException {
+        if (null == client) {
+            throw new PaysafeException("You must set the client before attempting any requests.");
         }
-      } else {
-        throw new java.util.NoSuchElementException("No elements to retrieve.");
-      }
-    }
-  }
-
-  /**
-   * Used by the iterator to get a specific element.
-   *
-   * @param index the index
-   * @return T
-   */
-  protected final T get(final int index) {
-    return getResults().get(index);
-  }
-
-  /**
-   * Get the iterator.
-   * 
-   * @return PageratorIterator< T >
-   */
-  @Override
-  public final PageratorIterator<T> iterator() {
-    return new PageratorIterator<T>(this);
-  }
-
-  /**
-   * Get the Error.
-   * 
-   * @return Error
-   */
-  @Override
-  public final Error getError() {
-    return null;
-  }
-
-  /**
-   * Get the current set of elements.
-   *
-   * @return ArrayList< T >
-   */
-  protected abstract ArrayList<T> getResults();
-
-  /**
-   * Get the url of the next page to be loaded.
-   *
-   * @return String
-   */
-  protected abstract String getNextPageUrl();
-
-  /**
-   * Set the next page url.
-   *
-   * @param nextUrl the new next page url
-   */
-  protected abstract void setNextPageUrl(String nextUrl);
-
-  /**
-   * Class to iterate over the result set, and request additional pages as needed.
-   *
-   * @param <T> the type to be returned by iterator
-   */
-  @SuppressWarnings("hiding")
-public class PageratorIterator<T extends BaseDomainObject> implements ListIterator<T> {
-
-    /**
-     * Instantiates a new pagerator iterator.
-     *
-     * @param parent the parent
-     */
-    public PageratorIterator(final Pagerator<T> parent) {
-      this.parent = parent;
-      position = -1;
+        return client;
     }
 
-    /** The parent. */
-    private final Pagerator<T> parent;
     /**
-     * Tracks the current position in the result set.
-     */
-    private int position = -1;
-
-    /**
-     * Implementation for ListIterator.
+     * Used by iterator to ensure that there is a next element.
      *
+     * @param position the position
      * @return Boolean
      */
-    @Override
-    public final boolean hasNext() {
-      return parent.hasElementAfterPosition(position);
+
+    protected final Boolean hasElementAfterPosition(final Integer position) {
+        return position + 1 < getResults().size() || null != getNextPageUrl();
     }
 
     /**
-     * Gets the.
+     * Used by iterator to ensure the requested position is loaded before returning it.
+     *
+     * @param position the position
+     */
+    protected final void ensurePositionLoaded(final Integer position) {
+        if (position >= getResults().size()) {
+            if (null != getNextPageUrl()) {
+                final Request request = Request.builder()
+                        .uri(getNextPageUrl())
+                        .method(Request.RequestType.GET)
+                        .build();
+                try {
+                    //unchecked type, but safe in practice
+                    @SuppressWarnings("unchecked")
+                    Pagerator<T> pgrtr = getClient().processRequest(request, getClass());
+                    //ensure we don't keep re-requesting the same page.
+                    if (pgrtr.getNextPageUrl().equals(getNextPageUrl())) {
+                        throw new RuntimeException("Invalid next page returned from API");
+                    }
+                    setNextPageUrl(pgrtr.getNextPageUrl());
+                    getResults().addAll(pgrtr.getResults());
+                    //addResults(pgrtr.getResults());
+                } catch (PaysafeException e) {
+                    throw new RuntimeException(e.getMessage(), e);
+                } catch (IOException e) {
+                    throw new RuntimeException(e.getMessage(), e);
+                }
+            } else {
+                throw new java.util.NoSuchElementException("No elements to retrieve.");
+            }
+        }
+    }
+
+    /**
+     * Used by the iterator to get a specific element.
      *
      * @param index the index
-     * @return the t
-     */
-    protected final T get(final int index) {
-      return parent.get(index);
-    }
-
-    /* (non-Javadoc)
-     * @see java.util.ListIterator#next()
-     */
-    @Override
-    public final T next() {
-      if (!hasNext()) {
-        throw new java.util.NoSuchElementException("Unable to retrieve next element.");
-      }
-      position = nextIndex();
-      parent.ensurePositionLoaded(position);
-      return get(position);
-    }
-
-    /**
-     * Implementation for ListIterator.
-     *
-     * @return int
-     */
-    @Override
-    public final int nextIndex() {
-      if (hasNext()) {
-        return position + 1;
-      } else {
-        return position;
-      }
-    }
-
-    /**
-     * Implementation for ListIterator.
-     *
-     * @return Boolean
-     */
-    @Override
-    public final boolean hasPrevious() {
-      return (position > 0);
-    }
-
-    /**
-     * Implementation for ListIterator.
-     *
      * @return T
      */
-    @Override
-    public final T previous() {
-      position = previousIndex();
-      return get(position);
+    protected final T get(final int index) {
+        return getResults().get(index);
     }
 
     /**
-     * Implementation for ListIterator.
+     * Get the iterator.
      *
-     * @return int
+     * @return PageratorIterator< T >
      */
     @Override
-    public final int previousIndex() {
-      if (position >= 0) {
-        return position - 1;
-      }
-      return -1;
+    public final PageratorIterator<T> iterator() {
+        return new PageratorIterator<T>(this);
     }
 
     /**
-     * Implementation for ListIterator.
-     */
-    @Override
-    public final void remove() {
-      throw new RuntimeException("You cannot remove elements from this iterator.");
-    }
-
-    /**
-     * Implementation for ListIterator.
+     * Get the Error.
      *
-     * @param unused the unused
+     * @return Error
      */
     @Override
-    public final void set(final T unused) {
-      throw new RuntimeException("You cannot set elements in this iterator.");
+    public final Error getError() {
+        return null;
     }
 
     /**
-     * Implementation for ListIterator.
+     * Get the current set of elements.
      *
-     * @param unused the unused
+     * @return ArrayList< T >
      */
-    @Override
-    public final void add(final T unused) {
-      throw new RuntimeException("You cannot add elements to this iterator.");
+    protected abstract ArrayList<T> getResults();
+
+    /**
+     * Get the url of the next page to be loaded.
+     *
+     * @return String
+     */
+    protected abstract String getNextPageUrl();
+
+    /**
+     * Set the next page url.
+     *
+     * @param nextUrl the new next page url
+     */
+    protected abstract void setNextPageUrl(String nextUrl);
+
+    /**
+     * Class to iterate over the result set, and request additional pages as needed.
+     *
+     * @param <T> the type to be returned by iterator
+     */
+    @SuppressWarnings("hiding")
+    public class PageratorIterator<T extends BaseDomainObject> implements ListIterator<T> {
+
+        /**
+         * Instantiates a new pagerator iterator.
+         *
+         * @param parent the parent
+         */
+        public PageratorIterator(final Pagerator<T> parent) {
+            this.parent = parent;
+            position = -1;
+        }
+
+        /**
+         * The parent.
+         */
+        private final Pagerator<T> parent;
+        /**
+         * Tracks the current position in the result set.
+         */
+        private int position = -1;
+
+        /**
+         * Implementation for ListIterator.
+         *
+         * @return Boolean
+         */
+        @Override
+        public final boolean hasNext() {
+            return parent.hasElementAfterPosition(position);
+        }
+
+        /**
+         * Gets the.
+         *
+         * @param index the index
+         * @return the t
+         */
+        protected final T get(final int index) {
+            return parent.get(index);
+        }
+
+        /* (non-Javadoc)
+         * @see java.util.ListIterator#next()
+         */
+        @Override
+        public final T next() {
+            if (!hasNext()) {
+                throw new java.util.NoSuchElementException("Unable to retrieve next element.");
+            }
+            position = nextIndex();
+            parent.ensurePositionLoaded(position);
+            return get(position);
+        }
+
+        /**
+         * Implementation for ListIterator.
+         *
+         * @return int
+         */
+        @Override
+        public final int nextIndex() {
+            if (hasNext()) {
+                return position + 1;
+            } else {
+                return position;
+            }
+        }
+
+        /**
+         * Implementation for ListIterator.
+         *
+         * @return Boolean
+         */
+        @Override
+        public final boolean hasPrevious() {
+            return (position > 0);
+        }
+
+        /**
+         * Implementation for ListIterator.
+         *
+         * @return T
+         */
+        @Override
+        public final T previous() {
+            position = previousIndex();
+            return get(position);
+        }
+
+        /**
+         * Implementation for ListIterator.
+         *
+         * @return int
+         */
+        @Override
+        public final int previousIndex() {
+            if (position >= 0) {
+                return position - 1;
+            }
+            return -1;
+        }
+
+        /**
+         * Implementation for ListIterator.
+         */
+        @Override
+        public final void remove() {
+            throw new RuntimeException("You cannot remove elements from this iterator.");
+        }
+
+        /**
+         * Implementation for ListIterator.
+         *
+         * @param unused the unused
+         */
+        @Override
+        public final void set(final T unused) {
+            throw new RuntimeException("You cannot set elements in this iterator.");
+        }
+
+        /**
+         * Implementation for ListIterator.
+         *
+         * @param unused the unused
+         */
+        @Override
+        public final void add(final T unused) {
+            throw new RuntimeException("You cannot add elements to this iterator.");
+        }
     }
-  }
 }

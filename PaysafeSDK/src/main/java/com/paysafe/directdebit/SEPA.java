@@ -23,39 +23,51 @@ import com.paysafe.common.impl.DomainObject;
 import com.paysafe.common.impl.GenericBuilder;
 import com.paysafe.common.impl.NestedBuilder;
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class BACS.
+ *
  * @author bhushan.patil
- * @since 04-04-2016. 
+ * @since 04-04-2016.
  */
 public class SEPA implements DomainObject {
-    
-    /** The payment token. */
+
+    /**
+     * The payment token.
+     */
     @Expose
     private String paymentToken;
-    
-    /** The mandate reference. */
+
+    /**
+     * The mandate reference.
+     */
     @Expose
     private String mandateReference;
-    
-    /** The account holder name. */
+
+    /**
+     * The account holder name.
+     */
     @Expose
     private String accountHolderName;
-    
-    /** The iban. */
+
+    /**
+     * The iban.
+     */
     @Expose
     private String iban;
-    
-    /** The last digits. */
+
+    /**
+     * The last digits.
+     */
     @Expose
     private String lastDigits;
-   	
-	   /**
-	    * Gets the payment token.
-	    *
-	    * @return the payment token
-	    */
-	   public String getPaymentToken() {
+
+    /**
+     * Gets the payment token.
+     *
+     * @return the payment token
+     */
+    public String getPaymentToken() {
         return paymentToken;
     }
 
@@ -67,78 +79,78 @@ public class SEPA implements DomainObject {
     public void setPaymentToken(final String paymentToken) {
         this.paymentToken = paymentToken;
     }
-    
+
     /**
      * Gets the account holder name.
      *
      * @return the account holder name
      */
     public String getAccountHolderName() {
-		return accountHolderName;
-	}
+        return accountHolderName;
+    }
 
-	/**
-	 * Sets the account holder name.
-	 *
-	 * @param accountHolderName the new account holder name
-	 */
-	public void setAccountHolderName(final String accountHolderName) {
-		this.accountHolderName = accountHolderName;
-	}
-	
-	/**
-	 * Gets the last digits.
-	 *
-	 * @return the last digits
-	 */
-	public String getLastDigits() {
-		return lastDigits;
-	}
+    /**
+     * Sets the account holder name.
+     *
+     * @param accountHolderName the new account holder name
+     */
+    public void setAccountHolderName(final String accountHolderName) {
+        this.accountHolderName = accountHolderName;
+    }
 
-	/**
-	 * Sets the last digits.
-	 *
-	 * @param lastDigits the new last digits
-	 */
-	public void setLastDigits(final String lastDigits) {
-		this.lastDigits = lastDigits;
-	}
-	
-	/**
-	 * Gets the iban.
-	 *
-	 * @return the iban
-	 */
-	public String getIban() {
-		return iban;
-	}
+    /**
+     * Gets the last digits.
+     *
+     * @return the last digits
+     */
+    public String getLastDigits() {
+        return lastDigits;
+    }
 
-	/**
-	 * Sets the iban.
-	 *
-	 * @param iban the new iban
-	 */
-	public void setIban(final String iban) {
-		this.iban = iban;
-	}
-	
-	/**
-	 * Gets the mandate reference.
-	 *
-	 * @return the mandate reference
-	 */
-	public String getMandateReference() {
-		return mandateReference;
-	}
+    /**
+     * Sets the last digits.
+     *
+     * @param lastDigits the new last digits
+     */
+    public void setLastDigits(final String lastDigits) {
+        this.lastDigits = lastDigits;
+    }
 
-	/**
-	 * Sets the mandate reference.
-	 *
-	 * @param mandateReference the new mandate reference
-	 */
-	public void setMandateReference(final String mandateReference) {
-		this.mandateReference = mandateReference;
-	}
+    /**
+     * Gets the iban.
+     *
+     * @return the iban
+     */
+    public String getIban() {
+        return iban;
+    }
+
+    /**
+     * Sets the iban.
+     *
+     * @param iban the new iban
+     */
+    public void setIban(final String iban) {
+        this.iban = iban;
+    }
+
+    /**
+     * Gets the mandate reference.
+     *
+     * @return the mandate reference
+     */
+    public String getMandateReference() {
+        return mandateReference;
+    }
+
+    /**
+     * Sets the mandate reference.
+     *
+     * @param mandateReference the new mandate reference
+     */
+    public void setMandateReference(final String mandateReference) {
+        this.mandateReference = mandateReference;
+    }
 
     /**
      * The sub-builder class for SEPA.
@@ -148,7 +160,9 @@ public class SEPA implements DomainObject {
     public static class SEPABuilder<BLDRT extends GenericBuilder>
             extends NestedBuilder<SEPA, BLDRT> {
 
-        /** The sepa. */
+        /**
+         * The sepa.
+         */
         private final SEPA SEPA = new SEPA();
 
         /**
@@ -177,10 +191,10 @@ public class SEPA implements DomainObject {
          * @return SEPABuilder< BLDRT >
          */
         public final SEPABuilder<BLDRT> paymentToken(final String paymentToken) {
-        	SEPA.setPaymentToken(paymentToken);
+            SEPA.setPaymentToken(paymentToken);
             return this;
         }
-        
+
         /**
          * Set the mandateReference property.
          *
@@ -188,10 +202,10 @@ public class SEPA implements DomainObject {
          * @return SEPABuilder< BLDRT >
          */
         public final SEPABuilder<BLDRT> mandateReference(final String mandateReference) {
-        	SEPA.setMandateReference(mandateReference);
+            SEPA.setMandateReference(mandateReference);
             return this;
         }
-        
+
         /**
          * Set the accountHolderName property.
          *
@@ -199,10 +213,10 @@ public class SEPA implements DomainObject {
          * @return SEPABuilder< BLDRT >
          */
         public final SEPABuilder<BLDRT> accountHolderName(final String accountHolderName) {
-        	SEPA.setAccountHolderName(accountHolderName);
+            SEPA.setAccountHolderName(accountHolderName);
             return this;
         }
-        
+
         /**
          * Set the iban property.
          *
@@ -210,10 +224,10 @@ public class SEPA implements DomainObject {
          * @return SEPABuilder< BLDRT >
          */
         public final SEPABuilder<BLDRT> iban(final String iban) {
-        	SEPA.setIban(iban);
+            SEPA.setIban(iban);
             return this;
         }
-        
+
         /**
          * Set the lastDigits property.
          *
@@ -221,10 +235,10 @@ public class SEPA implements DomainObject {
          * @return SEPABuilder< BLDRT >
          */
         public final SEPABuilder<BLDRT> lastDigits(final String lastDigits) {
-        	SEPA.setLastDigits(lastDigits);
+            SEPA.setLastDigits(lastDigits);
             return this;
         }
-        
+
     }
 
 }

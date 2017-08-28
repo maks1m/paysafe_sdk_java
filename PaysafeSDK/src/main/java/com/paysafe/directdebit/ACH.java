@@ -19,58 +19,76 @@
 package com.paysafe.directdebit;
 
 import com.google.gson.annotations.Expose;
-import com.paysafe.common.*;
+import com.paysafe.common.PayMethod;
 import com.paysafe.common.impl.DomainObject;
 import com.paysafe.common.impl.GenericBuilder;
 import com.paysafe.common.impl.NestedBuilder;
 import com.paysafe.customervault.AccountType;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class ACH.
+ *
  * @author bhushan.patil
- * @since 04-04-2016. 
+ * @since 04-04-2016.
  */
 public class ACH implements DomainObject {
-    
-    /** The payment token. */
+
+    /**
+     * The payment token.
+     */
     @Expose
     private String paymentToken;
-    
-    /** The pay method. */
+
+    /**
+     * The pay method.
+     */
     @Expose
     private PayMethod payMethod;
-    
-    /** The payment descriptor. */
+
+    /**
+     * The payment descriptor.
+     */
     @Expose
     private String paymentDescriptor;
-    
-    /** The account holder name. */
+
+    /**
+     * The account holder name.
+     */
     @Expose
     private String accountHolderName;
-    
-    /** The account type. */
+
+    /**
+     * The account type.
+     */
     @Expose
     private AccountType accountType;
-    
-    /** The account number. */
+
+    /**
+     * The account number.
+     */
     @Expose
     private String accountNumber;
-   	
-	   /** The routing number. */
-	   @Expose
+
+    /**
+     * The routing number.
+     */
+    @Expose
     private String routingNumber;
-   	
-	   /** The last digits. */
-	   @Expose
+
+    /**
+     * The last digits.
+     */
+    @Expose
     private String lastDigits;
-    	
-	/**
-	 * Gets the payment token.
-	 *
-	 * @return the payment token
-	 */
-	public String getPaymentToken() {
+
+    /**
+     * Gets the payment token.
+     *
+     * @return the payment token
+     */
+    public String getPaymentToken() {
         return paymentToken;
     }
 
@@ -118,98 +136,98 @@ public class ACH implements DomainObject {
     public void setPaymentDescriptor(final String paymentDescriptor) {
         this.paymentDescriptor = paymentDescriptor;
     }
-    
+
     /**
      * Gets the account holder name.
      *
      * @return the account holder name
      */
     public String getAccountHolderName() {
-		return accountHolderName;
-	}
+        return accountHolderName;
+    }
 
-	/**
-	 * Sets the account holder name.
-	 *
-	 * @param accountHolderName the new account holder name
-	 */
-	public void setAccountHolderName(String accountHolderName) {
-		this.accountHolderName = accountHolderName;
-	}
-	
-	/**
-	 * Gets the account type.
-	 *
-	 * @return the account type
-	 */
-	public AccountType getAccountType() {
-		return accountType;
-	}
+    /**
+     * Sets the account holder name.
+     *
+     * @param accountHolderName the new account holder name
+     */
+    public void setAccountHolderName(String accountHolderName) {
+        this.accountHolderName = accountHolderName;
+    }
 
-	/**
-	 * Sets the account type.
-	 *
-	 * @param accountType the new account type
-	 */
-	public void setAccountType(final AccountType accountType) {
-		this.accountType = accountType;
-	}
-	 
- 	/**
- 	 * Gets the account number.
- 	 *
- 	 * @return the account number
- 	 */
- 	public String getAccountNumber() {
-			return accountNumber;
-	}
+    /**
+     * Gets the account type.
+     *
+     * @return the account type
+     */
+    public AccountType getAccountType() {
+        return accountType;
+    }
 
-	/**
-	 * Sets the account number.
-	 *
-	 * @param accountNumber the new account number
-	 */
-	public void setAccountNumber(final String accountNumber) {
-			this.accountNumber = accountNumber;
-	}
-	
-	/**
-	 * Gets the routing number.
-	 *
-	 * @return the routing number
-	 */
-	public String getRoutingNumber() {
-				return routingNumber;
-	}
+    /**
+     * Sets the account type.
+     *
+     * @param accountType the new account type
+     */
+    public void setAccountType(final AccountType accountType) {
+        this.accountType = accountType;
+    }
 
-	/**
-	 * Sets the routing number.
-	 *
-	 * @param routingNumber the new routing number
-	 */
-	public void setRoutingNumber(final String routingNumber) {
-				this.routingNumber = routingNumber;
-	}
-	
-	/**
-	 * Gets the last digits.
-	 *
-	 * @return the last digits
-	 */
-	public String getLastDigits() {
-				return lastDigits;
-	}
+    /**
+     * Gets the account number.
+     *
+     * @return the account number
+     */
+    public String getAccountNumber() {
+        return accountNumber;
+    }
 
-	/**
-	 * Sets the last digits.
-	 *
-	 * @param lastDigits the new last digits
-	 */
-	public void setLastDigits(final String lastDigits) {
-				this.lastDigits = lastDigits;
-	}
+    /**
+     * Sets the account number.
+     *
+     * @param accountNumber the new account number
+     */
+    public void setAccountNumber(final String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
 
-   /**
+    /**
+     * Gets the routing number.
+     *
+     * @return the routing number
+     */
+    public String getRoutingNumber() {
+        return routingNumber;
+    }
+
+    /**
+     * Sets the routing number.
+     *
+     * @param routingNumber the new routing number
+     */
+    public void setRoutingNumber(final String routingNumber) {
+        this.routingNumber = routingNumber;
+    }
+
+    /**
+     * Gets the last digits.
+     *
+     * @return the last digits
+     */
+    public String getLastDigits() {
+        return lastDigits;
+    }
+
+    /**
+     * Sets the last digits.
+     *
+     * @param lastDigits the new last digits
+     */
+    public void setLastDigits(final String lastDigits) {
+        this.lastDigits = lastDigits;
+    }
+
+    /**
      * The sub-builder class for ACH.
      *
      * @param <BLDRT> the parent builder
@@ -217,7 +235,9 @@ public class ACH implements DomainObject {
     public static class ACHBuilder<BLDRT extends GenericBuilder>
             extends NestedBuilder<ACH, BLDRT> {
 
-        /** The ach. */
+        /**
+         * The ach.
+         */
         private final ACH ACH = new ACH();
 
         /**
@@ -249,7 +269,7 @@ public class ACH implements DomainObject {
             ACH.setPaymentToken(paymentToken);
             return this;
         }
-        
+
         /**
          * Set the payMethod property.
          *
@@ -271,7 +291,7 @@ public class ACH implements DomainObject {
             ACH.setPaymentDescriptor(paymentDescriptor);
             return this;
         }
-        
+
         /**
          * Set the accountHolderName property.
          *
@@ -282,7 +302,7 @@ public class ACH implements DomainObject {
             ACH.setAccountHolderName(accountHolderName);
             return this;
         }
-        
+
         /**
          * Set the accountType property.
          *
@@ -293,7 +313,7 @@ public class ACH implements DomainObject {
             ACH.setAccountType(accountType);
             return this;
         }
-        
+
         /**
          * Set the accountNumber property.
          *
@@ -304,7 +324,7 @@ public class ACH implements DomainObject {
             ACH.setAccountNumber(accountNumber);
             return this;
         }
-        
+
         /**
          * Set the routingNumber property.
          *
@@ -315,7 +335,7 @@ public class ACH implements DomainObject {
             ACH.setRoutingNumber(routingNumber);
             return this;
         }
-        
+
         /**
          * Set the lastDigits property.
          *
@@ -326,8 +346,8 @@ public class ACH implements DomainObject {
             ACH.setLastDigits(lastDigits);
             return this;
         }
-        
-                
+
+
     }
 
 }

@@ -18,25 +18,29 @@
  */
 package com.paysafe.cardpayments.impl;
 
-import java.util.ArrayList;
-
 import com.paysafe.cardpayments.Verification;
 
+import java.util.ArrayList;
+
 // TODO: Auto-generated Javadoc
+
 /**
  * Used to iterate over pages of results.
  */
 public class VerificationPagerator extends CardPaymentsPagerator<Verification> {
-  
-  /** The verifications. */
-  private ArrayList<Verification> verifications;
-  
-  /**
-   * Return the results array.
-   * @return ArrayList< Verification >
-   */
-  @Override
-  protected final ArrayList<Verification> getResults() {
-    return verifications;
-  }
+
+    /**
+     * The verifications.
+     */
+    private ArrayList<Verification> verifications;
+
+    /**
+     * Return the results array.
+     *
+     * @return ArrayList< Verification >
+     */
+    @Override
+    protected final ArrayList<Verification> getResults() {
+        return verifications;
+    }
 }

@@ -8,6 +8,6 @@ repositories {
 httpPort = 8181
 
 dependencies {
-   compile project(":PaysafeSDK")
-   compile "javax.servlet:servlet-api:2.5"
+    compile project(":PaysafeSDK")
+    compile "javax.servlet:servlet-api:2.5"
 }

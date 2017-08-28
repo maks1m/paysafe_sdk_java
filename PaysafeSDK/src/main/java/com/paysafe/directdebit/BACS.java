@@ -24,43 +24,57 @@ import com.paysafe.common.impl.GenericBuilder;
 import com.paysafe.common.impl.NestedBuilder;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class BACS.
+ *
  * @author bhushan.patil
  * @since 04-04-2016.
  */
 public class BACS implements DomainObject {
-    
-    /** The payment token. */
+
+    /**
+     * The payment token.
+     */
     @Expose
     private String paymentToken;
-    
-    /** The account holder name. */
+
+    /**
+     * The account holder name.
+     */
     @Expose
     private String accountHolderName;
-    
-    /** The sort code. */
+
+    /**
+     * The sort code.
+     */
     @Expose
     private String sortCode;
-    
-    /** The account number. */
+
+    /**
+     * The account number.
+     */
     @Expose
     private String accountNumber;
-    
-    /** The mandate reference. */
+
+    /**
+     * The mandate reference.
+     */
     @Expose
     private String mandateReference;
-    
-    /** The last digits. */
+
+    /**
+     * The last digits.
+     */
     @Expose
     private String lastDigits;
-    	
-   	/**
-	    * Gets the payment token.
-	    *
-	    * @return the payment token
-	    */
-	   public String getPaymentToken() {
+
+    /**
+     * Gets the payment token.
+     *
+     * @return the payment token
+     */
+    public String getPaymentToken() {
         return paymentToken;
     }
 
@@ -72,99 +86,98 @@ public class BACS implements DomainObject {
     public void setPaymentToken(final String paymentToken) {
         this.paymentToken = paymentToken;
     }
-    
+
     /**
      * Gets the account holder name.
      *
      * @return the account holder name
      */
     public String getAccountHolderName() {
-		return accountHolderName;
-	}
+        return accountHolderName;
+    }
 
-	/**
-	 * Sets the account holder name.
-	 *
-	 * @param accountHolderName the new account holder name
-	 */
-	public void setAccountHolderName(final String accountHolderName) {
-		this.accountHolderName = accountHolderName;
-	}
-	
-	/**
-	 * Gets the sort code.
-	 *
-	 * @return the sort code
-	 */
-	public String getSortCode() {
-		return sortCode;
-	}
+    /**
+     * Sets the account holder name.
+     *
+     * @param accountHolderName the new account holder name
+     */
+    public void setAccountHolderName(final String accountHolderName) {
+        this.accountHolderName = accountHolderName;
+    }
 
-	/**
-	 * Sets the sort code.
-	 *
-	 * @param sortCode the new sort code
-	 */
-	public void setSortCode(final String sortCode) {
-		this.sortCode = sortCode;
-	}
-	
-	/**
-	 * Gets the account number.
-	 *
-	 * @return the account number
-	 */
-	public String getAccountNumber() {
-		return accountNumber;
-	}
+    /**
+     * Gets the sort code.
+     *
+     * @return the sort code
+     */
+    public String getSortCode() {
+        return sortCode;
+    }
 
-	/**
-	 * Sets the account number.
-	 *
-	 * @param accountNumber the new account number
-	 */
-	public void setAccountNumber(final String accountNumber) {
-		this.accountNumber = accountNumber;
-	}
+    /**
+     * Sets the sort code.
+     *
+     * @param sortCode the new sort code
+     */
+    public void setSortCode(final String sortCode) {
+        this.sortCode = sortCode;
+    }
 
-	/**
-	 * Gets the mandate reference.
-	 *
-	 * @return the mandate reference
-	 */
-	public String getMandateReference() {
-		return mandateReference;
-	}
+    /**
+     * Gets the account number.
+     *
+     * @return the account number
+     */
+    public String getAccountNumber() {
+        return accountNumber;
+    }
 
-	/**
-	 * Sets the mandate reference.
-	 *
-	 * @param mandateReference the new mandate reference
-	 */
-	public void setMandateReference(final String mandateReference) {
-		this.mandateReference = mandateReference;
-	}
-   
-   	/**
-	    * Gets the last digits.
-	    *
-	    * @return the last digits
-	    */
-	   public String getLastDigits() {
-		return lastDigits;
-	}
+    /**
+     * Sets the account number.
+     *
+     * @param accountNumber the new account number
+     */
+    public void setAccountNumber(final String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
 
-	/**
-	 * Sets the last digits.
-	 *
-	 * @param lastDigits the new last digits
-	 */
-	public void setLastDigits(final String lastDigits) {
-		this.lastDigits = lastDigits;
-	}
+    /**
+     * Gets the mandate reference.
+     *
+     * @return the mandate reference
+     */
+    public String getMandateReference() {
+        return mandateReference;
+    }
+
+    /**
+     * Sets the mandate reference.
+     *
+     * @param mandateReference the new mandate reference
+     */
+    public void setMandateReference(final String mandateReference) {
+        this.mandateReference = mandateReference;
+    }
+
+    /**
+     * Gets the last digits.
+     *
+     * @return the last digits
+     */
+    public String getLastDigits() {
+        return lastDigits;
+    }
+
+    /**
+     * Sets the last digits.
+     *
+     * @param lastDigits the new last digits
+     */
+    public void setLastDigits(final String lastDigits) {
+        this.lastDigits = lastDigits;
+    }
 
 
-   
     /**
      * The sub-builder class for BACS.
      *
@@ -173,7 +186,9 @@ public class BACS implements DomainObject {
     public static class BACSBuilder<BLDRT extends GenericBuilder>
             extends NestedBuilder<BACS, BLDRT> {
 
-        /** The bacs. */
+        /**
+         * The bacs.
+         */
         private final BACS BACS = new BACS();
 
         /**
@@ -205,7 +220,7 @@ public class BACS implements DomainObject {
             BACS.setPaymentToken(paymentToken);
             return this;
         }
-        
+
         /**
          * Set the accountHolderName property.
          *
@@ -216,7 +231,7 @@ public class BACS implements DomainObject {
             BACS.setAccountHolderName(accountHolderName);
             return this;
         }
-        
+
         /**
          * Set the sortCode property.
          *
@@ -227,7 +242,7 @@ public class BACS implements DomainObject {
             BACS.setSortCode(sortCode);
             return this;
         }
-        
+
         /**
          * Set the accountNumber property.
          *
@@ -238,7 +253,7 @@ public class BACS implements DomainObject {
             BACS.setAccountNumber(accountNumber);
             return this;
         }
-        
+
         /**
          * Set the mandateReference property.
          *
@@ -249,7 +264,7 @@ public class BACS implements DomainObject {
             BACS.setMandateReference(mandateReference);
             return this;
         }
-        
+
         /**
          * Set the lastDigits property.
          *
@@ -260,8 +275,8 @@ public class BACS implements DomainObject {
             BACS.setLastDigits(lastDigits);
             return this;
         }
-        
-        
+
+
     }
 
 }

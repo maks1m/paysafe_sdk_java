@@ -19,36 +19,55 @@
 package com.paysafe.customervault;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class Status
  * Status used by Profile, Card, Address & All bank accounts.
  */
 public enum Status {
 
-  /** The initial. */
-  INITIAL,
-  
-  /** The active. */
-  ACTIVE,
-  
-  /** The pending. */
-  PENDING,
-  
-  /** The declined. */
-  DECLINED,
-  
-  /** The batched. */
-  BATCHED,
-  
-  /** The cancelled. */
-  CANCELLED,
-  
-  /** The rejected. */
-  REJECTED,
-  
-  /** The disputed. */
-  DISPUTED,
-  
-  /** The inactive. */
-  INACTIVE
+    /**
+     * The initial.
+     */
+    INITIAL,
+
+    /**
+     * The active.
+     */
+    ACTIVE,
+
+    /**
+     * The pending.
+     */
+    PENDING,
+
+    /**
+     * The declined.
+     */
+    DECLINED,
+
+    /**
+     * The batched.
+     */
+    BATCHED,
+
+    /**
+     * The cancelled.
+     */
+    CANCELLED,
+
+    /**
+     * The rejected.
+     */
+    REJECTED,
+
+    /**
+     * The disputed.
+     */
+    DISPUTED,
+
+    /**
+     * The inactive.
+     */
+    INACTIVE
 }

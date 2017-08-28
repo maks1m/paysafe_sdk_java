@@ -19,94 +19,131 @@
 
 package com.paysafe.directdebit;
 
-import java.util.ArrayList;
-
-
 import com.google.gson.annotations.Expose;
-import com.paysafe.common.Id;
 import com.paysafe.common.Error;
+import com.paysafe.common.Id;
 import com.paysafe.common.impl.BaseBuilder;
 import com.paysafe.common.impl.BaseDomainObject;
 import com.paysafe.customervault.Status;
 
+import java.util.ArrayList;
+
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class StandaloneCredits.
+ *
  * @author deepika.mishra
  * @since 01-04-2016.
  */
 
 public class StandaloneCredits implements BaseDomainObject {
 
-    /** The id. */
+    /**
+     * The id.
+     */
     private Id<StandaloneCredits> id;
-    
-    /** The merchant ref num. */
+
+    /**
+     * The merchant ref num.
+     */
     @Expose
     private String merchantRefNum;
-    
-    /** The amount. */
+
+    /**
+     * The amount.
+     */
     @Expose
     private Integer amount;
-    
-    /** The ach. */
+
+    /**
+     * The ach.
+     */
     @Expose
     private ACH ach;
-    
-    /** The achs. */
+
+    /**
+     * The achs.
+     */
     @Expose
     private ArrayList<ACH> achs;
-    
-    /** The eft. */
+
+    /**
+     * The eft.
+     */
     @Expose
     private EFT eft;
-    
-    /** The efts. */
+
+    /**
+     * The efts.
+     */
     @Expose
     private ArrayList<EFT> efts;
-    
-    /** The bacs. */
+
+    /**
+     * The bacs.
+     */
     @Expose
     private BACS bacs;
-    
-    /** The bacss. */
+
+    /**
+     * The bacss.
+     */
     @Expose
     private ArrayList<BACS> bacss;
-    
-    
-	/** The profile. */
-	@Expose
+
+
+    /**
+     * The profile.
+     */
+    @Expose
     private Profile profile;
-    
-    /** The billing details. */
+
+    /**
+     * The billing details.
+     */
     @Expose
     private BillingDetails billingDetails;
-    
-    /** The shipping details. */
+
+    /**
+     * The shipping details.
+     */
     @Expose
     private ShippingDetails shippingDetails;
-    
-    /** The customer ip. */
+
+    /**
+     * The customer ip.
+     */
     @Expose
     private String customerIp;
-    
-    /** The dup check. */
+
+    /**
+     * The dup check.
+     */
     @Expose
     private Boolean dupCheck;
-    
-    /** The txn time. */
+
+    /**
+     * The txn time.
+     */
     @Expose
-    private String  txnTime;
-    
-    /** The currency code. */
+    private String txnTime;
+
+    /**
+     * The currency code.
+     */
     @Expose
     private String currencyCode;
-    
-    /** The status. */
+
+    /**
+     * The status.
+     */
     @Expose
     private Status status;
-    
-    /** The error. */
+
+    /**
+     * The error.
+     */
     private Error error;
 
 
@@ -118,14 +155,13 @@ public class StandaloneCredits implements BaseDomainObject {
     public Id<StandaloneCredits> getId() {
         return id;
     }
-    
+
     /**
      * Gets the pageable array key.
      *
      * @return the pageable array key
      */
-    public static String getPageableArrayKey()
-    {
+    public static String getPageableArrayKey() {
         return "standaloneCredits";
     }
 
@@ -191,24 +227,24 @@ public class StandaloneCredits implements BaseDomainObject {
     public void setAch(final ACH ach) {
         this.ach = ach;
     }
-    
+
     /**
      * Gets the achs.
      *
      * @return the achs
      */
     public final ArrayList<ACH> getAchs() {
-		return achs;
-	}
+        return achs;
+    }
 
-	/**
-	 * Sets the achs.
-	 *
-	 * @param achs the new achs
-	 */
-	public final void setAchs(ArrayList<ACH> achs) {
-		this.achs = achs;
-	}
+    /**
+     * Sets the achs.
+     *
+     * @param achs the new achs
+     */
+    public final void setAchs(ArrayList<ACH> achs) {
+        this.achs = achs;
+    }
 
     /**
      * Gets the profile.
@@ -245,7 +281,7 @@ public class StandaloneCredits implements BaseDomainObject {
     public void setBillingDetails(final BillingDetails billingDetails) {
         this.billingDetails = billingDetails;
     }
-    
+
     /**
      * Gets the shipping details.
      *
@@ -263,7 +299,7 @@ public class StandaloneCredits implements BaseDomainObject {
     public void setShippingDetails(final ShippingDetails shippingDetails) {
         this.shippingDetails = shippingDetails;
     }
-    
+
     /**
      * Gets the customer ip.
      *
@@ -353,7 +389,7 @@ public class StandaloneCredits implements BaseDomainObject {
     public void setError(Error error) {
         this.error = error;
     }
-    
+
     /**
      * Gets the status.
      *
@@ -371,79 +407,78 @@ public class StandaloneCredits implements BaseDomainObject {
     public void setStatus(final Status status) {
         this.status = status;
     }
-    
+
     /**
      * Gets the eft.
      *
      * @return the eft
      */
     public EFT getEft() {
-		return eft;
-	}
+        return eft;
+    }
 
-	/**
-	 * Sets the eft.
-	 *
-	 * @param eft the new eft
-	 */
-	public void setEft(EFT eft) {
-		this.eft = eft;
-	}
-	
-	/**
-	 * Gets the efts.
-	 *
-	 * @return the efts
-	 */
-	public ArrayList<EFT> getEfts() {
-		return efts;
-	}
+    /**
+     * Sets the eft.
+     *
+     * @param eft the new eft
+     */
+    public void setEft(EFT eft) {
+        this.eft = eft;
+    }
 
-	/**
-	 * Sets the efts.
-	 *
-	 * @param efts the new efts
-	 */
-	public void setEfts(ArrayList<EFT> efts) {
-		this.efts = efts;
-	}
-	
-	/**
-	 * Gets the bacs.
-	 *
-	 * @return the bacs
-	 */
-	public BACS getBacs() {
-		return bacs;
-	}
+    /**
+     * Gets the efts.
+     *
+     * @return the efts
+     */
+    public ArrayList<EFT> getEfts() {
+        return efts;
+    }
 
-	/**
-	 * Sets the bacs.
-	 *
-	 * @param bacs the new bacs
-	 */
-	public void setBacs(BACS bacs) {
-		this.bacs = bacs;
-	}
-	
-	/**
-	 * Gets the bacss.
-	 *
-	 * @return the bacss
-	 */
-	public ArrayList<BACS> getBacss() {
-		return bacss;
-	}
+    /**
+     * Sets the efts.
+     *
+     * @param efts the new efts
+     */
+    public void setEfts(ArrayList<EFT> efts) {
+        this.efts = efts;
+    }
 
-	/**
-	 * Sets the bacss.
-	 *
-	 * @param bacss the new bacss
-	 */
-	public void setBacss(ArrayList<BACS> bacss) {
-		this.bacss = bacss;
-	}
-	
+    /**
+     * Gets the bacs.
+     *
+     * @return the bacs
+     */
+    public BACS getBacs() {
+        return bacs;
+    }
+
+    /**
+     * Sets the bacs.
+     *
+     * @param bacs the new bacs
+     */
+    public void setBacs(BACS bacs) {
+        this.bacs = bacs;
+    }
+
+    /**
+     * Gets the bacss.
+     *
+     * @return the bacss
+     */
+    public ArrayList<BACS> getBacss() {
+        return bacss;
+    }
+
+    /**
+     * Sets the bacss.
+     *
+     * @param bacss the new bacss
+     */
+    public void setBacss(ArrayList<BACS> bacss) {
+        this.bacss = bacss;
+    }
 
 
     /**
@@ -460,25 +495,39 @@ public class StandaloneCredits implements BaseDomainObject {
      */
     public static class StandaloneCreditsBuilder extends BaseBuilder<StandaloneCredits> {
 
-        /** The profile builder. */
+        /**
+         * The profile builder.
+         */
         private Profile.ProfileBuilder<StandaloneCreditsBuilder> profileBuilder;
-        
-        /** The billing details builder. */
+
+        /**
+         * The billing details builder.
+         */
         private BillingDetails.BillingDetailsBuilder<StandaloneCreditsBuilder> billingDetailsBuilder;
-        
-        /** The shipping details builder. */
+
+        /**
+         * The shipping details builder.
+         */
         private ShippingDetails.ShippingDetailsBuilder<StandaloneCreditsBuilder> shippingDetailsBuilder;
-        
-        /** The ach builder. */
+
+        /**
+         * The ach builder.
+         */
         private ACH.ACHBuilder<StandaloneCreditsBuilder> achBuilder;
-        
-        /** The eft builder. */
+
+        /**
+         * The eft builder.
+         */
         private EFT.EFTBuilder<StandaloneCreditsBuilder> eftBuilder;
-        
-        /** The bacs builder. */
+
+        /**
+         * The bacs builder.
+         */
         private BACS.BACSBuilder<StandaloneCreditsBuilder> bacsBuilder;
 
-        /** The standalonecredits. */
+        /**
+         * The standalonecredits.
+         */
         private final StandaloneCredits standalonecredits = new StandaloneCredits();
 
         /**
@@ -489,24 +538,24 @@ public class StandaloneCredits implements BaseDomainObject {
         @Override
         public final StandaloneCredits build() {
             if (null != profileBuilder) {
-            	standalonecredits.setProfile(profileBuilder.build());
+                standalonecredits.setProfile(profileBuilder.build());
             }
             if (null != billingDetailsBuilder) {
-            	standalonecredits.setBillingDetails(billingDetailsBuilder.build());
+                standalonecredits.setBillingDetails(billingDetailsBuilder.build());
             }
             if (null != shippingDetailsBuilder) {
-            	standalonecredits.setShippingDetails(shippingDetailsBuilder.build());
+                standalonecredits.setShippingDetails(shippingDetailsBuilder.build());
             }
             if (null != achBuilder) {
-            	standalonecredits.setAch(achBuilder.build());
+                standalonecredits.setAch(achBuilder.build());
             }
             if (null != eftBuilder) {
-            	standalonecredits.setEft(eftBuilder.build());
+                standalonecredits.setEft(eftBuilder.build());
             }
             if (null != bacsBuilder) {
-            	standalonecredits.setBacs(bacsBuilder.build());
+                standalonecredits.setBacs(bacsBuilder.build());
             }
-            
+
             return standalonecredits;
         }
 
@@ -517,7 +566,7 @@ public class StandaloneCredits implements BaseDomainObject {
          * @return StandaloneCreditsBuilder
          */
         public final StandaloneCreditsBuilder id(final Id<StandaloneCredits> id) {
-        	standalonecredits.setId(id);
+            standalonecredits.setId(id);
             return this;
         }
 
@@ -528,7 +577,7 @@ public class StandaloneCredits implements BaseDomainObject {
          * @return StandaloneCreditsBuilder
          */
         public final StandaloneCreditsBuilder merchantRefNum(final String merchantRefNum) {
-        	standalonecredits.setMerchantRefNum(merchantRefNum);
+            standalonecredits.setMerchantRefNum(merchantRefNum);
             return this;
         }
 
@@ -539,10 +588,9 @@ public class StandaloneCredits implements BaseDomainObject {
          * @return StandaloneCreditsBuilder
          */
         public final StandaloneCreditsBuilder amount(final Integer amount) {
-        	standalonecredits.setAmount(amount);
+            standalonecredits.setAmount(amount);
             return this;
         }
-
 
 
         /**
@@ -556,7 +604,7 @@ public class StandaloneCredits implements BaseDomainObject {
             }
             return billingDetailsBuilder;
         }
-        
+
         /**
          * Add details from a customer vault address to this BillingDetails object.
          *
@@ -568,7 +616,7 @@ public class StandaloneCredits implements BaseDomainObject {
             billingDetailsBuilder = new BillingDetails.BillingDetailsBuilder<StandaloneCreditsBuilder>(this, a);
             return this;
         }
-        
+
         /**
          * Build a shippingDetails within this standalonecredits.
          *
@@ -576,11 +624,11 @@ public class StandaloneCredits implements BaseDomainObject {
          */
         public final ShippingDetails.ShippingDetailsBuilder<StandaloneCreditsBuilder> shippingDetails() {
             if (null == shippingDetailsBuilder) {
-            	shippingDetailsBuilder = new ShippingDetails.ShippingDetailsBuilder<StandaloneCreditsBuilder>(this);
+                shippingDetailsBuilder = new ShippingDetails.ShippingDetailsBuilder<StandaloneCreditsBuilder>(this);
             }
             return shippingDetailsBuilder;
         }
-        
+
         /**
          * Add details from a customer vault address to this shippingDetails object.
          *
@@ -589,7 +637,7 @@ public class StandaloneCredits implements BaseDomainObject {
          * //TODO
          */
         public final StandaloneCreditsBuilder shippingDetails(final com.paysafe.customervault.Address a) {
-        	shippingDetailsBuilder = new ShippingDetails.ShippingDetailsBuilder<StandaloneCreditsBuilder>(this, a);
+            shippingDetailsBuilder = new ShippingDetails.ShippingDetailsBuilder<StandaloneCreditsBuilder>(this, a);
             return this;
         }
 
@@ -600,7 +648,7 @@ public class StandaloneCredits implements BaseDomainObject {
          * @return StandaloneCreditsBuilder
          */
         public final StandaloneCreditsBuilder customerIp(final String customerIp) {
-        	standalonecredits.setCustomerIp(customerIp);
+            standalonecredits.setCustomerIp(customerIp);
             return this;
         }
 
@@ -611,7 +659,7 @@ public class StandaloneCredits implements BaseDomainObject {
          * @return StandaloneCreditsBuilder
          */
         public final StandaloneCreditsBuilder dupCheck(final Boolean dupCheck) {
-        	standalonecredits.setDupCheck(dupCheck);
+            standalonecredits.setDupCheck(dupCheck);
             return this;
         }
 
@@ -626,6 +674,7 @@ public class StandaloneCredits implements BaseDomainObject {
             }
             return achBuilder;
         }
+
         /**
          * Build an Profile within this standalonecredits.
          *
@@ -633,10 +682,11 @@ public class StandaloneCredits implements BaseDomainObject {
          */
         public final Profile.ProfileBuilder<StandaloneCreditsBuilder> profile() {
             if (null == profileBuilder) {
-            	profileBuilder = new Profile.ProfileBuilder<StandaloneCreditsBuilder>(this);
+                profileBuilder = new Profile.ProfileBuilder<StandaloneCreditsBuilder>(this);
             }
             return profileBuilder;
         }
+
         /**
          * Build an EFT within this standalonecredits.
          *
@@ -644,10 +694,11 @@ public class StandaloneCredits implements BaseDomainObject {
          */
         public final EFT.EFTBuilder<StandaloneCreditsBuilder> eft() {
             if (null == eftBuilder) {
-            	eftBuilder = new EFT.EFTBuilder<StandaloneCreditsBuilder>(this);
+                eftBuilder = new EFT.EFTBuilder<StandaloneCreditsBuilder>(this);
             }
             return eftBuilder;
         }
+
         /**
          * Build an BACS within this standalonecredits.
          *
@@ -655,11 +706,11 @@ public class StandaloneCredits implements BaseDomainObject {
          */
         public final BACS.BACSBuilder<StandaloneCreditsBuilder> bacs() {
             if (null == bacsBuilder) {
-            	bacsBuilder = new BACS.BACSBuilder<StandaloneCreditsBuilder>(this);
+                bacsBuilder = new BACS.BACSBuilder<StandaloneCreditsBuilder>(this);
             }
             return bacsBuilder;
         }
-        
+
 
         /**
          * Set the txnTime property.
@@ -668,7 +719,7 @@ public class StandaloneCredits implements BaseDomainObject {
          * @return StandaloneCreditsBuilder
          */
         public final StandaloneCreditsBuilder txnTime(final String txnTime) {
-        	standalonecredits.setTxnTime(txnTime);
+            standalonecredits.setTxnTime(txnTime);
             return this;
         }
 
@@ -679,7 +730,7 @@ public class StandaloneCredits implements BaseDomainObject {
          * @return StandaloneCreditsBuilder
          */
         public final StandaloneCreditsBuilder currencyCode(final String currencyCode) {
-        	standalonecredits.setCurrencyCode(currencyCode);
+            standalonecredits.setCurrencyCode(currencyCode);
             return this;
         }
 
@@ -690,7 +741,7 @@ public class StandaloneCredits implements BaseDomainObject {
          * @return StandaloneCreditsBuilder
          */
         public final StandaloneCreditsBuilder error(final Error error) {
-        	standalonecredits.setError(error);
+            standalonecredits.setError(error);
             return this;
         }
 
@@ -701,7 +752,7 @@ public class StandaloneCredits implements BaseDomainObject {
          * @return StandaloneCreditsBuilder
          */
         public final StandaloneCreditsBuilder status(final Status status) {
-        	standalonecredits.setStatus(status);
+            standalonecredits.setStatus(status);
             return this;
         }
     }

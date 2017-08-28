@@ -18,25 +18,29 @@
  */
 package com.paysafe.cardpayments.impl;
 
-import java.util.ArrayList;
-
 import com.paysafe.cardpayments.Settlement;
 
+import java.util.ArrayList;
+
 // TODO: Auto-generated Javadoc
+
 /**
  * Used to iterate over pages of results.
  */
 public class SettlementPagerator extends CardPaymentsPagerator<Settlement> {
-  
-  /** The settlements. */
-  private ArrayList<Settlement> settlements;
-  
-  /**
-   * Return the results array.
-   * @return ArrayList< Settlement >
-   */
-  @Override
-  protected final ArrayList<Settlement> getResults() {
-    return settlements;
-  }
+
+    /**
+     * The settlements.
+     */
+    private ArrayList<Settlement> settlements;
+
+    /**
+     * Return the results array.
+     *
+     * @return ArrayList< Settlement >
+     */
+    @Override
+    protected final ArrayList<Settlement> getResults() {
+        return settlements;
+    }
 }

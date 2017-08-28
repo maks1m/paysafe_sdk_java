@@ -26,224 +26,235 @@ import com.paysafe.common.impl.NestedBuilder;
 
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class ShippingDetails.
  */
 public class ShippingDetails extends AddressContainer implements DomainObject {
 
-  /** The recipient name. */
-  @Expose
-  private String recipientName;
-  
-  /** The carrier. */
-  @Expose
-  private Carrier carrier;
-  
-  /** The ship method. */
-  @Expose
-  private ShipMethod shipMethod;
-
-  /**
-   * Gets the recipient name.
-   *
-   * @return the recipient name
-   */
-  public final String getRecipientName() {
-    return recipientName;
-  }
-
-  /**
-   * Sets the recipient name.
-   *
-   * @param recipientName the new recipient name
-   */
-  public final void setRecipientName(final String recipientName) {
-    this.recipientName = recipientName;
-  }
-
-  /**
-   * Gets the carrier.
-   *
-   * @return the carrier
-   */
-  public final Carrier getCarrier() {
-    return carrier;
-  }
-
-  /**
-   * Sets the carrier.
-   *
-   * @param carrier the new carrier
-   */
-  public final void setCarrier(final Carrier carrier) {
-    this.carrier = carrier;
-  }
-
-  /**
-   * Gets the ship method.
-   *
-   * @return the ship method
-   */
-  public final ShipMethod getShipMethod() {
-    return shipMethod;
-  }
-
-  /**
-   * Sets the ship method.
-   *
-   * @param shipMethod the new ship method
-   */
-  public final void setShipMethod(final ShipMethod shipMethod) {
-    this.shipMethod = shipMethod;
-  }
-
-  /**
-   * The sub-builder class for ShippingDetails.
-   *
-   * @param <BLDRT> the parent builder
-   */
-  public static class ShippingDetailsBuilder<BLDRT extends GenericBuilder> extends
-          NestedBuilder<ShippingDetails, BLDRT> {
-
-    /** The shipping details. */
-    private final ShippingDetails shippingDetails = new ShippingDetails();
-    
-    /** The address details. */
-    private AddressDetails addressDetails = new AddressDetails();
+    /**
+     * The recipient name.
+     */
+    @Expose
+    private String recipientName;
 
     /**
-     * Instantiates a new shipping details builder.
-     *
-     * @param parent the parent
+     * The carrier.
      */
-    public ShippingDetailsBuilder(final BLDRT parent) {
-      super(parent);
+    @Expose
+    private Carrier carrier;
+
+    /**
+     * The ship method.
+     */
+    @Expose
+    private ShipMethod shipMethod;
+
+    /**
+     * Gets the recipient name.
+     *
+     * @return the recipient name
+     */
+    public final String getRecipientName() {
+        return recipientName;
     }
 
     /**
-     * Instantiates a new shipping details builder.
+     * Sets the recipient name.
      *
-     * @param parent the parent
-     * @param a the a
+     * @param recipientName the new recipient name
      */
-    public ShippingDetailsBuilder(
-            final BLDRT parent,
-            com.paysafe.customervault.Address a) {
-      super(parent);
-      if (null != a.getAddressDetails()) {
-        addressDetails = a.getAddressDetails();
-      }
-      shippingDetails.setRecipientName(a.getRecipientName());
+    public final void setRecipientName(final String recipientName) {
+        this.recipientName = recipientName;
     }
 
     /**
-     * Build this ShippingDetails object.
+     * Gets the carrier.
      *
-     * @return ShippingDetails
+     * @return the carrier
      */
-    @Override
-    public final ShippingDetails build() {
-      shippingDetails.setAddressDetails(addressDetails);
-      return shippingDetails;
+    public final Carrier getCarrier() {
+        return carrier;
     }
 
     /**
-     * Set the street property.
+     * Sets the carrier.
      *
-     * @param street the street
-     * @return ShippingDetailsBuilder< BLDRT >
+     * @param carrier the new carrier
      */
-    public final ShippingDetailsBuilder<BLDRT> street(final String street) {
-      addressDetails.setStreet(street);
-      return this;
+    public final void setCarrier(final Carrier carrier) {
+        this.carrier = carrier;
     }
 
     /**
-     * Set the street2 property.
+     * Gets the ship method.
      *
-     * @param street2 the street2
-     * @return ShippingDetailsBuilder< BLDRT >
+     * @return the ship method
      */
-    public final ShippingDetailsBuilder<BLDRT> street2(final String street2) {
-      addressDetails.setStreet2(street2);
-      return this;
+    public final ShipMethod getShipMethod() {
+        return shipMethod;
     }
 
     /**
-     * Set the city property.
+     * Sets the ship method.
      *
-     * @param city the city
-     * @return ShippingDetailsBuilder< BLDRT >
+     * @param shipMethod the new ship method
      */
-    public final ShippingDetailsBuilder<BLDRT> city(final String city) {
-      addressDetails.setCity(city);
-      return this;
+    public final void setShipMethod(final ShipMethod shipMethod) {
+        this.shipMethod = shipMethod;
     }
 
     /**
-     * Set the state property.
+     * The sub-builder class for ShippingDetails.
      *
-     * @param state the state
-     * @return ShippingDetailsBuilder< BLDRT >
+     * @param <BLDRT> the parent builder
      */
-    public final ShippingDetailsBuilder<BLDRT> state(final String state) {
-      addressDetails.setState(state);
-      return this;
-    }
+    public static class ShippingDetailsBuilder<BLDRT extends GenericBuilder> extends
+            NestedBuilder<ShippingDetails, BLDRT> {
 
-    /**
-     * Set the country property.
-     *
-     * @param country the country
-     * @return ShippingDetailsBuilder< BLDRT >
-     */
-    public final ShippingDetailsBuilder<BLDRT> country(final String country) {
-      addressDetails.setCountry(country);
-      return this;
-    }
+        /**
+         * The shipping details.
+         */
+        private final ShippingDetails shippingDetails = new ShippingDetails();
 
-    /**
-     * Set the zip property.
-     *
-     * @param zip the zip
-     * @return ShippingDetailsBuilder< BLDRT >
-     */
-    public final ShippingDetailsBuilder<BLDRT> zip(final String zip) {
-      addressDetails.setZip(zip);
-      return this;
-    }
+        /**
+         * The address details.
+         */
+        private AddressDetails addressDetails = new AddressDetails();
 
-    /**
-     * Set the phone property.
-     *
-     * @param phone the phone
-     * @return ShippingDetailsBuilder< BLDRT >
-     */
-    public final ShippingDetailsBuilder<BLDRT> phone(final String phone) {
-      addressDetails.setPhone(phone);
-      return this;
-    }
+        /**
+         * Instantiates a new shipping details builder.
+         *
+         * @param parent the parent
+         */
+        public ShippingDetailsBuilder(final BLDRT parent) {
+            super(parent);
+        }
 
-    /**
-     * Set the carrier property.
-     *
-     * @param carrier the carrier
-     * @return ShippingDetailsBuilder< BLDRT >
-     */
-    public final ShippingDetailsBuilder<BLDRT> carrier(final Carrier carrier) {
-      shippingDetails.setCarrier(carrier);
-      return this;
-    }
+        /**
+         * Instantiates a new shipping details builder.
+         *
+         * @param parent the parent
+         * @param a      the a
+         */
+        public ShippingDetailsBuilder(
+                final BLDRT parent,
+                com.paysafe.customervault.Address a) {
+            super(parent);
+            if (null != a.getAddressDetails()) {
+                addressDetails = a.getAddressDetails();
+            }
+            shippingDetails.setRecipientName(a.getRecipientName());
+        }
 
-    /**
-     * Set the shipMethod property.
-     *
-     * @param shipMethod the ship method
-     * @return ShippingDetailsBuilder< BLDRT >
-     */
-    public final ShippingDetailsBuilder<BLDRT> shipMethod(final ShipMethod shipMethod) {
-      shippingDetails.setShipMethod(shipMethod);
-      return this;
+        /**
+         * Build this ShippingDetails object.
+         *
+         * @return ShippingDetails
+         */
+        @Override
+        public final ShippingDetails build() {
+            shippingDetails.setAddressDetails(addressDetails);
+            return shippingDetails;
+        }
+
+        /**
+         * Set the street property.
+         *
+         * @param street the street
+         * @return ShippingDetailsBuilder< BLDRT >
+         */
+        public final ShippingDetailsBuilder<BLDRT> street(final String street) {
+            addressDetails.setStreet(street);
+            return this;
+        }
+
+        /**
+         * Set the street2 property.
+         *
+         * @param street2 the street2
+         * @return ShippingDetailsBuilder< BLDRT >
+         */
+        public final ShippingDetailsBuilder<BLDRT> street2(final String street2) {
+            addressDetails.setStreet2(street2);
+            return this;
+        }
+
+        /**
+         * Set the city property.
+         *
+         * @param city the city
+         * @return ShippingDetailsBuilder< BLDRT >
+         */
+        public final ShippingDetailsBuilder<BLDRT> city(final String city) {
+            addressDetails.setCity(city);
+            return this;
+        }
+
+        /**
+         * Set the state property.
+         *
+         * @param state the state
+         * @return ShippingDetailsBuilder< BLDRT >
+         */
+        public final ShippingDetailsBuilder<BLDRT> state(final String state) {
+            addressDetails.setState(state);
+            return this;
+        }
+
+        /**
+         * Set the country property.
+         *
+         * @param country the country
+         * @return ShippingDetailsBuilder< BLDRT >
+         */
+        public final ShippingDetailsBuilder<BLDRT> country(final String country) {
+            addressDetails.setCountry(country);
+            return this;
+        }
+
+        /**
+         * Set the zip property.
+         *
+         * @param zip the zip
+         * @return ShippingDetailsBuilder< BLDRT >
+         */
+        public final ShippingDetailsBuilder<BLDRT> zip(final String zip) {
+            addressDetails.setZip(zip);
+            return this;
+        }
+
+        /**
+         * Set the phone property.
+         *
+         * @param phone the phone
+         * @return ShippingDetailsBuilder< BLDRT >
+         */
+        public final ShippingDetailsBuilder<BLDRT> phone(final String phone) {
+            addressDetails.setPhone(phone);
+            return this;
+        }
+
+        /**
+         * Set the carrier property.
+         *
+         * @param carrier the carrier
+         * @return ShippingDetailsBuilder< BLDRT >
+         */
+        public final ShippingDetailsBuilder<BLDRT> carrier(final Carrier carrier) {
+            shippingDetails.setCarrier(carrier);
+            return this;
+        }
+
+        /**
+         * Set the shipMethod property.
+         *
+         * @param shipMethod the ship method
+         * @return ShippingDetailsBuilder< BLDRT >
+         */
+        public final ShippingDetailsBuilder<BLDRT> shipMethod(final ShipMethod shipMethod) {
+            shippingDetails.setShipMethod(shipMethod);
+            return this;
+        }
     }
-  }
 }

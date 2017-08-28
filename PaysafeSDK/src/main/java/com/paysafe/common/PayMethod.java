@@ -21,24 +21,33 @@ package com.paysafe.common;
 import com.google.gson.annotations.SerializedName;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * Used by ShippingDetails.
  */
 public enum PayMethod {
 
-  /** The web. */
-  @SerializedName("WEB")
-  WEB,
-  
-  /** The tel. */
-  @SerializedName("TEL")
-  TEL,
-  
-  /** The ppd. */
-  @SerializedName("PPD")
-  PPD,
-  
-  /** The ccd. */
-  @SerializedName("CCD")
-  CCD
+    /**
+     * The web.
+     */
+    @SerializedName("WEB")
+    WEB,
+
+    /**
+     * The tel.
+     */
+    @SerializedName("TEL")
+    TEL,
+
+    /**
+     * The ppd.
+     */
+    @SerializedName("PPD")
+    PPD,
+
+    /**
+     * The ccd.
+     */
+    @SerializedName("CCD")
+    CCD
 }

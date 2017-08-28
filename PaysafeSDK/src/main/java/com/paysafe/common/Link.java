@@ -21,50 +21,55 @@ package com.paysafe.common;
 import com.paysafe.common.impl.DomainObject;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class Link.
  */
 public class Link implements DomainObject {
 
-  /** The rel. */
-  private String rel;
-  
-  /** The href. */
-  private String href;
+    /**
+     * The rel.
+     */
+    private String rel;
 
-  /**
-   * Gets the rel.
-   *
-   * @return the rel
-   */
-  public final String getRel() {
-    return rel;
-  }
+    /**
+     * The href.
+     */
+    private String href;
 
-  /**
-   * Sets the rel.
-   *
-   * @param rel the new rel
-   */
-  public final void setRel(final String rel) {
-    this.rel = rel;
-  }
+    /**
+     * Gets the rel.
+     *
+     * @return the rel
+     */
+    public final String getRel() {
+        return rel;
+    }
 
-  /**
-   * Gets the href.
-   *
-   * @return the href
-   */
-  public final String getHref() {
-    return href;
-  }
+    /**
+     * Sets the rel.
+     *
+     * @param rel the new rel
+     */
+    public final void setRel(final String rel) {
+        this.rel = rel;
+    }
 
-  /**
-   * Sets the href.
-   *
-   * @param href the new href
-   */
-  public final void setHref(final String href) {
-    this.href = href;
-  }
+    /**
+     * Gets the href.
+     *
+     * @return the href
+     */
+    public final String getHref() {
+        return href;
+    }
+
+    /**
+     * Sets the href.
+     *
+     * @param href the new href
+     */
+    public final void setHref(final String href) {
+        this.href = href;
+    }
 }

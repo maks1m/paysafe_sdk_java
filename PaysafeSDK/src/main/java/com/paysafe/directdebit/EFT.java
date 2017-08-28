@@ -24,48 +24,64 @@ import com.paysafe.common.impl.GenericBuilder;
 import com.paysafe.common.impl.NestedBuilder;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class EFT.
+ *
  * @author bhushan.patil
  * @since 04-04-2016.
  */
 public class EFT implements DomainObject {
-    
-    /** The payment token. */
+
+    /**
+     * The payment token.
+     */
     @Expose
     private String paymentToken;
-    
-    /** The payment descriptor. */
+
+    /**
+     * The payment descriptor.
+     */
     @Expose
     private String paymentDescriptor;
-    
-    /** The account holder name. */
+
+    /**
+     * The account holder name.
+     */
     @Expose
     private String accountHolderName;
-    
-    /** The transit number. */
+
+    /**
+     * The transit number.
+     */
     @Expose
     private String transitNumber;
-    
-    /** The institution id. */
+
+    /**
+     * The institution id.
+     */
     @Expose
-    private String institutionId; 
-   	
-	   /** The last digits. */
-	   @Expose
-    private String lastDigits; 
-    
-    /** The account number. */
+    private String institutionId;
+
+    /**
+     * The last digits.
+     */
     @Expose
-    private String accountNumber; 
-    
-	
-	/**
-	 * Gets the payment token.
-	 *
-	 * @return the payment token
-	 */
-	public String getPaymentToken() {
+    private String lastDigits;
+
+    /**
+     * The account number.
+     */
+    @Expose
+    private String accountNumber;
+
+
+    /**
+     * Gets the payment token.
+     *
+     * @return the payment token
+     */
+    public String getPaymentToken() {
         return paymentToken;
     }
 
@@ -95,99 +111,99 @@ public class EFT implements DomainObject {
     public void setPaymentDescriptor(final String paymentDescriptor) {
         this.paymentDescriptor = paymentDescriptor;
     }
-    
+
     /**
      * Gets the account holder name.
      *
      * @return the account holder name
      */
     public String getAccountHolderName() {
-		return accountHolderName;
-	}
+        return accountHolderName;
+    }
 
-	/**
-	 * Sets the account holder name.
-	 *
-	 * @param accountHolderName the new account holder name
-	 */
-	public void setAccountHolderName(final String accountHolderName) {
-		this.accountHolderName = accountHolderName;
-	}
-	 
- 	/**
- 	 * Gets the institution id.
- 	 *
- 	 * @return the institution id
- 	 */
- 	public String getInstitutionId() {
-			return institutionId;
-	}
+    /**
+     * Sets the account holder name.
+     *
+     * @param accountHolderName the new account holder name
+     */
+    public void setAccountHolderName(final String accountHolderName) {
+        this.accountHolderName = accountHolderName;
+    }
 
-	/**
-	 * Sets the institution id.
-	 *
-	 * @param institutionId the new institution id
-	 */
-	public void setInstitutionId(final String institutionId) {
-			this.institutionId = institutionId;
-	}
-	
-	/**
-	 * Gets the transit number.
-	 *
-	 * @return the transit number
-	 */
-	public String getTransitNumber() {
-			return transitNumber;
-	}
+    /**
+     * Gets the institution id.
+     *
+     * @return the institution id
+     */
+    public String getInstitutionId() {
+        return institutionId;
+    }
 
-	/**
-	 * Sets the transit number.
-	 *
-	 * @param transitNumber the new transit number
-	 */
-	public void setTransitNumber(final String transitNumber) {
-			this.transitNumber = transitNumber;
-	}
-	
-	/**
-	 * Gets the last digits.
-	 *
-	 * @return the last digits
-	 */
-	public String getLastDigits() {
-		return lastDigits;
-	}
+    /**
+     * Sets the institution id.
+     *
+     * @param institutionId the new institution id
+     */
+    public void setInstitutionId(final String institutionId) {
+        this.institutionId = institutionId;
+    }
 
-	/**
-	 * Sets the last digits.
-	 *
-	 * @param lastDigits the new last digits
-	 */
-	public void setLastDigits(final String lastDigits) {
-		this.lastDigits = lastDigits;
-	}
-	
-	/**
-	 * Gets the account number.
-	 *
-	 * @return the account number
-	 */
-	public String getAccountNumber() {
-		return accountNumber;
-	}
+    /**
+     * Gets the transit number.
+     *
+     * @return the transit number
+     */
+    public String getTransitNumber() {
+        return transitNumber;
+    }
 
-	/**
-	 * Sets the account number.
-	 *
-	 * @param accountNumber the new account number
-	 */
-	public void setAccountNumber(final String accountNumber) {
-		this.accountNumber = accountNumber;
-	}
+    /**
+     * Sets the transit number.
+     *
+     * @param transitNumber the new transit number
+     */
+    public void setTransitNumber(final String transitNumber) {
+        this.transitNumber = transitNumber;
+    }
+
+    /**
+     * Gets the last digits.
+     *
+     * @return the last digits
+     */
+    public String getLastDigits() {
+        return lastDigits;
+    }
+
+    /**
+     * Sets the last digits.
+     *
+     * @param lastDigits the new last digits
+     */
+    public void setLastDigits(final String lastDigits) {
+        this.lastDigits = lastDigits;
+    }
+
+    /**
+     * Gets the account number.
+     *
+     * @return the account number
+     */
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    /**
+     * Sets the account number.
+     *
+     * @param accountNumber the new account number
+     */
+    public void setAccountNumber(final String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
 
 
-     /**
+    /**
      * The sub-builder class for EFT.
      *
      * @param <BLDRT> the parent builder
@@ -195,7 +211,9 @@ public class EFT implements DomainObject {
     public static class EFTBuilder<BLDRT extends GenericBuilder>
             extends NestedBuilder<EFT, BLDRT> {
 
-        /** The eft. */
+        /**
+         * The eft.
+         */
         private final EFT eft = new EFT();
 
         /**
@@ -227,7 +245,7 @@ public class EFT implements DomainObject {
             eft.setPaymentToken(paymentToken);
             return this;
         }
-        
+
         /**
          * Set the paymentDescriptor property.
          *
@@ -238,7 +256,7 @@ public class EFT implements DomainObject {
             eft.setPaymentDescriptor(paymentDescriptor);
             return this;
         }
-        
+
         /**
          * Set the accountHolderName property.
          *
@@ -249,7 +267,7 @@ public class EFT implements DomainObject {
             eft.setAccountHolderName(accountHolderName);
             return this;
         }
-        
+
         /**
          * Set the accountNumber property.
          *
@@ -260,7 +278,7 @@ public class EFT implements DomainObject {
             eft.setAccountNumber(accountNumber);
             return this;
         }
-        
+
         /**
          * Set the transitNumber property.
          *
@@ -271,7 +289,7 @@ public class EFT implements DomainObject {
             eft.setTransitNumber(transitNumber);
             return this;
         }
-        
+
         /**
          * Set the institutionId property.
          *
@@ -282,7 +300,7 @@ public class EFT implements DomainObject {
             eft.setInstitutionId(institutionId);
             return this;
         }
-        
+
         /**
          * Set the lastDigits property.
          *
@@ -293,9 +311,8 @@ public class EFT implements DomainObject {
             eft.setLastDigits(lastDigits);
             return this;
         }
-        
-        
-       
+
+
     }
 
 }

@@ -20,18 +20,19 @@
 package com.paysafe.directdebit;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class Snippet.
  */
 public class Snippet {
-	
-	/**
-	 * The main method.
-	 *
-	 * @param args the arguments
-	 */
-	public static void main(String[] args) {
-		
-	}
+
+    /**
+     * The main method.
+     *
+     * @param args the arguments
+     */
+    public static void main(String[] args) {
+
+    }
 }
 

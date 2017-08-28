@@ -25,31 +25,43 @@ import com.paysafe.common.impl.GenericBuilder;
 import com.paysafe.common.impl.NestedBuilder;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class Profile.
+ *
  * @author manisha.rani
  * @since 03-03-2016.
  */
 
 public class Profile implements DomainObject {
-    
-    /** The first name. */
+
+    /**
+     * The first name.
+     */
     @Expose
     private String firstName;
-    
-    /** The last name. */
+
+    /**
+     * The last name.
+     */
     @Expose
     private String lastName;
-    
-    /** The email. */
+
+    /**
+     * The email.
+     */
     @Expose
     private String email;
-    
-    /** The ssn. */
+
+    /**
+     * The ssn.
+     */
     @Expose
     private String ssn;
-    
-    /** The date of birth. */
+
+    /**
+     * The date of birth.
+     */
     @Expose
     private DateOfBirth dateOfBirth;
 
@@ -151,10 +163,14 @@ public class Profile implements DomainObject {
     public static class ProfileBuilder<BLDRT extends GenericBuilder> extends
             NestedBuilder<Profile, BLDRT> {
 
-        /** The Profile. */
+        /**
+         * The Profile.
+         */
         private final Profile Profile = new Profile();
-        
-        /** The date of birth builder. */
+
+        /**
+         * The date of birth builder.
+         */
         private DateOfBirth.DateOfBirthBuilder<ProfileBuilder<BLDRT>> dateOfBirthBuilder;
 
         /**
@@ -200,7 +216,7 @@ public class Profile implements DomainObject {
             Profile.setLastName(lastName);
             return this;
         }
-        
+
         /**
          * Set the email property.
          *
@@ -223,7 +239,7 @@ public class Profile implements DomainObject {
             return this;
         }
 
-      
+
     }
 
 }

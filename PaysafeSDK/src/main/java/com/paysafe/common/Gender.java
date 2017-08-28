@@ -21,16 +21,21 @@ package com.paysafe.common;
 import com.google.gson.annotations.SerializedName;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * Used by ShippingDetails.
  */
 public enum Gender {
 
-  /** The male. */
-  @SerializedName("M")
-  MALE,
-  
-  /** The female. */
-  @SerializedName("F")
-  FEMALE
+    /**
+     * The male.
+     */
+    @SerializedName("M")
+    MALE,
+
+    /**
+     * The female.
+     */
+    @SerializedName("F")
+    FEMALE
 }

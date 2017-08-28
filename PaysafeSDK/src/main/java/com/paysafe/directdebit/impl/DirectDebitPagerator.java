@@ -19,13 +19,14 @@
 
 package com.paysafe.directdebit.impl;
 
-import java.util.ArrayList;
-
 import com.paysafe.common.Link;
 import com.paysafe.common.Pagerator;
 import com.paysafe.common.impl.BaseDomainObject;
 
+import java.util.ArrayList;
+
 // TODO: Auto-generated Javadoc
+
 /**
  * DirectDebitPagerator class will allow iteration of all results for a paged query.
  *
@@ -33,34 +34,38 @@ import com.paysafe.common.impl.BaseDomainObject;
  */
 public abstract class DirectDebitPagerator<T extends BaseDomainObject> extends Pagerator<T> {
 
-  /** The links. */
-  private ArrayList<Link> links = new ArrayList<Link>();
-  
-  /** The next url. */
-  private String nextUrl;
+    /**
+     * The links.
+     */
+    private ArrayList<Link> links = new ArrayList<Link>();
 
-  /* (non-Javadoc)
-   * @see com.optimalpayments.common.Pagerator#getNextPageUrl()
-   */
-  @Override
-  protected final String getNextPageUrl() {
-    if (null != links) {
-      for (Link link : links) {
-        if (null != link.getRel() && link.getRel().equals("next")) {
-          nextUrl = link.getHref();
+    /**
+     * The next url.
+     */
+    private String nextUrl;
+
+    /* (non-Javadoc)
+     * @see com.optimalpayments.common.Pagerator#getNextPageUrl()
+     */
+    @Override
+    protected final String getNextPageUrl() {
+        if (null != links) {
+            for (Link link : links) {
+                if (null != link.getRel() && link.getRel().equals("next")) {
+                    nextUrl = link.getHref();
+                }
+            }
+            //after we've found the next url, we can set the links to null so we don't go looking again.
+            links = null;
         }
-      }
-      //after we've found the next url, we can set the links to null so we don't go looking again.
-      links = null;
+        return nextUrl;
     }
-    return nextUrl;
-  }
 
-  /* (non-Javadoc)
-   * @see com.optimalpayments.common.Pagerator#setNextPageUrl(java.lang.String)
-   */
-  @Override
-  protected final void setNextPageUrl(final String nextUrl) {
-    this.nextUrl = nextUrl;
-  }
+    /* (non-Javadoc)
+     * @see com.optimalpayments.common.Pagerator#setNextPageUrl(java.lang.String)
+     */
+    @Override
+    protected final void setNextPageUrl(final String nextUrl) {
+        this.nextUrl = nextUrl;
+    }
 }

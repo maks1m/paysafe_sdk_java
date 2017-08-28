@@ -8,3 +8,5 @@ reports
 .settings/
 .nb-gradle/
 .nb-gradle-properties
+.idea/
+*.iml

@@ -19,14 +19,19 @@
 package com.paysafe.cardpayments;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * Used by AccordD.
  */
 public enum FinancingType {
 
-  /** The deferred payment. */
-  DEFERRED_PAYMENT,
-  
-  /** The equal payment. */
-  EQUAL_PAYMENT
+    /**
+     * The deferred payment.
+     */
+    DEFERRED_PAYMENT,
+
+    /**
+     * The equal payment.
+     */
+    EQUAL_PAYMENT
 }

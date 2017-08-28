@@ -18,25 +18,29 @@
  */
 package com.paysafe.cardpayments.impl;
 
-import java.util.ArrayList;
-
 import com.paysafe.cardpayments.Authorization;
 
+import java.util.ArrayList;
+
 // TODO: Auto-generated Javadoc
+
 /**
  * Used to iterate over pages of results.
  */
 public class AuthorizationPagerator extends CardPaymentsPagerator<Authorization> {
-  
-  /** The auths. */
-  private ArrayList<Authorization> auths;
-  
-  /**
-   * Return the results array.
-   * @return ArrayList< Authorization >
-   */
-  @Override
-  protected final ArrayList<Authorization> getResults() {
-    return auths;
-  }
+
+    /**
+     * The auths.
+     */
+    private ArrayList<Authorization> auths;
+
+    /**
+     * Return the results array.
+     *
+     * @return ArrayList< Authorization >
+     */
+    @Override
+    protected final ArrayList<Authorization> getResults() {
+        return auths;
+    }
 }

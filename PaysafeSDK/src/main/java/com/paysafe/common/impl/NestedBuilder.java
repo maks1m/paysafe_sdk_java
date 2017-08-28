@@ -19,35 +19,38 @@
 package com.paysafe.common.impl;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * This class will be extended for any builders nested within another builder. done() will return
  * the parent builder
  *
- * @param <RTNT> The type returned by build()
+ * @param <RTNT>  The type returned by build()
  * @param <BLDRT> the builder returned by done()
  */
 public abstract class NestedBuilder<
         RTNT extends DomainObject, BLDRT extends GenericBuilder>
         extends BaseBuilder<RTNT> {
 
-  /** The parent. */
-  protected BLDRT parent;
+    /**
+     * The parent.
+     */
+    protected BLDRT parent;
 
-  /**
-   * Done.
-   *
-   * @return the bldrt
-   */
-  public final BLDRT done() {
-    return parent;
-  }
+    /**
+     * Done.
+     *
+     * @return the bldrt
+     */
+    public final BLDRT done() {
+        return parent;
+    }
 
-  /**
-   * Instantiates a new nested builder.
-   *
-   * @param parent the parent
-   */
-  public NestedBuilder(final BLDRT parent) {
-    this.parent = parent;
-  }
+    /**
+     * Instantiates a new nested builder.
+     *
+     * @param parent the parent
+     */
+    public NestedBuilder(final BLDRT parent) {
+        this.parent = parent;
+    }
 }

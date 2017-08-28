@@ -18,25 +18,29 @@
  */
 package com.paysafe.cardpayments.impl;
 
-import java.util.ArrayList;
-
 import com.paysafe.cardpayments.AuthorizationReversal;
 
+import java.util.ArrayList;
+
 // TODO: Auto-generated Javadoc
+
 /**
  * Used to iterate over pages of results.
  */
 public class AuthorizationReversalPagerator extends CardPaymentsPagerator<AuthorizationReversal> {
-  
-  /** The void auths. */
-  private ArrayList<AuthorizationReversal> voidAuths;
-  
-  /**
-   * Return the results array.
-   * @return ArrayList< AuthorizationReversal >
-   */
-  @Override
-  protected final ArrayList<AuthorizationReversal> getResults() {
-    return voidAuths;
-  }
+
+    /**
+     * The void auths.
+     */
+    private ArrayList<AuthorizationReversal> voidAuths;
+
+    /**
+     * Return the results array.
+     *
+     * @return ArrayList< AuthorizationReversal >
+     */
+    @Override
+    protected final ArrayList<AuthorizationReversal> getResults() {
+        return voidAuths;
+    }
 }

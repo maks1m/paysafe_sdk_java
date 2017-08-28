@@ -19,35 +19,42 @@
 package com.paysafe;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Enum Environment.
  */
 public enum Environment {
 
-  /** The live. */
-  LIVE("https://api.paysafe.com"),
-  
-  /** The test. */
-  TEST("https://api.test.paysafe.com");
+    /**
+     * The live.
+     */
+    LIVE("https://api.paysafe.com"),
 
-  /** The url. */
-  private final String url;
+    /**
+     * The test.
+     */
+    TEST("https://api.test.paysafe.com");
 
-  /**
-   * Instantiates a new environment.
-   *
-   * @param url the url
-   */
-  private Environment(String url) {
-    this.url = url;
-  }
+    /**
+     * The url.
+     */
+    private final String url;
 
-  /**
-   * Gets the url.
-   *
-   * @return the url
-   */
-  public String getUrl() {
-    return url;
-  }
+    /**
+     * Instantiates a new environment.
+     *
+     * @param url the url
+     */
+    private Environment(String url) {
+        this.url = url;
+    }
+
+    /**
+     * Gets the url.
+     *
+     * @return the url
+     */
+    public String getUrl() {
+        return url;
+    }
 }

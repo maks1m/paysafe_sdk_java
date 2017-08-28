@@ -21,76 +21,81 @@ package com.paysafe.common;
 import com.paysafe.common.impl.BaseDomainObject;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * All internal exceptions extend or implement this type.
  */
 public class PaysafeException extends Exception {
 
-  /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-/** The raw response. */
-  private final BaseDomainObject rawResponse;
-  
-  /** The code. */
-  private final String code;
+    /**
+     * The raw response.
+     */
+    private final BaseDomainObject rawResponse;
 
-  /**
-   * Instantiates a new paysafe exception.
-   *
-   * @param message the message
-   */
-  public PaysafeException(final String message) {
-    this(message, null);
-  }
+    /**
+     * The code.
+     */
+    private final String code;
 
-  /**
-   * Instantiates a new paysafe exception.
-   *
-   * @param message the message
-   * @param cause the cause
-   */
-  public PaysafeException(final String message, final Throwable cause) {
-    super(message, cause);
-    rawResponse = null;
-    code = null;
-  }
+    /**
+     * Instantiates a new paysafe exception.
+     *
+     * @param message the message
+     */
+    public PaysafeException(final String message) {
+        this(message, null);
+    }
 
-  /**
-   * Instantiates a new paysafe exception.
-   *
-   * @param obj the obj
-   * @param cause the cause
-   */
-  public PaysafeException(final BaseDomainObject obj, final Throwable cause) {
-    super(null == obj || null == obj.getError()
-            ? "An unknown error has occurred"
-            : obj.getError().getMessage(),
-            cause);
-    rawResponse = obj;
-    code = null == obj || null == obj.getError()
-            ? null
-            : obj.getError().getCode();
+    /**
+     * Instantiates a new paysafe exception.
+     *
+     * @param message the message
+     * @param cause   the cause
+     */
+    public PaysafeException(final String message, final Throwable cause) {
+        super(message, cause);
+        rawResponse = null;
+        code = null;
+    }
 
-  }
+    /**
+     * Instantiates a new paysafe exception.
+     *
+     * @param obj   the obj
+     * @param cause the cause
+     */
+    public PaysafeException(final BaseDomainObject obj, final Throwable cause) {
+        super(null == obj || null == obj.getError()
+                        ? "An unknown error has occurred"
+                        : obj.getError().getMessage(),
+                cause);
+        rawResponse = obj;
+        code = null == obj || null == obj.getError()
+                ? null
+                : obj.getError().getCode();
 
-  /**
-   * Gets the raw response.
-   *
-   * @return the raw response
-   */
-  public final BaseDomainObject getRawResponse() {
-    return rawResponse;
-  }
+    }
 
-  /**
-   * Gets the code.
-   *
-   * @return the code
-   */
-  public final String getCode() {
-    return code;
-  }
+    /**
+     * Gets the raw response.
+     *
+     * @return the raw response
+     */
+    public final BaseDomainObject getRawResponse() {
+        return rawResponse;
+    }
+
+    /**
+     * Gets the code.
+     *
+     * @return the code
+     */
+    public final String getCode() {
+        return code;
+    }
 }

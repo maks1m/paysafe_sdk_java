@@ -19,76 +19,107 @@
 package com.paysafe.directdebit;
 
 import com.google.gson.annotations.Expose;
-import com.paysafe.common.Id;
 import com.paysafe.common.Error;
+import com.paysafe.common.Id;
 import com.paysafe.common.impl.BaseBuilder;
 import com.paysafe.common.impl.BaseDomainObject;
 import com.paysafe.customervault.Status;
-import com.paysafe.directdebit.EFT;
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class Purchase.
- * @author  bhushan.patil
+ *
+ * @author bhushan.patil
  * @since 02-03-2016.
  */
 public class Purchases implements BaseDomainObject {
 
-    /** The id. */
+    /**
+     * The id.
+     */
     private Id<Purchases> id;
-    
-    /** The merchant ref num. */
+
+    /**
+     * The merchant ref num.
+     */
     @Expose
     private String merchantRefNum;
-    
-    /** The amount. */
+
+    /**
+     * The amount.
+     */
     @Expose
     private int amount;
-    
-    /** The ach. */
+
+    /**
+     * The ach.
+     */
     @Expose
     private ACH ach;
-    
-    /** The eft. */
+
+    /**
+     * The eft.
+     */
     @Expose
     private EFT eft;
-    
-    /** The bacs. */
+
+    /**
+     * The bacs.
+     */
     @Expose
     private BACS bacs;
-    
-    /** The sepa. */
+
+    /**
+     * The sepa.
+     */
     @Expose
     private SEPA sepa;
-    
-    /** The profile. */
+
+    /**
+     * The profile.
+     */
     @Expose
     private Profile profile;
-    
-    /** The billing details. */
+
+    /**
+     * The billing details.
+     */
     @Expose
     private BillingDetails billingDetails;
-    
-    /** The customer ip. */
+
+    /**
+     * The customer ip.
+     */
     @Expose
     private String customerIp;
-    
-    /** The dup check. */
+
+    /**
+     * The dup check.
+     */
     @Expose
     private Boolean dupCheck;
-    
-    /** The txn time. */
+
+    /**
+     * The txn time.
+     */
     @Expose
-    private String  txnTime;
-    
-    /** The currency code. */
+    private String txnTime;
+
+    /**
+     * The currency code.
+     */
     @Expose
     private String currencyCode;
-    
-    /** The status. */
+
+    /**
+     * The status.
+     */
     @Expose
     private Status status;
-    
-    /** The error. */
+
+    /**
+     * The error.
+     */
     private Error error;
 
 
@@ -163,7 +194,7 @@ public class Purchases implements BaseDomainObject {
     public void setAch(final ACH ach) {
         this.ach = ach;
     }
-    
+
     /**
      * Gets the profile.
      *
@@ -199,7 +230,7 @@ public class Purchases implements BaseDomainObject {
     public void setBillingDetails(final BillingDetails billingDetails) {
         this.billingDetails = billingDetails;
     }
-    
+
     /**
      * Gets the customer ip.
      *
@@ -289,7 +320,7 @@ public class Purchases implements BaseDomainObject {
     public void setError(final Error error) {
         this.error = error;
     }
-    
+
     /**
      * Gets the status.
      *
@@ -307,61 +338,62 @@ public class Purchases implements BaseDomainObject {
     public void setStatus(final Status status) {
         this.status = status;
     }
-    
+
     /**
      * Gets the eft.
      *
      * @return the eft
      */
     public EFT getEft() {
-		return eft;
-	}
+        return eft;
+    }
 
-	/**
-	 * Sets the eft.
-	 *
-	 * @param eft the new eft
-	 */
-	public void setEft(final EFT eft) {
-		this.eft = eft;
-	}
-	
-	/**
-	 * Gets the bacs.
-	 *
-	 * @return the bacs
-	 */
-	public BACS getBacs() {
-		return bacs;
-	}
+    /**
+     * Sets the eft.
+     *
+     * @param eft the new eft
+     */
+    public void setEft(final EFT eft) {
+        this.eft = eft;
+    }
 
-	/**
-	 * Sets the bacs.
-	 *
-	 * @param bacs the new bacs
-	 */
-	public void setBacs(final BACS bacs) {
-		this.bacs = bacs;
-	}
-	
-	/**
-	 * Gets the sepa.
-	 *
-	 * @return the sepa
-	 */
-	public SEPA getSepa() {
-		return sepa;
-	}
+    /**
+     * Gets the bacs.
+     *
+     * @return the bacs
+     */
+    public BACS getBacs() {
+        return bacs;
+    }
 
-	/**
-	 * Sets the sepa.
-	 *
-	 * @param sepa the new sepa
-	 */
-	public void setSepa(final SEPA sepa) {
-		this.sepa = sepa;
-	}
-	 /**
+    /**
+     * Sets the bacs.
+     *
+     * @param bacs the new bacs
+     */
+    public void setBacs(final BACS bacs) {
+        this.bacs = bacs;
+    }
+
+    /**
+     * Gets the sepa.
+     *
+     * @return the sepa
+     */
+    public SEPA getSepa() {
+        return sepa;
+    }
+
+    /**
+     * Sets the sepa.
+     *
+     * @param sepa the new sepa
+     */
+    public void setSepa(final SEPA sepa) {
+        this.sepa = sepa;
+    }
+
+    /**
      * Get an Purchase builder.
      *
      * @return PurchaseBuilder
@@ -375,25 +407,39 @@ public class Purchases implements BaseDomainObject {
      */
     public static class PurchaseBuilder extends BaseBuilder<Purchases> {
 
-        /** The profile builder. */
+        /**
+         * The profile builder.
+         */
         private Profile.ProfileBuilder<PurchaseBuilder> profileBuilder;
-        
-        /** The billing details builder. */
+
+        /**
+         * The billing details builder.
+         */
         private BillingDetails.BillingDetailsBuilder<PurchaseBuilder> billingDetailsBuilder;
-        
-        /** The ach builder. */
+
+        /**
+         * The ach builder.
+         */
         private ACH.ACHBuilder<PurchaseBuilder> achBuilder;
-        
-        /** The eft builder. */
+
+        /**
+         * The eft builder.
+         */
         private EFT.EFTBuilder<PurchaseBuilder> eftBuilder;
-        
-        /** The bacs builder. */
+
+        /**
+         * The bacs builder.
+         */
         private BACS.BACSBuilder<PurchaseBuilder> bacsBuilder;
-        
-        /** The sepa builder. */
+
+        /**
+         * The sepa builder.
+         */
         private SEPA.SEPABuilder<PurchaseBuilder> sepaBuilder;
-        
-        /** The purchases. */
+
+        /**
+         * The purchases.
+         */
         private final Purchases purchases = new Purchases();
 
         /**
@@ -404,25 +450,25 @@ public class Purchases implements BaseDomainObject {
         @Override
         public final Purchases build() {
             if (null != profileBuilder) {
-            	purchases.setProfile(profileBuilder.build());
+                purchases.setProfile(profileBuilder.build());
             }
             if (null != billingDetailsBuilder) {
-            	purchases.setBillingDetails(billingDetailsBuilder.build());
+                purchases.setBillingDetails(billingDetailsBuilder.build());
             }
             if (null != billingDetailsBuilder) {
-            	purchases.setBillingDetails(billingDetailsBuilder.build());
+                purchases.setBillingDetails(billingDetailsBuilder.build());
             }
             if (null != achBuilder) {
-            	purchases.setAch(achBuilder.build());
+                purchases.setAch(achBuilder.build());
             }
             if (null != eftBuilder) {
-            	purchases.setEft(eftBuilder.build());
+                purchases.setEft(eftBuilder.build());
             }
             if (null != bacsBuilder) {
-            	purchases.setBacs(bacsBuilder.build());
+                purchases.setBacs(bacsBuilder.build());
             }
             if (null != sepaBuilder) {
-            	purchases.setSepa(sepaBuilder.build());
+                purchases.setSepa(sepaBuilder.build());
             }
             return purchases;
         }
@@ -434,7 +480,7 @@ public class Purchases implements BaseDomainObject {
          * @return PurchaseBuilder
          */
         public final PurchaseBuilder id(final Id<Purchases> id) {
-        	purchases.setId(id);
+            purchases.setId(id);
             return this;
         }
 
@@ -445,7 +491,7 @@ public class Purchases implements BaseDomainObject {
          * @return PurchaseBuilder
          */
         public final PurchaseBuilder merchantRefNum(final String merchantRefNum) {
-        	purchases.setMerchantRefNum(merchantRefNum);
+            purchases.setMerchantRefNum(merchantRefNum);
             return this;
         }
 
@@ -456,11 +502,11 @@ public class Purchases implements BaseDomainObject {
          * @return PurchaseBuilder
          */
         public final PurchaseBuilder amount(final int amount) {
-        	purchases.setAmount(amount);
+            purchases.setAmount(amount);
             return this;
         }
 
-       /**
+        /**
          * Build a billingDetails within this Purchase.
          *
          * @return BillingDetails.BillingDetailsBuilder< PurchaseBuilder >
@@ -491,7 +537,7 @@ public class Purchases implements BaseDomainObject {
          * @return PurchaseBuilder
          */
         public final PurchaseBuilder customerIp(final String customerIp) {
-        	purchases.setCustomerIp(customerIp);
+            purchases.setCustomerIp(customerIp);
             return this;
         }
 
@@ -502,7 +548,7 @@ public class Purchases implements BaseDomainObject {
          * @return PurchaseBuilder
          */
         public final PurchaseBuilder dupCheck(final Boolean dupCheck) {
-        	purchases.setDupCheck(dupCheck);
+            purchases.setDupCheck(dupCheck);
             return this;
         }
 
@@ -517,7 +563,7 @@ public class Purchases implements BaseDomainObject {
             }
             return achBuilder;
         }
-        
+
         /**
          * Build an Profile within this Purchase.
          *
@@ -525,11 +571,11 @@ public class Purchases implements BaseDomainObject {
          */
         public final Profile.ProfileBuilder<PurchaseBuilder> profile() {
             if (null == profileBuilder) {
-            	profileBuilder = new Profile.ProfileBuilder<PurchaseBuilder>(this);
+                profileBuilder = new Profile.ProfileBuilder<PurchaseBuilder>(this);
             }
             return profileBuilder;
         }
-        
+
         /**
          * Build an EFT within this Purchase.
          *
@@ -537,11 +583,11 @@ public class Purchases implements BaseDomainObject {
          */
         public final EFT.EFTBuilder<PurchaseBuilder> eft() {
             if (null == eftBuilder) {
-            	eftBuilder = new EFT.EFTBuilder<PurchaseBuilder>(this);
+                eftBuilder = new EFT.EFTBuilder<PurchaseBuilder>(this);
             }
             return eftBuilder;
         }
-        
+
         /**
          * Build an BACS within this Purchase.
          *
@@ -549,20 +595,20 @@ public class Purchases implements BaseDomainObject {
          */
         public final BACS.BACSBuilder<PurchaseBuilder> bacs() {
             if (null == bacsBuilder) {
-            	bacsBuilder = new BACS.BACSBuilder<PurchaseBuilder>(this);
+                bacsBuilder = new BACS.BACSBuilder<PurchaseBuilder>(this);
             }
             return bacsBuilder;
         }
-        
+
         /**
          * Build an SEPA within this Purchase.
          *
          * @return SEPA.SEPABuilder< PurchaseBuilder >
          */
-        
+
         public final SEPA.SEPABuilder<PurchaseBuilder> sepa() {
             if (null == sepaBuilder) {
-            	sepaBuilder = new SEPA.SEPABuilder<PurchaseBuilder>(this);
+                sepaBuilder = new SEPA.SEPABuilder<PurchaseBuilder>(this);
             }
             return sepaBuilder;
         }
@@ -574,7 +620,7 @@ public class Purchases implements BaseDomainObject {
          * @return PurchaseBuilder
          */
         public final PurchaseBuilder txnTime(final String txnTime) {
-        	purchases.setTxnTime(txnTime);
+            purchases.setTxnTime(txnTime);
             return this;
         }
 
@@ -585,7 +631,7 @@ public class Purchases implements BaseDomainObject {
          * @return PurchaseBuilder
          */
         public final PurchaseBuilder currencyCode(final String currencyCode) {
-        	purchases.setCurrencyCode(currencyCode);
+            purchases.setCurrencyCode(currencyCode);
             return this;
         }
 
@@ -596,7 +642,7 @@ public class Purchases implements BaseDomainObject {
          * @return PurchaseBuilder
          */
         public final PurchaseBuilder error(final Error error) {
-        	purchases.setError(error);
+            purchases.setError(error);
             return this;
         }
 
@@ -607,7 +653,7 @@ public class Purchases implements BaseDomainObject {
          * @return PurchaseBuilder
          */
         public final PurchaseBuilder status(final Status status) {
-        	purchases.setStatus(status);
+            purchases.setStatus(status);
             return this;
         }
     }

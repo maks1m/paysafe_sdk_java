@@ -28,92 +28,92 @@ import com.paysafe.common.impl.NestedBuilder;
  */
 public class DateOfBirth implements DomainObject {
 
-  @Expose	
-  private Integer day;
-  @Expose
-  private Integer month;
-  @Expose
-  private Integer year;
+    @Expose
+    private Integer day;
+    @Expose
+    private Integer month;
+    @Expose
+    private Integer year;
 
-  public final Integer getDay() {
-    return day;
-  }
+    public final Integer getDay() {
+        return day;
+    }
 
-  public final void setDay(final Integer day) {
-    this.day = day;
-  }
+    public final void setDay(final Integer day) {
+        this.day = day;
+    }
 
-  public final Integer getMonth() {
-    return month;
-  }
+    public final Integer getMonth() {
+        return month;
+    }
 
-  public final void setMonth(final Integer month) {
-    this.month = month;
-  }
+    public final void setMonth(final Integer month) {
+        this.month = month;
+    }
 
-  public final Integer getYear() {
-    return year;
-  }
+    public final Integer getYear() {
+        return year;
+    }
 
-  public final void setYear(final Integer year) {
-    this.year = year;
-  }
-
-  /**
-   * The sub-builder class for DateOfBirth.
-   *
-   * @param <BLDRT> the parent builder
-   */
-  public static class DateOfBirthBuilder<BLDRT extends GenericBuilder> extends
-          NestedBuilder<DateOfBirth, BLDRT> {
-
-    private final DateOfBirth dateOfBirth = new DateOfBirth();
-
-    public DateOfBirthBuilder(final BLDRT parent) {
-      super(parent);
+    public final void setYear(final Integer year) {
+        this.year = year;
     }
 
     /**
-     * Build this date of birth object.
+     * The sub-builder class for DateOfBirth.
      *
-     * @return DateOfBirth
+     * @param <BLDRT> the parent builder
      */
-    @Override
-    public final DateOfBirth build() {
-      return dateOfBirth;
-    }
+    public static class DateOfBirthBuilder<BLDRT extends GenericBuilder> extends
+            NestedBuilder<DateOfBirth, BLDRT> {
 
-    /**
-     * Set the day property.
-     *
-     * @param day
-     * @return DateOfBirthBuilder< BLDRT >
-     */
-    public final DateOfBirthBuilder<BLDRT> day(final Integer day) {
-      dateOfBirth.setDay(day);
-      return this;
-    }
+        private final DateOfBirth dateOfBirth = new DateOfBirth();
 
-    /**
-     * Set the month property.
-     *
-     * @param month
-     * @return DateOfBirthBuilder< BLDRT >
-     */
-    public final DateOfBirthBuilder<BLDRT> month(final Integer month) {
-      dateOfBirth.setMonth(month);
-      return this;
-    }
+        public DateOfBirthBuilder(final BLDRT parent) {
+            super(parent);
+        }
 
-    /**
-     * Set the year property.
-     *
-     * @param year
-     * @return DateOfBirthBuilder< BLDRT >
-     */
-    public final DateOfBirthBuilder<BLDRT> year(final Integer year) {
-      dateOfBirth.setYear(year);
-      return this;
+        /**
+         * Build this date of birth object.
+         *
+         * @return DateOfBirth
+         */
+        @Override
+        public final DateOfBirth build() {
+            return dateOfBirth;
+        }
+
+        /**
+         * Set the day property.
+         *
+         * @param day
+         * @return DateOfBirthBuilder< BLDRT >
+         */
+        public final DateOfBirthBuilder<BLDRT> day(final Integer day) {
+            dateOfBirth.setDay(day);
+            return this;
+        }
+
+        /**
+         * Set the month property.
+         *
+         * @param month
+         * @return DateOfBirthBuilder< BLDRT >
+         */
+        public final DateOfBirthBuilder<BLDRT> month(final Integer month) {
+            dateOfBirth.setMonth(month);
+            return this;
+        }
+
+        /**
+         * Set the year property.
+         *
+         * @param year
+         * @return DateOfBirthBuilder< BLDRT >
+         */
+        public final DateOfBirthBuilder<BLDRT> year(final Integer year) {
+            dateOfBirth.setYear(year);
+            return this;
+        }
     }
-  }
 }

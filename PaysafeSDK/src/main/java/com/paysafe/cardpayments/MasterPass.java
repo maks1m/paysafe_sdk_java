@@ -21,92 +21,101 @@ package com.paysafe.cardpayments;
 import com.paysafe.common.impl.DomainObject;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class MasterPass.
  */
 public class MasterPass implements DomainObject {
 
-  /** The pay pass wallet indicator. */
-  private String payPassWalletIndicator;
-  
-  /** The authentication method. */
-  private String authenticationMethod;
-  
-  /** The card enrollment method. */
-  private String cardEnrollmentMethod;
-  
-  /** The master card assigned id. */
-  private String masterCardAssignedId;
+    /**
+     * The pay pass wallet indicator.
+     */
+    private String payPassWalletIndicator;
 
-  /**
-   * Gets the pay pass wallet indicator.
-   *
-   * @return the pay pass wallet indicator
-   */
-  public final String getPayPassWalletIndicator() {
-    return payPassWalletIndicator;
-  }
+    /**
+     * The authentication method.
+     */
+    private String authenticationMethod;
 
-  /**
-   * Sets the pay pass wallet indicator.
-   *
-   * @param payPassWalletIndicator the new pay pass wallet indicator
-   */
-  public final void setPayPassWalletIndicator(final String payPassWalletIndicator) {
-    this.payPassWalletIndicator = payPassWalletIndicator;
-  }
+    /**
+     * The card enrollment method.
+     */
+    private String cardEnrollmentMethod;
 
-  /**
-   * Gets the authentication method.
-   *
-   * @return the authentication method
-   */
-  public final String getAuthenticationMethod() {
-    return authenticationMethod;
-  }
+    /**
+     * The master card assigned id.
+     */
+    private String masterCardAssignedId;
 
-  /**
-   * Sets the authentication method.
-   *
-   * @param authenticationMethod the new authentication method
-   */
-  public final void setAuthenticationMethod(final String authenticationMethod) {
-    this.authenticationMethod = authenticationMethod;
-  }
+    /**
+     * Gets the pay pass wallet indicator.
+     *
+     * @return the pay pass wallet indicator
+     */
+    public final String getPayPassWalletIndicator() {
+        return payPassWalletIndicator;
+    }
 
-  /**
-   * Gets the card enrollment method.
-   *
-   * @return the card enrollment method
-   */
-  public final String getCardEnrollmentMethod() {
-    return cardEnrollmentMethod;
-  }
+    /**
+     * Sets the pay pass wallet indicator.
+     *
+     * @param payPassWalletIndicator the new pay pass wallet indicator
+     */
+    public final void setPayPassWalletIndicator(final String payPassWalletIndicator) {
+        this.payPassWalletIndicator = payPassWalletIndicator;
+    }
 
-  /**
-   * Sets the card enrollment method.
-   *
-   * @param cardEnrollmentMethod the new card enrollment method
-   */
-  public final void setCardEnrollmentMethod(final String cardEnrollmentMethod) {
-    this.cardEnrollmentMethod = cardEnrollmentMethod;
-  }
+    /**
+     * Gets the authentication method.
+     *
+     * @return the authentication method
+     */
+    public final String getAuthenticationMethod() {
+        return authenticationMethod;
+    }
 
-  /**
-   * Gets the master card assigned id.
-   *
-   * @return the master card assigned id
-   */
-  public final String getMasterCardAssignedId() {
-    return masterCardAssignedId;
-  }
+    /**
+     * Sets the authentication method.
+     *
+     * @param authenticationMethod the new authentication method
+     */
+    public final void setAuthenticationMethod(final String authenticationMethod) {
+        this.authenticationMethod = authenticationMethod;
+    }
 
-  /**
-   * Sets the master card assigned id.
-   *
-   * @param masterCardAssignedId the new master card assigned id
-   */
-  public final void setMasterCardAssignedId(final String masterCardAssignedId) {
-    this.masterCardAssignedId = masterCardAssignedId;
-  }
+    /**
+     * Gets the card enrollment method.
+     *
+     * @return the card enrollment method
+     */
+    public final String getCardEnrollmentMethod() {
+        return cardEnrollmentMethod;
+    }
+
+    /**
+     * Sets the card enrollment method.
+     *
+     * @param cardEnrollmentMethod the new card enrollment method
+     */
+    public final void setCardEnrollmentMethod(final String cardEnrollmentMethod) {
+        this.cardEnrollmentMethod = cardEnrollmentMethod;
+    }
+
+    /**
+     * Gets the master card assigned id.
+     *
+     * @return the master card assigned id
+     */
+    public final String getMasterCardAssignedId() {
+        return masterCardAssignedId;
+    }
+
+    /**
+     * Sets the master card assigned id.
+     *
+     * @param masterCardAssignedId the new master card assigned id
+     */
+    public final void setMasterCardAssignedId(final String masterCardAssignedId) {
+        this.masterCardAssignedId = masterCardAssignedId;
+    }
 }

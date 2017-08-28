@@ -21,6 +21,7 @@ package com.paysafe.common;
 import com.paysafe.common.impl.BaseDomainObject;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * An id for a domain classes.
  *
@@ -28,96 +29,100 @@ import com.paysafe.common.impl.BaseDomainObject;
  */
 public class Id<T extends BaseDomainObject> {
 
-  /** The id. */
-  private final String id;
-  
-  /** The type. */
-  private final Class<T> type;
+    /**
+     * The id.
+     */
+    private final String id;
 
-  /**
-   * Instantiates a new id.
-   *
-   * @param id the id
-   * @param type the type
-   */
-  private Id(String id, Class<T> type) {
-    this.id = id;
-    this.type = type;
-  }
+    /**
+     * The type.
+     */
+    private final Class<T> type;
 
-  /**
-   * Get the generic type associated with this object.
-   * 
-   * @return Class< T >
-   */
-  public Class<T> getType() {
-    return type;
-  }
-
-  /* (non-Javadoc)
-   * @see java.lang.Object#toString()
-   */
-  @Override
-  public String toString() {
-    return id;
-  }
-
-  /* (non-Javadoc)
-   * @see java.lang.Object#hashCode()
-   */
-  @Override
-  public int hashCode() {
-    final int prime = 31;
-    int result = 1;
-    result = prime * result + ((type == null) ? 0 : type.hashCode());
-    result = prime * result + ((id == null) ? 0 : id.hashCode());
-    return result;
-  }
-
-  /**
-   * Overridden to allow to similar objects to be compared (same id and type).
-   *
-   * @param obj the obj
-   * @return Boolean
-   */
-  @Override
-  public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
+    /**
+     * Instantiates a new id.
+     *
+     * @param id   the id
+     * @param type the type
+     */
+    private Id(String id, Class<T> type) {
+        this.id = id;
+        this.type = type;
     }
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    Id<?> other = (Id<?>) obj;
-    if (type == null) {
-      if (other.type != null) {
-        return false;
-      }
-    } else if (!type.equals(other.type)) {
-      return false;
-    }
-    if (id == null) {
-      if (other.id != null) {
-        return false;
-      }
-    } else if (!id.equals(other.id)) {
-      return false;
-    }
-    return true;
-  }
 
-  /**
-   * Instantiate a new id object.
-   *
-   * @param <U> the generic type
-   * @param id the id
-   * @param classType the class type
-   * @return Id< U >
-   */
-  public static final <U extends BaseDomainObject> Id<U> create(String id, Class<U> classType) {
-    return new Id<U>(id, classType);
-  }
+    /**
+     * Get the generic type associated with this object.
+     *
+     * @return Class< T >
+     */
+    public Class<T> getType() {
+        return type;
+    }
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return id;
+    }
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((type == null) ? 0 : type.hashCode());
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    /**
+     * Overridden to allow to similar objects to be compared (same id and type).
+     *
+     * @param obj the obj
+     * @return Boolean
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Id<?> other = (Id<?>) obj;
+        if (type == null) {
+            if (other.type != null) {
+                return false;
+            }
+        } else if (!type.equals(other.type)) {
+            return false;
+        }
+        if (id == null) {
+            if (other.id != null) {
+                return false;
+            }
+        } else if (!id.equals(other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Instantiate a new id object.
+     *
+     * @param <U>       the generic type
+     * @param id        the id
+     * @param classType the class type
+     * @return Id< U >
+     */
+    public static final <U extends BaseDomainObject> Id<U> create(String id, Class<U> classType) {
+        return new Id<U>(id, classType);
+    }
 }

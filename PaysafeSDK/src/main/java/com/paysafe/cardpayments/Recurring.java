@@ -19,14 +19,19 @@
 package com.paysafe.cardpayments;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * Recurring used by Authorization class.
  */
 public enum Recurring {
 
-  /** The initial. */
-  INITIAL,
-  
-  /** The recurrin. */
-  RECURRIN
+    /**
+     * The initial.
+     */
+    INITIAL,
+
+    /**
+     * The recurrin.
+     */
+    RECURRIN
 }

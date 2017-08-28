@@ -19,13 +19,6 @@
 
 package com.paysafe.websample;
 
-import java.io.IOException;
-
-import java.io.PrintWriter;
-
-import javax.servlet.http.*;
-import javax.servlet.*;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.paysafe.Environment;
@@ -35,97 +28,106 @@ import com.paysafe.common.PaysafeException;
 import com.paysafe.customervault.AccountType;
 import com.paysafe.directdebit.Purchases;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class DirectDebitSampleServlet extends PaysafeServletBase {
 
-  /**
-   *
-   */
-  private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-  @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+    throws IOException, ServletException {
 
-    request.setAttribute("isPost", "false");
-    request.setAttribute("currency", this.currencyCode);
-    
-    RequestDispatcher view = request.getRequestDispatcher("directDebitSample.jsp");
-    view.forward(request, response);
+        request.setAttribute("isPost", "false");
+        request.setAttribute("currency", this.currencyCode);
 
-   }
+        RequestDispatcher view = request.getRequestDispatcher("directDebitSample.jsp");
+        view.forward(request, response);
 
-  @Override
-  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    }
 
-	// Initiate a new instance of the DirectDebit Purchase Service
-   //Initialize the PaysafeApiClient 
-   
-	PrintWriter out = response.getWriter();
-    boolean wasSuccessfull = false;
-    Purchases purchasesResponse=null;
-    PaysafeApiClient apiClient = new PaysafeApiClient(this.apiKey, this.apiPassword, Environment.TEST, this.accountNumber);
-    	try {
-    	
-    	Purchases purchases=
-    			Purchases.builder()
-    		
-       		 .merchantRefNum(request.getParameter("merchantRefNum"))
-       		 .amount(Integer.parseInt(request.getParameter("amount")))
-       		 .ach()
-       		 	.accountHolderName(request.getParameter("accountHolderName"))
-       		 	.accountType(AccountType.CHECKING)
-       		 	.accountNumber(request.getParameter("accountNumber"))
-       		 	.routingNumber(request.getParameter("routingNumber"))
-       		 	.payMethod(PayMethod.WEB)
-       		 .done()
-       		 .customerIp(request.getParameter("customerIp"))
-       		 .profile()
-       		 	.firstName(request.getParameter("firstName"))
-       		 	.lastName(request.getParameter("lastName"))
-       		 	.email(request.getParameter("email"))
-       		 .done()
-       		 .billingDetails()
-       		 	.street(request.getParameter("street"))
-       		 	.city(request.getParameter("city"))
-       		 	.state(request.getParameter("state"))
-       		 	.country(request.getParameter("country"))
-       		 	.zip(request.getParameter("zip"))
-       		 	.phone(request.getParameter("phone"))
-       		 .done()
-       		 .build();
-    	
-    	
-    	purchasesResponse = apiClient.directDebitService().submitPurchase(purchases);
-    	final GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.excludeFieldsWithoutExposeAnnotation();
-        final Gson gson = gsonBuilder.create();
-        
-        
-        out.println("response"+gson.toJson(purchasesResponse));
-    
-    	
-		wasSuccessfull = true;
-    				
-		} catch (PaysafeException e) {
-			// TODO Auto-generated catch block
-			request.setAttribute("error", e.getMessage());
-			out.println(e.getMessage());
-		}
-    	
-   	
-    	request.setAttribute("purchases", purchasesResponse);
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+    throws IOException, ServletException {
+
+        // Initiate a new instance of the DirectDebit Purchase Service
+        //Initialize the PaysafeApiClient
+
+        PrintWriter out = response.getWriter();
+        boolean wasSuccessfull = false;
+        Purchases purchasesResponse = null;
+        PaysafeApiClient apiClient = new PaysafeApiClient(this.apiKey, this.apiPassword, Environment.TEST, this.accountNumber);
+        try {
+
+            Purchases purchases =
+                    Purchases.builder()
+
+                            .merchantRefNum(request.getParameter("merchantRefNum"))
+                            .amount(Integer.parseInt(request.getParameter("amount")))
+                            .ach()
+                            .accountHolderName(request.getParameter("accountHolderName"))
+                            .accountType(AccountType.CHECKING)
+                            .accountNumber(request.getParameter("accountNumber"))
+                            .routingNumber(request.getParameter("routingNumber"))
+                            .payMethod(PayMethod.WEB)
+                            .done()
+                            .customerIp(request.getParameter("customerIp"))
+                            .profile()
+                            .firstName(request.getParameter("firstName"))
+                            .lastName(request.getParameter("lastName"))
+                            .email(request.getParameter("email"))
+                            .done()
+                            .billingDetails()
+                            .street(request.getParameter("street"))
+                            .city(request.getParameter("city"))
+                            .state(request.getParameter("state"))
+                            .country(request.getParameter("country"))
+                            .zip(request.getParameter("zip"))
+                            .phone(request.getParameter("phone"))
+                            .done()
+                            .build();
+
+
+            purchasesResponse = apiClient.directDebitService().submitPurchase(purchases);
+            final GsonBuilder gsonBuilder = new GsonBuilder();
+            gsonBuilder.excludeFieldsWithoutExposeAnnotation();
+            final Gson gson = gsonBuilder.create();
+
+
+            out.println("response" + gson.toJson(purchasesResponse));
+
+
+            wasSuccessfull = true;
+
+        } catch (PaysafeException e) {
+            // TODO Auto-generated catch block
+            request.setAttribute("error", e.getMessage());
+            out.println(e.getMessage());
+        }
+
+
+        request.setAttribute("purchases", purchasesResponse);
 
         // Create a new diredtdebit request
         request.setAttribute("isPost", "true");
         request.setAttribute("currency", this.currencyCode);
-        
+
         if (wasSuccessfull) {
             RequestDispatcher view = request.getRequestDispatcher("status.jsp");
             view.forward(request, response);
-          } else {
+        } else {
             RequestDispatcher view = request.getRequestDispatcher("directDebitACHPurchase.jsp");
             view.forward(request, response);
-          }
-               
-  }
+        }
+
+    }
 
 }

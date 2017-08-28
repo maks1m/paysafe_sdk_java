@@ -25,8 +25,10 @@ import com.paysafe.common.impl.GenericBuilder;
 import com.paysafe.common.impl.NestedBuilder;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class BillingDetails.
+ *
  * @author bhushan.patil
  * @since 03-03-2016.
  */
@@ -40,10 +42,14 @@ public class BillingDetails extends AddressContainer implements DomainObject {
     public static class BillingDetailsBuilder<BLDRT extends GenericBuilder>
             extends NestedBuilder<BillingDetails, BLDRT> {
 
-        /** The billing details. */
+        /**
+         * The billing details.
+         */
         private final BillingDetails billingDetails = new BillingDetails();
-        
-        /** The address details. */
+
+        /**
+         * The address details.
+         */
         private AddressDetails addressDetails = new AddressDetails();
 
         /**
@@ -59,7 +65,7 @@ public class BillingDetails extends AddressContainer implements DomainObject {
          * Instantiates a new billing details builder.
          *
          * @param parent the parent
-         * @param a the a
+         * @param a      the a
          */
         public BillingDetailsBuilder(
                 final BLDRT parent,

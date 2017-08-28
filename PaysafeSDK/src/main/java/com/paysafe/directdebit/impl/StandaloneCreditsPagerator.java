@@ -19,29 +19,34 @@
 
 package com.paysafe.directdebit.impl;
 
-import java.util.ArrayList;
-
 import com.paysafe.directdebit.StandaloneCredits;
 
+import java.util.ArrayList;
+
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class StandaloneCreditsPagerator.
  * Used to iterate over pages of results.
+ *
  * @author deepika.mishra
  * @since 01-07-2016.
-*/
+ */
 
 public class StandaloneCreditsPagerator extends DirectDebitPagerator<StandaloneCredits> {
 
-/** The standalone credits. */
-private ArrayList<StandaloneCredits> standaloneCredits;
+    /**
+     * The standalone credits.
+     */
+    private ArrayList<StandaloneCredits> standaloneCredits;
 
-/**
- * Return the results array.
- * @return ArrayList< StandaloneCredits >
- */
-@Override
-protected final ArrayList<StandaloneCredits> getResults() {
-  return standaloneCredits;
-}
+    /**
+     * Return the results array.
+     *
+     * @return ArrayList< StandaloneCredits >
+     */
+    @Override
+    protected final ArrayList<StandaloneCredits> getResults() {
+        return standaloneCredits;
+    }
 }

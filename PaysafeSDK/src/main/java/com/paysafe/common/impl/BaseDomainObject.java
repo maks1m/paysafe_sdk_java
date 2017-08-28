@@ -21,15 +21,16 @@ package com.paysafe.common.impl;
 import com.paysafe.common.Error;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * Interface used by all objects handled directly by the client.
  */
 public interface BaseDomainObject extends DomainObject {
 
-  /**
-   * Gets the error.
-   *
-   * @return the error
-   */
-  public Error getError();
+    /**
+     * Gets the error.
+     *
+     * @return the error
+     */
+    public Error getError();
 }

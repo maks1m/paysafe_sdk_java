@@ -19,14 +19,6 @@
 
 package com.paysafe.websample;
 
-import java.io.IOException;
-
-import java.io.PrintWriter;
-import java.util.Random;
-
-import javax.servlet.http.*;
-import javax.servlet.*;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.paysafe.Environment;
@@ -39,210 +31,216 @@ import com.paysafe.customervault.Mandates;
 import com.paysafe.customervault.Profile;
 import com.paysafe.customervault.SEPABankAccounts;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Random;
+
 public class CustomerVaultMandates extends PaysafeServletBase {
 
-  /**
-   *
-   */
-  private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-  @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+    throws IOException, ServletException {
 
-    request.setAttribute("isPost", "false");
-    request.setAttribute("currency", this.currencyCode);
+        request.setAttribute("isPost", "false");
+        request.setAttribute("currency", this.currencyCode);
 
-   }
-
-  @Override
-  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-	  
-	// Initiate a new instance of the CustomerVault Service
-	//Initialize the PaysafeApiClient 
-	PrintWriter out = response.getWriter();
-    boolean wasSuccessfull = false;
-    String radio = request.getParameter("account");
-    if(radio.equals("sepa"))
-    {
-    	  PaysafeApiClient apiClient = new PaysafeApiClient(this.apiKey, this.apiPassword, Environment.TEST, this.accountNumber);
-      	try {
-      		
-      		out.println("sepa selected");
-      		
-      		Profile profile =
-      				Profile.builder()
-      				.merchantCustomerId(java.util.UUID.randomUUID().toString())
-      	            .locale(Locale.EN_US)
-      	            .firstName("John")
-      	            .lastName("Smith")
-      	            .email("john.smith@somedomain.com")
-      	            .phone("713-444-5555")
-      	            .build();
-      	            
-      		Profile  profileRes=apiClient.customerVaultService().create(profile);
-
-      	    Address address =
-      	    		Address.builder()
-      	    		.nickName("home")
-      	            .street("100 Queen Street West")
-      	            .street2("Unit 201")
-      	            .city("Toronto")
-      	            .country("CA")
-      	            .state("ON")
-      	            .zip("M5H 2N2")
-      	            .recipientName("Jane Doe")
-      	            .phone("647-788-3901")
-      	            .profileId(profileRes.getId())
-      	            .build();
-      	    
-      	    Address addressRes=apiClient.customerVaultService().create(address);
-      	    
-      	    
-      	    SEPABankAccounts sepaBankAccounts=
-      	    		  SEPABankAccounts.builder()
-      	    		 .nickName("John RBC Business Bank Account")
-      	             .accountHolderName("XYZ Business")
-      	             .bic("PSPBFIHH")
-      	             .iban(request.getParameter("iban"))
-      	             .billingAddressId(addressRes.getId())
-      	             .profileId(profileRes.getId())
-      	             .build();
-      	    
-      	 SEPABankAccounts sepaBankAccountsRes=apiClient.customerVaultService().create(sepaBankAccounts);
-      	 
-      	 
-      	 Mandates mandates=
-      			 	Mandates.builder()
-      	    		.reference(request.getParameter("reference"))
-      	    		.profileId(profileRes.getId())
-      	    		.bankAccountId(sepaBankAccountsRes.getId().toString())
-      	    		.build();
-      	    		
-      	 Mandates mandatesRes=apiClient.customerVaultService().create(mandates,"SEPA");
-      	    
-      		
-      	final GsonBuilder gsonBuilder = new GsonBuilder();
-          gsonBuilder.excludeFieldsWithoutExposeAnnotation();
-          final Gson gson = gsonBuilder.create();
-          out.println("response"+gson.toJson(mandatesRes));
-      	
-  		wasSuccessfull = true;
-      				
-  		} catch (PaysafeException e) {
-  			// TODO Auto-generated catch block
-  			request.setAttribute("error", e.getMessage());
-  			out.println(e.getMessage());
-  		}
-      	
-     	
-      	
-          // Create a new customerVault request
-          request.setAttribute("isPost", "true");
-          request.setAttribute("currency", this.currencyCode);
-          
-          if (wasSuccessfull) {
-              RequestDispatcher view = request.getRequestDispatcher("status.jsp");
-              view.forward(request, response);
-            } else {
-              RequestDispatcher view = request.getRequestDispatcher("CustomerVaultSEPABank.jsp");
-              view.forward(request, response);
-            }
     }
-    else
-    {
-    	  PaysafeApiClient apiClient = new PaysafeApiClient(this.apiKey, this.apiPassword, Environment.TEST,"1001057660");
-      	try {
-      		
-      		
-      		Profile profile =
-      				Profile.builder()
-      				.merchantCustomerId(java.util.UUID.randomUUID().toString())
-      	            .locale(Locale.EN_US)
-      	            .firstName("John")
-      	            .lastName("Smith")
-      	            .email("john.smith@somedomain.com")
-      	            .phone("713-444-5555")
-      	            .build();
-      	            
-      		Profile  profileRes=apiClient.customerVaultService().create(profile);
 
-      	    Address address =
-      	    		Address.builder()
-      	    		.nickName("home")
-      	            .street("100 Queen Street West")
-      	            .street2("Unit 201")
-      	            .city("Toronto")
-      	            .country("CA")
-      	            .state("ON")
-      	            .zip("M5H 2N2")
-      	            .recipientName("Jane Doe")
-      	            .phone("647-788-3901")
-      	            .profileId(profileRes.getId())
-      	            .build();
-      	    
-      	    Address addressRes=apiClient.customerVaultService().create(address);
-      	    
-      	    
-      	    BACSBankAccounts bacsBankAccounts=
-      	    		BACSBankAccounts.builder()
-      	    		 .nickName("Sally's Bank of Montreal Account")
-      	    		 .accountNumber(sixDigitRandomNumber())
-      	             .accountHolderName("Sally")
-      	             .sortCode("070246")
-      	             .billingAddressId(addressRes.getId())
-      	             .profileId(profileRes.getId())
-      	             .build();
-      	    
-      	  BACSBankAccounts bacsBankAccountsRes=apiClient.customerVaultService().create(bacsBankAccounts);
-      	 
-      	 
-      	 Mandates mandates=
-      			 	Mandates.builder()
-      	    		.reference(request.getParameter("reference"))
-      	    		.profileId(profileRes.getId())
-      	    		.bankAccountId(bacsBankAccountsRes.getId().toString())
-      	    		.build();
-      	    		
-      	 Mandates mandatesRes=apiClient.customerVaultService().create(mandates,"BACS");
-      	    
-      		
-      	final GsonBuilder gsonBuilder = new GsonBuilder();
-          gsonBuilder.excludeFieldsWithoutExposeAnnotation();
-          final Gson gson = gsonBuilder.create();
-          out.println("response"+gson.toJson(mandatesRes));
-  
-      	
-  		wasSuccessfull = true;
-      				
-  		} catch (PaysafeException e) {
-  			// TODO Auto-generated catch block
-  			request.setAttribute("error", e.getMessage());
-  			out.println(e.getMessage());
-  		}
-      	
-     	
-      	
-          // Create a new CustomerVault request
-          request.setAttribute("isPost", "true");
-          request.setAttribute("currency", this.currencyCode);
-          
-          if (wasSuccessfull) {
-              RequestDispatcher view = request.getRequestDispatcher("status.jsp");
-              view.forward(request, response);
-            } else {
-              RequestDispatcher view = request.getRequestDispatcher("CustomerVaultBACSBank.jsp");
-              view.forward(request, response);
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+    throws IOException, ServletException {
+
+        // Initiate a new instance of the CustomerVault Service
+        //Initialize the PaysafeApiClient
+        PrintWriter out = response.getWriter();
+        boolean wasSuccessfull = false;
+        String radio = request.getParameter("account");
+        if (radio.equals("sepa")) {
+            PaysafeApiClient apiClient = new PaysafeApiClient(this.apiKey, this.apiPassword, Environment.TEST, this.accountNumber);
+            try {
+
+                out.println("sepa selected");
+
+                Profile profile =
+                        Profile.builder()
+                                .merchantCustomerId(java.util.UUID.randomUUID().toString())
+                                .locale(Locale.EN_US)
+                                .firstName("John")
+                                .lastName("Smith")
+                                .email("john.smith@somedomain.com")
+                                .phone("713-444-5555")
+                                .build();
+
+                Profile profileRes = apiClient.customerVaultService().create(profile);
+
+                Address address =
+                        Address.builder()
+                                .nickName("home")
+                                .street("100 Queen Street West")
+                                .street2("Unit 201")
+                                .city("Toronto")
+                                .country("CA")
+                                .state("ON")
+                                .zip("M5H 2N2")
+                                .recipientName("Jane Doe")
+                                .phone("647-788-3901")
+                                .profileId(profileRes.getId())
+                                .build();
+
+                Address addressRes = apiClient.customerVaultService().create(address);
+
+
+                SEPABankAccounts sepaBankAccounts =
+                        SEPABankAccounts.builder()
+                                .nickName("John RBC Business Bank Account")
+                                .accountHolderName("XYZ Business")
+                                .bic("PSPBFIHH")
+                                .iban(request.getParameter("iban"))
+                                .billingAddressId(addressRes.getId())
+                                .profileId(profileRes.getId())
+                                .build();
+
+                SEPABankAccounts sepaBankAccountsRes = apiClient.customerVaultService().create(sepaBankAccounts);
+
+
+                Mandates mandates =
+                        Mandates.builder()
+                                .reference(request.getParameter("reference"))
+                                .profileId(profileRes.getId())
+                                .bankAccountId(sepaBankAccountsRes.getId().toString())
+                                .build();
+
+                Mandates mandatesRes = apiClient.customerVaultService().create(mandates, "SEPA");
+
+
+                final GsonBuilder gsonBuilder = new GsonBuilder();
+                gsonBuilder.excludeFieldsWithoutExposeAnnotation();
+                final Gson gson = gsonBuilder.create();
+                out.println("response" + gson.toJson(mandatesRes));
+
+                wasSuccessfull = true;
+
+            } catch (PaysafeException e) {
+                // TODO Auto-generated catch block
+                request.setAttribute("error", e.getMessage());
+                out.println(e.getMessage());
             }
+
+
+            // Create a new customerVault request
+            request.setAttribute("isPost", "true");
+            request.setAttribute("currency", this.currencyCode);
+
+            if (wasSuccessfull) {
+                RequestDispatcher view = request.getRequestDispatcher("status.jsp");
+                view.forward(request, response);
+            } else {
+                RequestDispatcher view = request.getRequestDispatcher("CustomerVaultSEPABank.jsp");
+                view.forward(request, response);
+            }
+        } else {
+            PaysafeApiClient apiClient = new PaysafeApiClient(this.apiKey, this.apiPassword, Environment.TEST, "1001057660");
+            try {
+
+
+                Profile profile =
+                        Profile.builder()
+                                .merchantCustomerId(java.util.UUID.randomUUID().toString())
+                                .locale(Locale.EN_US)
+                                .firstName("John")
+                                .lastName("Smith")
+                                .email("john.smith@somedomain.com")
+                                .phone("713-444-5555")
+                                .build();
+
+                Profile profileRes = apiClient.customerVaultService().create(profile);
+
+                Address address =
+                        Address.builder()
+                                .nickName("home")
+                                .street("100 Queen Street West")
+                                .street2("Unit 201")
+                                .city("Toronto")
+                                .country("CA")
+                                .state("ON")
+                                .zip("M5H 2N2")
+                                .recipientName("Jane Doe")
+                                .phone("647-788-3901")
+                                .profileId(profileRes.getId())
+                                .build();
+
+                Address addressRes = apiClient.customerVaultService().create(address);
+
+
+                BACSBankAccounts bacsBankAccounts =
+                        BACSBankAccounts.builder()
+                                .nickName("Sally's Bank of Montreal Account")
+                                .accountNumber(sixDigitRandomNumber())
+                                .accountHolderName("Sally")
+                                .sortCode("070246")
+                                .billingAddressId(addressRes.getId())
+                                .profileId(profileRes.getId())
+                                .build();
+
+                BACSBankAccounts bacsBankAccountsRes = apiClient.customerVaultService().create(bacsBankAccounts);
+
+
+                Mandates mandates =
+                        Mandates.builder()
+                                .reference(request.getParameter("reference"))
+                                .profileId(profileRes.getId())
+                                .bankAccountId(bacsBankAccountsRes.getId().toString())
+                                .build();
+
+                Mandates mandatesRes = apiClient.customerVaultService().create(mandates, "BACS");
+
+
+                final GsonBuilder gsonBuilder = new GsonBuilder();
+                gsonBuilder.excludeFieldsWithoutExposeAnnotation();
+                final Gson gson = gsonBuilder.create();
+                out.println("response" + gson.toJson(mandatesRes));
+
+
+                wasSuccessfull = true;
+
+            } catch (PaysafeException e) {
+                // TODO Auto-generated catch block
+                request.setAttribute("error", e.getMessage());
+                out.println(e.getMessage());
+            }
+
+
+            // Create a new CustomerVault request
+            request.setAttribute("isPost", "true");
+            request.setAttribute("currency", this.currencyCode);
+
+            if (wasSuccessfull) {
+                RequestDispatcher view = request.getRequestDispatcher("status.jsp");
+                view.forward(request, response);
+            } else {
+                RequestDispatcher view = request.getRequestDispatcher("CustomerVaultBACSBank.jsp");
+                view.forward(request, response);
+            }
+        }
+
+
     }
-  
-               
-  }
-  public static String sixDigitRandomNumber() {
-      Random rand = new Random();
 
-      int num = rand.nextInt(900000) + 100000;
-      return "" + num;
+    public static String sixDigitRandomNumber() {
+        Random rand = new Random();
 
-}
+        int num = rand.nextInt(900000) + 100000;
+        return "" + num;
+
+    }
 
 }

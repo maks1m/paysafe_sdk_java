@@ -18,25 +18,29 @@
  */
 package com.paysafe.cardpayments.impl;
 
-import java.util.ArrayList;
-
 import com.paysafe.cardpayments.Refund;
 
+import java.util.ArrayList;
+
 // TODO: Auto-generated Javadoc
+
 /**
  * Used to iterate over pages of results.
  */
 public class RefundPagerator extends CardPaymentsPagerator<Refund> {
-  
-  /** The refunds. */
-  private ArrayList<Refund> refunds;
-  
-  /**
-   * Return the results array.
-   * @return ArrayList< Refund >
-   */
-  @Override
-  protected final ArrayList<Refund> getResults() {
-    return refunds;
-  }
+
+    /**
+     * The refunds.
+     */
+    private ArrayList<Refund> refunds;
+
+    /**
+     * Return the results array.
+     *
+     * @return ArrayList<Refund>
+     */
+    @Override
+    protected final ArrayList<Refund> getResults() {
+        return refunds;
+    }
 }

@@ -19,17 +19,21 @@
 package com.paysafe.threedsecure;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class Status
  * Status used by threedsecure;.
  */
-public enum Status 
-{
-	
-	/** The completed. */
-	COMPLETED,
-	
-	/** The failed. */
-	FAILED
+public enum Status {
+
+    /**
+     * The completed.
+     */
+    COMPLETED,
+
+    /**
+     * The failed.
+     */
+    FAILED
 
 }
